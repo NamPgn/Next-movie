@@ -1,6 +1,6 @@
 import React from "react";
 import { DivStyledText, DivStyledTitle } from "../style";
-import MVLink from "../../../components/Location/Link";
+import MVLink from "../../../../components/Location/Link";
 
 const MVTypeDisplay = ({ data, children, ...rest }) => {
   return (

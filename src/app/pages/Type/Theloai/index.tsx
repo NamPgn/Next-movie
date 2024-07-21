@@ -1,14 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useSWRWithAxios } from "../../../hook/Swr";
+import { useSWRWithAxios } from "../../../../hook/Swr";
 import { urlSwr } from "../../../function";
 import {
   Loader,
   MessageErr,
   NotUpdate,
-} from "../../../components/Message/Notification";
+} from "../../../../components/Message/Notification";
 import MVTypeDisplay from "../component";
-import MVGridCategory from "../../../components/Grid/component";
+import MVGridCategory from "../../../../components/Grid/component";
 
 const ListType = () => {
   const { id } = useParams();
@@ -22,7 +22,7 @@ const ListType = () => {
   if (isError) {
     return <MessageErr />;
   }
-  const datas =[...data.category,...data.products];
+  const datas = [...data.category, ...data.products];
   return (
     <MVTypeDisplay
       data={data}

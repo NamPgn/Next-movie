@@ -1,15 +1,14 @@
-import React, { useEffect, memo, useContext } from "react";
-
-import { MessageErr } from "../../../components/Message/Notification";
-import { useSWRWithAxios } from "../../../hook/Swr";
+import React, { memo, useContext } from "react";
+import { MessageErr } from "../../../../components/Message/Notification";
+import { useSWRWithAxios } from "../../../../hook/Swr";
 import { urlSwr } from "../../../function";
-import CategoryProductSidebar from "../../../components/Category/component/sidebar";
-import WeekComponent from "../../../components/Week";
-import CategoryHomePage from "../../../components/Category/component/home";
+import CategoryProductSidebar from "../../../../components/Category/component/sidebar";
+import WeekComponent from "../../../../components/Week";
+import CategoryHomePage from "../../../../components/Category/component/home";
 import styled from "styled-components";
-import LatesCategory from "../../../components/Category/component/latest";
-import LazyLoadOtherComponents from "../../../components/LazyOtherComponents";
-import { MyContext } from "../../../context";
+import LatesCategory from "../../../../components/Category/component/latest";
+import LazyLoadOtherComponents from "../../../../components/LazyOtherComponents";
+import { MyContext } from "../../../../context";
 
 const Video = styled.video``;
 const VideoContainer = styled.div`
@@ -25,7 +24,7 @@ const ConfigHomePage = memo(() => {
   const { data: trailer, isError: ErrTrailer }: any = useSWRWithAxios(
     urlSwr + `/trailer`
   );
-  const { state } = useContext(MyContext);
+  const { state } = useContext(MyContext) || {};
   if (ErrTrailer) {
     return <MessageErr />;
   }

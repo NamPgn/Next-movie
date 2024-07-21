@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useSWRWithAxios } from "../../../hook/Swr";
+import { useSWRWithAxios } from "../../../../hook/Swr";
 import { urlSwr } from "../../../function";
 import { DivStyledBtnItem, DivStyledGrid } from "../style";
 import {
@@ -8,12 +7,12 @@ import {
   MessageErr,
   NotUpdate,
   Spiner,
-} from "../../../components/Message/Notification";
-import PaginationCustoms from "../../../components/MV/Pagination";
-import MVGridCategory from "../../../components/Grid/component";
-import { backgrounds } from "../../../constant";
+} from "../../../../components/Message/Notification";
+import PaginationCustoms from "../../../../components/MV/Pagination";
+import MVGridCategory from "../../../../components/Grid/component";
+import { backgrounds } from "../../../../constant";
 import MVTypeDisplay from "../component";
-import MVLink from "../../../components/Location/Link";
+import MVLink from "../../../../components/Location/Link";
 
 const SidebarApi = () => {
   const [page, setPage] = useState(1);
@@ -29,7 +28,7 @@ const SidebarApi = () => {
   if (isError) {
     return <MessageErr />;
   }
-  let dt = [...data.category,...data.products];
+  let dt = [...data.category, ...data.products];
   return (
     <React.Fragment>
       <MVTypeDisplay
