@@ -21,15 +21,6 @@ const SideBar = () => {
             state ? "center" : "start"
           }`}
         >
-          <MVLink
-            to={"/"}
-            style={{
-              display: "block",
-              width: "50px",
-            }}
-          >
-            <img className="object-cover sm:p-1" src="/img/zyro-image.png" />
-          </MVLink>
           <div className={`${state ? "hidden" : "block text-white"} sm:block`}>
             <MVLink to={"/"}>
               <div className="font-medium text-sm mb-1">Hhtrungquoc.tv</div>
