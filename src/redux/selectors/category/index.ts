@@ -1,2 +1,2 @@
-export const isPendingCategory$ = (state => state.category.isLoading);
-export const getOneById$ = (state => state.category.details);
+export const isPendingCategory$ = ((state:any) => state.category.isLoading);
+export const getOneById$ = ((state:any) => state.category.details);

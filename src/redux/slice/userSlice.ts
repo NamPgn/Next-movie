@@ -29,7 +29,7 @@ export const loginForm = createAsyncThunk(
 
 export const getAlluser = createAsyncThunk("user/getAll", async () => {
   const { data }: any = await getUser();
-  const checkUser = data.filter((item) => item.role == 0);
+  const checkUser = data.filter((item:any) => item.role == 0);
   return checkUser;
 });
 
@@ -43,7 +43,7 @@ export const getUser_id = createAsyncThunk(
 
 export const getAdmin = createAsyncThunk("admin/getAdmin", async () => {
   const { data }: any = await getUser();
-  const checkAdmin = data.filter((item) => item.role >= 1);
+  const checkAdmin = data.filter((item:any) => item.role >= 1);
   return checkAdmin;
 });
 
@@ -140,7 +140,7 @@ const userSlice = createSlice({
     builder
       .addCase(deteleUser.fulfilled, (state, action) => {
         state.value = state.value.filter(
-          (item) => item._id !== action.payload._id
+          (item:any) => item._id !== action.payload._id
         );
       })
       .addCase(deteleUser.rejected, (state, action) => {
@@ -189,7 +189,7 @@ const userSlice = createSlice({
     //cart delete
     builder.addCase(deleteCartSlice.fulfilled, (state, action: any) => {
       const updatedCart = state.user.cart.filter(
-        (item) => item.product._id !== action.payload.product
+        (item: { product: { _id: any; }; }) => item.product._id !== action.payload.product
       );
       state.user.cart = updatedCart;
     });

@@ -1,6 +1,5 @@
 // src/components/LayoutWebsite.tsx
 "use client";
-
 import React, { useContext } from "react";
 import { MyContext } from "../context";
 import SideBar from "@/app/components/SideBar";
@@ -9,7 +8,7 @@ import Header from "@/app/components/Teamplates/Header";
 import Footer from "@/app/components/Teamplates/Footer";
 
 const LayoutWebsite = ({ children }: { children: React.ReactNode }) => {
-  const { state } = useContext(MyContext) || {};
+  const { state }:any = useContext(MyContext) || {};
 
   return (
     <Main>

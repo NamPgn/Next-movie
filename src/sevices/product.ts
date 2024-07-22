@@ -3,7 +3,7 @@ import { IProduct } from "../interfaces/product";
 import intances, { URL_SERVER_RENDER } from "./instances";
 declare var Promise: any;
 const dataToken = isAuthentication();
-export const getAllProduct = async (page): Promise<IProduct> => {
+export const getAllProduct = async (page: number): Promise<IProduct> => {
   return await intances.get(`products?page=${page}`);
 };
 
@@ -96,7 +96,7 @@ export const cancelApproveProduct = async (id: any) =>
     }
   );
 
-export const filterProductByCategory = async (categoryId) => {
+export const filterProductByCategory = async (categoryId: any) => {
   return await intances.get(`/product/filter?c=${categoryId}`);
 };
 

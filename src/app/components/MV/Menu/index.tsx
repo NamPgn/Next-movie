@@ -10,7 +10,7 @@ const MVMenuItem = memo(({ data, icons, id, background, ...rest }: any) => {
       }}
     >
       {data &&
-        data.map((item, index) => (
+        data.map((item:any, index:number) => (
           <Menu.Item
             {...rest}
             icon={item.icon ? item.icon : icons[index]}

@@ -1,5 +1,4 @@
 "use client"
-
 import React, { useContext, useState } from "react";
 import { Layout, Menu } from "antd";
 import Link from "next/link";
@@ -9,6 +8,7 @@ import { TableRouterAdminPage } from "../router";
 import MVRow from "@/app/components/MV/Grid";
 import MVCol from "@/app/components/MV/Grid/Col";
 import { MyButton } from "@/app/components/MV/Button";
+import AuthHeader from "@/app/components/Teamplates/Header/component/auth";
 
 const { Content, Sider, Header, Footer } = Layout;
 
@@ -30,7 +30,7 @@ const LayoutAdmin = ({ children }: { children: React.ReactNode }) => {
     };
   });
 
-  const { isLoggedInState } = useContext(MyContext) || {};
+  const { isLoggedInState }:any = useContext(MyContext) || {};
   const [collapsed, setCollapsed] = useState(false);
 
   return (

@@ -32,7 +32,7 @@ export const getBackground = async () => {
   return await intances.get("/background");
 };
 
-export const setBackground = async (data) => {
+export const setBackground = async (data: any) => {
   return await intances.post(
     `/background/${data.get("_id")}/${dataToken.user._id}`,
     data,

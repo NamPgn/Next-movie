@@ -73,16 +73,16 @@ export const DivstyledContent = styled.div`
     padding: 20px;
   }
 `;
-export const DivStyledTitle = styled.div`
+export const DivStyledTitle:any = styled.div`
   display: flex;
   gap: 0 5px;
   align-items: center;
-  justify-content: ${(prop) => prop.justify};
+  justify-content: ${(prop:any) => prop.justify};
 `;
 
 export const RouterLink = styled.div``;
 //props styled
-export const DivStyledRouter = styled.div`
+export const DivStyledRouter:any = styled.div`
   display: flex;
   padding: 10px 15px;
   margin: 10px 0;

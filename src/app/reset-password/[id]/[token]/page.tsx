@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { message } from "antd";
 import * as yup from "yup";
@@ -27,7 +26,7 @@ const ResetPassword = () => {
     repassword: yup
       .string()
       .required()
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
+      .oneOf([yup.ref("password")], "Passwords must match"),
   });
   const onsubmit = async (data: any) => {
     const response = await resetPassword(id, token, data);

@@ -1,7 +1,7 @@
 import { isAuthentication } from "../utils/auth/getToken";
 import intances from "./instances";
 const Auth = isAuthentication();
-export const deleteTypeByProducts = async (id, body) => {
+export const deleteTypeByProducts = async (id: any, body: { typeId: any; }) => {
   return intances.post(`/type/${id}/${Auth.user._id}`, body, {
     headers: {
       Authorization: `Bearer ${Auth.token}`,
@@ -9,7 +9,7 @@ export const deleteTypeByProducts = async (id, body) => {
   });
 };
 
-export const pushCateTotype = async (id, body) =>
+export const pushCateTotype = async (id: any, body: { categoryId: any; }) =>
   await intances.post(`/push/type/category/${id}/${Auth.user._id}`, body, {
     headers: {
       Authorization: `Bearer ${Auth.token}`,

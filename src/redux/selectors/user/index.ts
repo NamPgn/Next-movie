@@ -1,6 +1,6 @@
-export const userErr$ = (state => state.user.error);
-export const loginUser$ = (state => state.user.login);
-export const isLogin$=(state => state.user.isLogin);
+export const userErr$ = ((state:any) => state.user.error);
+export const loginUser$ = ((state:any) => state.user.login);
+export const isLogin$=((state:any) => state.user.isLogin);
 
-export const cartUserPending$ = (state => state.user.isLoading);
-export const cartUserFulfilled$ = (state => state.user.cartUser);
+export const cartUserPending$ = ((state:any) => state.user.isLoading);
+export const cartUserFulfilled$ = ((state:any) => state.user.cartUser);

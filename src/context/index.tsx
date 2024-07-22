@@ -3,9 +3,20 @@ import React, { createContext, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hook";
 import { getUser_id } from "../redux/slice/userSlice";
 import { isAuthentication } from "@/utils/auth/getToken";
+
+type MycontextType = {
+  Auth: string;
+  user: string;
+  isLoggedIn: boolean;
+  isLoggedInState: boolean;
+  setReset: any;
+  handleClick: any;
+  state: boolean;
+};
+
 const Auth: any = isAuthentication();
 
-export const MyContext = createContext(null);
+export const MyContext = createContext<MycontextType>({} as MycontextType);
 export const MyContextProvider = (props: any) => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
@@ -22,7 +33,7 @@ export const MyContextProvider = (props: any) => {
       dispatch(getUser_id(Auth.user._id));
     }
   }, [isLoggedInState, dispatch, reset]);
-  const value = {
+  const value: any = {
     Auth: Auth ? Auth : "",
     user,
     isLoggedIn,

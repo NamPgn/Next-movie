@@ -49,11 +49,11 @@ export const editImageUser = async (id: any, data: any) =>
     },
   });
 
-export const forgotPassword = async (data) => {
+export const forgotPassword = async (data: any) => {
   return await intances.post("/forgot-password", data);
 };
 
-export const resetPassword = async (id, token, data) => {
+export const resetPassword = async (id: any, token: any, data: any) => {
   return await intances.post(`/reset-password/${id}/${token}`, data);
 };
 

@@ -1,1 +1,1 @@
-export const comment$ = (state => state.comment.value)
+export const comment$ = ((state:any) => state.comment.value)

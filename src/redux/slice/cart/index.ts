@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { addCartSlice, getAllCartSlice, deleteCartSlice } from "./thunk/cart";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { addCartSlice, getAllCartSlice } from "./thunk/cart";
 
 // export const cartApi = createApi(
 //   {
@@ -32,35 +32,43 @@ import { addCartSlice, getAllCartSlice, deleteCartSlice } from "./thunk/cart";
 //   }
 // )
 // export const { useGetAllcartQuery, useAddCartMutation, useDeleteCartMutation } = cartApi;
-
+interface CartState {
+  value: any[];
+  isLoading: boolean;
+}
+const initialState: CartState = {
+  value: [],
+  isLoading: false,
+};
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState: {
-    value: [],
+    value: initialState,
     isLoading: false,
-    code: null
+    code: null,
   },
-  reducers:{
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getAllCartSlice.fulfilled, (state:any, action) => {
-      state.isLoading = false;
-      state.value = action.payload;
-    }).addCase(getAllCartSlice.pending, (state, action) => {
-      state.isLoading = true;
-    });
+    builder
+      .addCase(getAllCartSlice.fulfilled, (state: any, action) => {
+        state.isLoading = false;
+        state.value = action.payload;
+      })
+      .addCase(getAllCartSlice.pending, (state, action) => {
+        state.isLoading = true;
+      });
 
-    builder.addCase(addCartSlice.pending, (state, action) => {
-      state.isLoading = true;
-    }).addCase(addCartSlice.fulfilled, (state, action) => {
-      if (!Array.isArray(state.value)) {
-        state.value = [];
-      }
-      state.isLoading = false;
-      state.value.push(action.payload.cart);
-    });
-  }
+    builder
+      .addCase(addCartSlice.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(
+        addCartSlice.fulfilled,(state:any, action: PayloadAction<{ cart: any }>) => {
+          state.isLoading = false;
+          state.value.push(action.payload.cart)
+        }
+      );
+  },
 });
 
-export default cartSlice.reducer
+export default cartSlice.reducer;

@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import React, { createContext, useState } from "react";
 import { useSWRWithAxios } from "../../hook/Swr";
 import { urlSwr } from "../../app/function";
 
 export const ApiContext = createContext(null);
-export const ApiContextProvider = (props) => {
+export const ApiContextProvider = (props: any) => {
   const [page, setPage] = useState(1);
   const { data: weeks } = useSWRWithAxios(urlSwr + "/weeks");
 
@@ -19,7 +19,7 @@ export const ApiContextProvider = (props) => {
     isLoading: LoadingCateMain,
     isError,
   } = useSWRWithAxios(urlSwr + `/categorymain`);
-  const value = {
+  const value:any = {
     //danh mục phim nhiều tập
     seri,
     loadingSeri,

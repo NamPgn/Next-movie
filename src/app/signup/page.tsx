@@ -38,7 +38,7 @@ const Signup = () => {
     repassword: yup
       .string()
       .required()
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
+      .oneOf([yup.ref("password")], "Passwords must match"),
   });
   const onsubmit = async (data: any) => {
     try {

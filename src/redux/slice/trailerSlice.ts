@@ -16,7 +16,7 @@ const trailerSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(editTrailerSlice.fulfilled, (state, action) => {
+    builder.addCase(editTrailerSlice.fulfilled, (state:any, action) => {
       state.trailerValues.push(action.payload);
     });
   },

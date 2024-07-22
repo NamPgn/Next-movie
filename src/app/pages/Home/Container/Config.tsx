@@ -43,7 +43,7 @@ const ConfigHomePage = memo(() => {
   const { data: trailer, isError: ErrTrailer }: any = useSWRWithAxios(
     urlSwr + `/trailer`
   );
-  const { state } = useContext(MyContext) || {};
+  const { state }:any = useContext(MyContext) || {};
   if (ErrTrailer) {
     return <MessageErr />;
   }

@@ -4,7 +4,7 @@ import { BtnStyledNumber } from "./styles";
 import MVLink from "../Location/Link";
 import MVRow from "../MV/Grid";
 import MVCol from "../MV/Grid/Col";
-const SeriNumberMovie = ({ data, isLoading }) => {
+const SeriNumberMovie = ({ data, isLoading }:any) => {
   // const { data, error, isLoading }: any = useSWRWithAxios(
   //   urlSwr + `/category/products/${id}`
   // );
@@ -35,8 +35,6 @@ const SeriNumberMovie = ({ data, isLoading }) => {
                   ) : (
                     <BtnStyledNumber
                       className="w-full text-white"
-                      variant="ghost"
-                      size="sm"
                     >
                       {item.seri}
                     </BtnStyledNumber>

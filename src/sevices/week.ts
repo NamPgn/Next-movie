@@ -21,7 +21,7 @@ export const getCategoryByWeek = async (name: any) => {
   return await intances.get(`/week?w=${name}`);
 };
 
-export const deleteCategoryByWeek = async (id, body) => {
+export const deleteCategoryByWeek = async (id: any, body: { categoryId: any; }) => {
   return await intances.post(
     `/week/category/${id}/${dataToken.user._id}`,
     body,

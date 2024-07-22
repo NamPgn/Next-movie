@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { useSWRWithAxios } from "../../../../hook/Swr";
-import { urlSwr } from "../../../function";
-import { DivStyledBtnItem, DivStyledGrid } from "../style";
+import { useSWRWithAxios } from "../../../../../hook/Swr";
+import { urlSwr } from "../../../../function";
+import { DivStyledBtnItem, DivStyledGrid } from "../../style";
 import {
-  Loader,
   MessageErr,
   NotUpdate,
   Spiner,
-} from "../../../../components/Message/Notification";
+} from "@/app/components/Message/Notification";
+import MVTypeDisplay from "../../component";
+import MVGridCategory from "@/app/components/Grid/component";
+import MVLink from "@/app/components/Location/Link";
+import { backgrounds } from "@/constant";
+import { useParams } from "next/navigation";
 import PaginationCustoms from "../../../../components/MV/Pagination";
-import MVGridCategory from "../../../../components/Grid/component";
-import { backgrounds } from "../../../../constant";
-import MVTypeDisplay from "../component";
-import MVLink from "../../../../components/Location/Link";
 
 const SidebarApi = () => {
   const [page, setPage] = useState(1);
@@ -66,7 +66,7 @@ const SidebarApi = () => {
         defaultCurrent={1}
         totalItems={length}
         pageSize={10}
-        onChange={(value) => setPage(value)}
+        onChange={(value: any) => setPage(value)}
       />
     </React.Fragment>
   );

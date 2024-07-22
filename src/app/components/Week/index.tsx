@@ -9,7 +9,7 @@ import { getCategoryByWeek } from "@/sevices/week";
 import { settingsSlider } from "@/constant";
 
 export default function WeekComponent() {
-  const { weeks } = useContext(ApiContext) || {};
+  const { weeks }:any = useContext(ApiContext) || {};
   const weekdays = [
     "Chủ nhật",
     "Thứ 2",
@@ -24,7 +24,7 @@ export default function WeekComponent() {
   const [isLoading, setIsLoading] = useState(true);
   const [tabs, setTabs] = useState(weekdays[day]);
   const [categorys, setCategory]: any = useState([]);
-  const handleTabClick = (tabId) => {
+  const handleTabClick = (tabId:any) => {
     setTabs(tabId);
   };
 
@@ -88,7 +88,7 @@ export default function WeekComponent() {
     <div className="my-10">
       <div className="lg:px-[150px] md:px-[100px] justify-items-center grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-5 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
         {weeks &&
-          weeks.map((items, index) => (
+          weeks.map((items:any) => (
             <div
               key={items._id}
               className={

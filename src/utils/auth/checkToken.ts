@@ -1,13 +1,13 @@
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 
-export const isTokenExpired = (token) => {
+export const isTokenExpired = (token: any) => {
   if (!token) return true;
   try {
-    const decodedToken:any = jwtDecode(token);
+    const decodedToken: any = jwtDecode(token);
     const currentTime = Date.now() / 1000;
     return decodedToken.exp < currentTime;
   } catch (error) {
-    console.error('Error decoding token:', error);
+    console.error("Error decoding token:", error);
     return true;
   }
 };

@@ -3,7 +3,7 @@ import { Icategory } from "../interfaces/category";
 import { isAuthentication } from "@/utils/auth/getToken";
 declare var Promise: any;
 const dataToken = isAuthentication();
-export const getAllcategory = async (page): Promise<Icategory[]> => {
+export const getAllcategory = async (page: number): Promise<Icategory[]> => {
   return await intances.get(`/categorys?page=${page}`);
 };
 
@@ -51,11 +51,11 @@ export const searCategory = async (data: any) => {
   return await intances.get(`/categorys/search?value=${data}`);
 };
 
-export const ratingCategory = async (categoryId, data: any) => {
+export const ratingCategory = async (categoryId: string, data: any) => {
   return await intances.post("/rating/" + categoryId, data);
 };
 
-export const ratingProduct = async (categoryId, data: any) => {
+export const ratingProduct = async (categoryId: any, data: any) => {
   return await intances.post(`/rating/${categoryId}`, data);
 };
 
