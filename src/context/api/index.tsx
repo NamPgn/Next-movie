@@ -1,10 +1,20 @@
 "use client";
-
 import React, { createContext, useState } from "react";
 import { useSWRWithAxios } from "../../hook/Swr";
 import { urlSwr } from "../../app/function";
+interface ApiContextType {
+  background?: any;
+  seri: any,
+  loadingSeri: any,
+  categorymain: any,
+  LoadingCateMain: any,
+  isError: any,
+  weeks: any,
+  setPage: any,
+  page: any,
+}
 
-export const ApiContext = createContext(null);
+export const ApiContext = createContext<ApiContextType>({} as ApiContextType);
 export const ApiContextProvider = (props: any) => {
   const [page, setPage] = useState(1);
   const { data: weeks } = useSWRWithAxios(urlSwr + "/weeks");

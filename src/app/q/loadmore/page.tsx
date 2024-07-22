@@ -1,3 +1,5 @@
+"use client"
+
 import { Loading } from "@/app/components/Message/Notification";
 import dynamic from "next/dynamic";
 import React from "react";

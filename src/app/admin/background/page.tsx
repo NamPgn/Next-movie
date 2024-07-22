@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useContext } from "react";
 import MVTable from "../../components/MV/Table";
 import MVLink from "../../components/Location/Link";
@@ -7,7 +9,7 @@ import { ApiContext } from "@/context/api";
 import { columnsBackground } from "@/constant";
 
 const Background = () => {
-  const { background }:any = useContext(ApiContext) || {};
+  const { background } = useContext(ApiContext);
   const data = {
     key: background.data?._id,
     url: background.data?.url,

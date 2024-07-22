@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useContext } from "react";
 import { EditOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { useForm } from "react-hook-form";

@@ -25,37 +25,32 @@ import {
   getAllProductDataByCategorySlice,
   getProduct,
 } from "@/redux/slice/product/thunk/product";
+import { useSearchParams } from 'next/navigation'
 const DetailComponent = ({ id }: any) => {
   const productByCategory = useAppSelector(getAllProductsByCategory$);
   const getOneProductDetail = useAppSelector(getOneProduct$);
   const isLoadingDetail = useAppSelector(ProductsPending$);
   const [link, setLink] = useState("");
-  const { c } = queryString.parse(window.location.href.split("?")[1]); //lấy data url
+  const params = useSearchParams();
+  const c = params.get('c');
   const [activeLink, setActiveLink] = useState("dailyMotion");
   const dispatch = useAppDispatch();
   const [decodedLink, setDecodedLink] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location]);
+  }, []);
 
   useEffect(() => {
     dispatch(getProduct(id));
     dispatch(getAllProductDataByCategorySlice(c));
     const secretKey =
       process.env.NEXT_PUBLIC_SECERT_CRYPTO_KEY_PRODUCTS_DAILYMOTION_SERVER;
-
-    if (!secretKey) {
-      throw new Error(
-        "NEXT_PUBLIC_SECERT_CRYPTO_KEY_PRODUCTS_DAILYMOTION_SERVER is not set"
-      );
-    }
-
     const decryptedText = CryptoJS.AES.decrypt(
       getOneProductDetail.dailyMotionServer
         ? getOneProductDetail.dailyMotionServer
         : "",
-      secretKey
+      secretKey ? secretKey :""
     ).toString(CryptoJS.enc.Utf8);
     setDecodedLink(decryptedText);
     setLink(decryptedText);

@@ -1,3 +1,4 @@
+"use client"
 import LazyLoadOtherComponents from "@/app/components/LazyOtherComponents";
 import { Loading } from "@/app/components/Message/Notification";
 import dynamic from "next/dynamic";
