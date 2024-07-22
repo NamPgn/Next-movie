@@ -1,3 +1,4 @@
+"use client"
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -6,16 +7,16 @@ import {
 } from "../../../../../redux/slice/product/thunk/product";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../../../../hook";
-import { MySelectWrapper } from "../../../../../components/Form/component/select";
 import { UploadAssby } from "../../../../../sevices/product";
-import { MyButton } from "../../../../../components/MV/Button";
-import Dividers from "../../../../../components/MV/Divider";
-import MVUpload from "../../../../../components/MV/Upload";
-import MVInput from "../../../../../components/MV/Input";
-import MVLink from "../../../../../components/Location/Link";
-import MVTitle from "../../../../../components/MV/Title";
-import MVImage from "../../../../../components/MV/Image";
 import { ApiContext } from "../../../../../context/api";
+import MVTitle from "@/app/components/MV/Title";
+import MVLink from "@/app/components/Location/Link";
+import MVInput from "@/app/components/MV/Input";
+import MVImage from "@/app/components/MV/Image";
+import MVUpload from "@/app/components/MV/Upload";
+import { MySelectWrapper } from "@/app/components/Form/component/select";
+import { MyButton } from "@/app/components/MV/Button";
+import Dividers from "@/app/components/MV/Divider";
 declare var Promise: any;
 const EditProduct = ({ id }: any) => {
   const { categorymain, seri }: any = useContext(ApiContext);
@@ -178,7 +179,7 @@ const EditProduct = ({ id }: any) => {
           defaultValue={"category"}
           options={
             data &&
-            data.map((item, index) => ({
+            data.map((item:any) => ({
               label: item.name,
               value: item._id,
             }))
@@ -193,7 +194,7 @@ const EditProduct = ({ id }: any) => {
           defaultValue={"Thể loại"}
           options={
             seri &&
-            seri?.map((item, index) => ({
+            seri?.map((item:any) => ({
               label: item.name,
               value: item._id,
             }))
@@ -209,7 +210,7 @@ const EditProduct = ({ id }: any) => {
           defaultValue={"categorymain"}
           options={
             categorymain &&
-            categorymain?.map((item, index) => ({
+            categorymain?.map((item:any) => ({
               label: item.name,
               value: item._id,
             }))

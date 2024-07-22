@@ -1,5 +1,5 @@
 // src/app/admin/layout.tsx
-import LayoutAdmin from "@/Layout/Admin";
+import LayoutAdmin from "@/layout/Admin";
 import PrivateRouter from "@/router/Router-Security";
 
 export default function AdminLayout({

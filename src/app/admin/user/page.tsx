@@ -1,15 +1,17 @@
+"use client"
+
 import React, { useEffect } from "react";
 import { Image } from "antd";
-import { getAlluser, deteleUser } from "../../redux/slice/userSlice";
 import { DownloadOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
-import { user$ } from "../../redux/selectors";
-import { useAppDispatch, useAppSelector } from "../../hook";
-import { columnsUser } from "../../constant";
 import MVTable from "../../components/MV/Table";
 import { MyButton } from "../../components/MV/Button";
 import MVLink from "../../components/Location/Link";
 import MVTags from "../../components/MV/Tag";
+import { useAppDispatch, useAppSelector } from "@/hook";
+import { user$ } from "@/redux/selectors";
+import { deteleUser, getAlluser } from "@/redux/slice/userSlice";
+import { columnsUser } from "@/constant";
 
 const GetUser = () => {
   const states = useAppSelector(user$);
@@ -17,7 +19,7 @@ const GetUser = () => {
   useEffect(() => {
     dispath(getAlluser());
   }, []);
-  const handleDelete = async (id) => {
+  const handleDelete = async (id:any) => {
     const responese = await dispath(deteleUser(id));
     if (responese.payload && responese.payload.success) {
       toast.success("Successfully deleted");

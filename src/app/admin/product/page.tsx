@@ -30,15 +30,15 @@ import {
   clearCacheProducts,
   deleteMultipleProduct,
 } from "@/sevices/product";
-import { MVError, MVSuccess } from "@/components/Message";
-import MVLink from "@/components/Location/Link";
-import { MyButton } from "@/components/MV/Button";
-import MVConfirm from "@/components/MV/Confirm";
-import MVTags from "@/components/MV/Tag";
-import MVRow from "@/components/MV/Grid";
-import MVCol from "@/components/MV/Grid/Col";
-import MySelect from "@/components/MV/Select";
-import MVTable from "@/components/MV/Table";
+import { MVError, MVSuccess } from "@/app/components/Message";
+import MVLink from "@/app/components/Location/Link";
+import { MyButton } from "@/app/components/MV/Button";
+import MVConfirm from "@/app/components/MV/Confirm";
+import MVTags from "@/app/components/MV/Tag";
+import MVRow from "@/app/components/MV/Grid";
+import MVCol from "@/app/components/MV/Grid/Col";
+import MySelect from "@/app/components/MV/Select";
+import MVTable from "@/app/components/MV/Table";
 
 const ProductAdmin = memo(({ product, length, isLoading }: any) => {
   const [page, setPage] = useState(9); // Đặt trang mặc định là trang cuối cùng
@@ -67,7 +67,7 @@ const ProductAdmin = memo(({ product, length, isLoading }: any) => {
   const handleSearch = (value: any) => {
     dispatch(searchProductsSlice(value));
   };
-  const handlePageChangePage = (value) => {
+  const handlePageChangePage = (value:any) => {
     setPage(value);
     dispatch(getProducts(value));
   };
@@ -118,7 +118,7 @@ const ProductAdmin = memo(({ product, length, isLoading }: any) => {
     // }
   };
 
-  const confirm = async (id) => {
+  const confirm = async (id:any) => {
     const response = await dispatch(deleteProduct(id));
     if (response.payload.success) {
       toast.success("Delete product successfully");
@@ -352,7 +352,7 @@ const ProductAdmin = memo(({ product, length, isLoading }: any) => {
             if (item._id === value.category) return item.name;
           }),
         view: <MVTags color="#2db7f5">{value.view}</MVTags>,
-        sidebar: seri && seri.map((i, v) => i._id === value.typeId && i.name),
+        sidebar: seri && seri.map((i:any) => i._id === value.typeId && i.name),
         seri: value.seri,
         copyright: value.copyright,
         isActive:
@@ -431,7 +431,7 @@ const ProductAdmin = memo(({ product, length, isLoading }: any) => {
             style={{ width: 300 }}
             options={
               cate &&
-              cate?.data.map((item, index) => ({
+              cate?.data.map((item:any) => ({
                 label: item.name,
                 value: item._id,
               }))

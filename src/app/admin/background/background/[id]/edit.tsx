@@ -1,12 +1,11 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { MyButton } from "../../../../../components/MV/Button";
 import { setBackground } from "../../../../../sevices/trailer";
-const EditBackground = () => {
+import { MyButton } from "@/app/components/MV/Button";
+const EditBackground = ({params}:any) => {
+  const {id}=params
   const { handleSubmit, register } = useForm();
-  const { id } = useParams();
   const onsubmit = async (data: any) => {
     const formData = new FormData();
     formData.append("file", data.file[0]);

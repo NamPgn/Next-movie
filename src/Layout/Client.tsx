@@ -2,11 +2,11 @@
 "use client";
 
 import React, { useContext } from "react";
-import Header from "../components/Teamplates/Header";
-import Footer from "../components/Teamplates/Footer";
-import SideBar from "../components/SideBar";
 import { MyContext } from "../context";
+import SideBar from "@/app/components/SideBar";
 import Main from ".";
+import Header from "@/app/components/Teamplates/Header";
+import Footer from "@/app/components/Teamplates/Footer";
 
 const LayoutWebsite = ({ children }: { children: React.ReactNode }) => {
   const { state } = useContext(MyContext) || {};

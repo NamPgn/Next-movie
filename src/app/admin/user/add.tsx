@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { resgisterLogin } from "../../../redux/slice/userSlice";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../../../hook";
-import { MyButton } from "../../../components/MV/Button";
-import MVInput from "../../../components/MV/Input";
+import { redirect } from "next/navigation";
+import MVInput from "@/app/components/MV/Input";
+import { MyButton } from "@/app/components/MV/Button";
 const Adduser = () => {
   const { register, handleSubmit, control } = useForm();
   const dispath = useAppDispatch();
-  const navigate = useNavigate();
   const onSubmit = (data: any) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
@@ -17,7 +16,6 @@ const Adduser = () => {
     formData.append("email", data.email);
     formData.append("password", data.password);
     dispath(resgisterLogin(formData));
-    navigate("/dashboard/users");
     toast.success(`Thêm user thành công`, {
       position: "bottom-right",
       autoClose: 5000,
@@ -28,6 +26,7 @@ const Adduser = () => {
       progress: undefined,
       theme: "light",
     });
+    redirect("/dashboard/users");
   };
   return (
     <div>

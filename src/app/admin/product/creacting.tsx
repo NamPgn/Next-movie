@@ -1,11 +1,11 @@
-import React from "react";
+"use client";
 import { useForm } from "react-hook-form";
 import { importDataFile } from "../../../redux/slice/product/thunk/product";
 import { useAppDispatch } from "../../../hook";
-import MVUpload from "../../../components/MV/Upload";
-import { MyButton } from "../../../components/MV/Button";
-import { MVError, MVSuccess } from "../../../components/Message";
-import MVInput from "../../../components/MV/Input";
+import { MVError, MVSuccess } from "@/app/components/Message";
+import MVInput from "@/app/components/MV/Input";
+import MVUpload from "@/app/components/MV/Upload";
+import { MyButton } from "@/app/components/MV/Button";
 const CreatingProducts = () => {
   const { handleSubmit, control } = useForm();
   const dispatch = useAppDispatch();

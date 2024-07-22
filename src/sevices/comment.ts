@@ -1,6 +1,6 @@
 import intances from "./instances";
 import { Icommented } from "../interfaces/comment";
-import { isAuthentication } from "@/auth/getToken";
+import { isAuthentication } from "@/utils/auth/getToken";
 declare var Promise: any;
 const dataToken = isAuthentication();
 export const getAllComment = async (): Promise<Icommented[]> => {

@@ -4,9 +4,9 @@ import { message } from "antd";
 import * as yup from "yup";
 import { useAppDispatch } from "@/hook";
 import { redirect } from "next/navigation";
-import { MVError, MVSuccess } from "@/components/Message";
 import { loginForm } from "@/redux/slice/userSlice";
-import AuthForm from "@/components/Form";
+import { MVError, MVSuccess } from "../components/Message";
+import AuthForm from "../components/Form";
 
 const array = [
   {

@@ -1,8 +1,8 @@
 import React from "react";
-import MVLink from "../../components/Location/Link";
 import { redirect } from "next/navigation";
-import { isAuthentication } from "@/auth/getToken";
-const PrivateRouter = (props:any) => {
+import { isAuthentication } from "@/utils/auth/getToken";
+import MVLink from "@/app/components/Location/Link";
+const PrivateRouter = (props: any) => {
   const data = isAuthentication();
   try {
     if (data) {

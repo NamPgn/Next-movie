@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { MainContent } from "./style";
 import { ApiContext } from "../context/api";
 
-const Main = ({ children, ...rest }) => {
+const Main = ({ children, ...rest }:any) => {
   const { background }:any = useContext(ApiContext) || {};
   return (
     <MainContent background={background && background.data.url} {...rest}>

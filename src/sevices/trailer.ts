@@ -1,4 +1,4 @@
-import { isAuthentication } from "@/auth/getToken";
+import { isAuthentication } from "@/utils/auth/getToken";
 import intances from "./instances";
 
 export const getTrailerUrl = async () => {

@@ -6,13 +6,13 @@ import {
 } from "../../../redux/slice/comment/thunk/comment";
 import { comment$ } from "../../../redux/selectors/comment";
 import { useAppDispatch, useAppSelector } from "../../../hook";
-import MVTable from "../../../components/MV/Table";
 import { columnsComment } from "../../../constant";
-import { MyButton } from "../../../components/MV/Button";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import MVConfirm from "../../../components/MV/Confirm";
 import { toast } from "react-toastify";
-import MVLink from "../../../components/Location/Link";
+import MVLink from "@/app/components/Location/Link";
+import { MyButton } from "@/app/components/MV/Button";
+import MVConfirm from "@/app/components/MV/Confirm";
+import MVTable from "@/app/components/MV/Table";
 
 const CommentAdmin = () => {
   const comment = useAppSelector(comment$);
@@ -21,7 +21,7 @@ const CommentAdmin = () => {
     dispatch(getAllCommentSlice());
   }, []);
 
-  const confirm = async (id, productId) => {
+  const confirm = async (id:any, productId:any) => {
     const dataId = {
       commentId: id,
       productId: productId,
@@ -37,7 +37,7 @@ const CommentAdmin = () => {
   const data =
     comment &&
     comment
-      .filter((item) => item.user !== null)
+      .filter((item:any) => item.user !== null)
       .map((item: any, index: any) => {
         return {
           key: item._id,

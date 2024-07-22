@@ -1,11 +1,14 @@
 // @ts-check
- 
+
 module.exports = async (phase, { defaultConfig }) => {
   /**
    * @type {import('next').NextConfig}
    */
   const nextConfig = {
     /* config options here */
-  }
-  return nextConfig
-}
+    images: {
+      domains: ["firebasestorage.googleapis.com", "res.cloudinary.com"],
+    },
+  };
+  return nextConfig;
+};

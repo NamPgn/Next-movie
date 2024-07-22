@@ -1,4 +1,4 @@
-import { isAuthentication } from "@/auth/getToken";
+import { isAuthentication } from "@/utils/auth/getToken";
 import { IProduct } from "../interfaces/product";
 import intances, { URL_SERVER_RENDER } from "./instances";
 declare var Promise: any;

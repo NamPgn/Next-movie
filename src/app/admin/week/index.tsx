@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import { MyButton } from "../../../components/MV/Button";
-import MVTable from "../../../components/MV/Table";
 import { columnsWeeks } from "../../../constant";
 import { useForm } from "react-hook-form";
 import {
@@ -8,18 +6,20 @@ import {
   deleteCategoryByWeek,
   removeWeeks,
 } from "../../../sevices/week";
-import MVRow from "../../../components/MV/Grid";
-import MVCol from "../../../components/MV/Grid/Col";
-import MVInput from "../../../components/MV/Input";
-import MVLink from "../../../components/Location/Link";
-import MVConfirm from "../../../components/MV/Confirm";
 import { DeleteOutlined } from "@ant-design/icons";
-import { MVError, MVSuccess } from "../../../components/Message";
 import { ApiContext } from "../../../context/api";
+import { MVError, MVSuccess } from "@/app/components/Message";
+import MVConfirm from "@/app/components/MV/Confirm";
+import { MyButton } from "@/app/components/MV/Button";
+import MVTable from "@/app/components/MV/Table";
+import MVLink from "@/app/components/Location/Link";
+import MVRow from "@/app/components/MV/Grid";
+import MVCol from "@/app/components/MV/Grid/Col";
+import MVInput from "@/app/components/MV/Input";
 const Weeks = () => {
-  const { weeks } = useContext(ApiContext);
+  const { weeks }:any = useContext(ApiContext) || { };
   const { handleSubmit, control } = useForm();
-  const handleDeleteCategoryByWeek = async (weeksId, categoryId) => {
+  const handleDeleteCategoryByWeek = async (weeksId:any, categoryId:any) => {
     const _ = {
       categoryId: categoryId,
     };
@@ -32,20 +32,20 @@ const Weeks = () => {
       MVError("Delete Failure");
     }
   };
-  const onAdd = async (data) => {
+  const onAdd = async (data:any) => {
     await addWeeks(data);
   };
-  const handledelete = async (id) => {
+  const handledelete = async (id:any) => {
     await removeWeeks(id);
   };
-  const expandedRowRender = (record) => {
+  const expandedRowRender = (record:any) => {
     const columns = [
       { title: "ID", dataIndex: "_id", key: "_id" },
       { title: "Name", dataIndex: "name", key: "name" },
       {
         title: "Action",
         key: "operation",
-        render: (text, category) => (
+        render: (text:any, category:any) => (
           <>
             <MVConfirm
               title="Delete the category"
@@ -66,7 +66,7 @@ const Weeks = () => {
 
     // Lấy danh sách category theo id của bảng cha
     const dataCategorys =
-      weeks.find((week) => week._id === record.key)?.category || [];
+      weeks.find((week:any) => week._id === record.key)?.category || [];
     return (
       <MVTable
         columns={columns}
@@ -77,7 +77,7 @@ const Weeks = () => {
   };
   const data =
     weeks &&
-    weeks.map((v, i) => {
+    weeks.map((v:any, i:number) => {
       return {
         key: v._id,
         name: v.name,

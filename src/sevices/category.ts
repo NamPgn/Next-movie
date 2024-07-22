@@ -1,6 +1,6 @@
 import intances from "./instances";
 import { Icategory } from "../interfaces/category";
-import { isAuthentication } from "@/auth/getToken";
+import { isAuthentication } from "@/utils/auth/getToken";
 declare var Promise: any;
 const dataToken = isAuthentication();
 export const getAllcategory = async (page): Promise<Icategory[]> => {

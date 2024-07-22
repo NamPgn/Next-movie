@@ -29,7 +29,7 @@ export const useSWRWithAxios = (url: string) => {
   };
 };
 
-export const useSwrId = (url, id) => {
+export const useSwrId = (url:any, id:any) => {
   const { data, error, isLoading } = useSWR(url + `${id}`, baseFetcher);
   return {
     user: data,

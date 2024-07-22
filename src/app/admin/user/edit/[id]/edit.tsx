@@ -1,24 +1,24 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
-import { editUser, getUser_id } from "../../../../redux/slice/userSlice";
 import { toast } from "react-toastify";
 import styled from "styled-components";
-import { useAppDispatch } from "../../../../hook";
 import { MyButton } from "../../../../components/MV/Button";
 import MVInput from "../../../../components/MV/Input";
 import { MVError } from "../../../../components/Message";
+import { useParams } from "next/navigation";
+import { useAppDispatch } from "@/hook";
+import { editUser, getUser_id } from "@/redux/slice/userSlice";
 const ImageStyledEditAuth = styled.img`
   width: 200px;
   height: 200px;
   objectfit: cover;
 `;
-const EditUser = () => {
+const EditUser = ({ params }: any) => {
   const { handleSubmit, reset, control } = useForm();
   const [user, setUser]: any = useState({});
-  const [role, setRole]: any = useState(0);
   const dispath = useAppDispatch();
-  const { id } = useParams();
+  const { id } = params;
   useEffect(() => {
     (async () => {
       const { payload } = await dispath(getUser_id(id));
@@ -43,9 +43,7 @@ const EditUser = () => {
       MVError("Lỗi!");
     }
   };
-  const handleChange = (value: any) => {
-    setRole(value);
-  };
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>

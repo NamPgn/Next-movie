@@ -1,12 +1,12 @@
 import React from "react";
-import { Space, Table } from "antd";
-import { useSWRWithAxios } from "../../../hook/Swr";
-import { urlSwr } from "../../function";
+import { Table } from "antd";
 import { MyButton } from "../../../components/MV/Button";
 import { ArrowUpOutlined } from "@ant-design/icons";
-import { changeLatest } from "../../../sevices/category";
 import { MVSuccess } from "../../../components/Message";
 import { mutate } from "swr";
+import { urlSwr } from "@/app/function";
+import { changeLatest } from "@/sevices/category";
+import { useSWRWithAxios } from "@/hook/Swr";
 
 const LatestAdmin = () => {
   const color = ["#eb2f96", "#52c41a", "#eba12f"];
@@ -18,12 +18,12 @@ const LatestAdmin = () => {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      render: (text) => <a>{text}</a>,
+      render: (text: any) => <a>{text}</a>,
     },
     {
       title: "Action",
       key: "action",
-      render: (_, record, index) => (
+      render: (_: any, record: { key: any }, index: any) => (
         <MyButton
           type="text"
           shape="circle"
@@ -35,7 +35,7 @@ const LatestAdmin = () => {
       ),
     },
   ];
-  const handleClick = async (id) => {
+  const handleClick = async (id: any) => {
     const body = {
       id: id,
     };
@@ -48,7 +48,7 @@ const LatestAdmin = () => {
 
   const content =
     data &&
-    data.map((_, i) => {
+    data.map((_: { _id: any; name: any }, i: any) => {
       return {
         key: _._id,
         name: _.name,

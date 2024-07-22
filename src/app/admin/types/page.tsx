@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { useContext } from "react";
 import styled from "styled-components";
@@ -8,15 +9,15 @@ import {
   deleteTypeByProducts,
 } from "../../../sevices/type";
 import { columnsType } from "../../../constant";
-import MVTable from "../../../components/MV/Table";
-import { MyButton } from "../../../components/MV/Button";
-import MVRow from "../../../components/MV/Grid";
-import MVCol from "../../../components/MV/Grid/Col";
 import { useForm } from "react-hook-form";
-import MVInput from "../../../components/MV/Input";
-import MVLink from "../../../components/Location/Link";
-import { MVError, MVSuccess } from "../../../components/Message";
-import { ApiContext } from "../../../context/api";
+import { MVError, MVSuccess } from "@/app/components/Message";
+import { ApiContext } from "@/context/api";
+import MVLink from "@/app/components/Location/Link";
+import { MyButton } from "@/app/components/MV/Button";
+import MVRow from "@/app/components/MV/Grid";
+import MVCol from "@/app/components/MV/Grid/Col";
+import MVInput from "@/app/components/MV/Input";
+import MVTable from "@/app/components/MV/Table";
 const DivstyledContent = styled.div`
   align-items: center;
 `;
@@ -85,7 +86,7 @@ const TypesCateAdmin = () => {
             ))
           : "Trống!",
         categorymain: item.categorymain
-          ? item.categorymain.map((item, index) => (
+          ? item.categorymain.map((item: any, index: any) => (
               <MVLink
                 key={index}
                 to={"/dashboard/types/CatemainProduct/" + item.cates._id}

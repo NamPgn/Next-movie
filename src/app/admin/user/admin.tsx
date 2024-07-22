@@ -1,10 +1,11 @@
+"use client";
 import React, { useEffect } from "react";
 import { Table, Image } from "antd";
 import { getAdmin } from "../../../redux/slice/userSlice";
 import { admin$ } from "../../../redux/selectors";
 import { useAppDispatch, useAppSelector } from "../../../hook";
 import { columnsGetAdmin } from "../../../constant";
-import MVTags from "../../../components/MV/Tag";
+import MVTags from "@/app/components/MV/Tag";
 
 const GetAdmin = () => {
   const dispath = useAppDispatch();
@@ -12,7 +13,7 @@ const GetAdmin = () => {
   useEffect(() => {
     dispath(getAdmin());
   }, []);
-  const data = adminUser.map((item) => {
+  const data = adminUser.map((item: any) => {
     return {
       key: item._id,
       name: item.username,

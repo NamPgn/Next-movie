@@ -1,14 +1,33 @@
+"use client";
 import React, { memo, useContext } from "react";
-import { MessageErr } from "../../../../components/Message/Notification";
 import { useSWRWithAxios } from "../../../../hook/Swr";
 import { urlSwr } from "../../../function";
-import CategoryProductSidebar from "../../../../components/Category/component/sidebar";
-import WeekComponent from "../../../../components/Week";
-import CategoryHomePage from "../../../../components/Category/component/home";
 import styled from "styled-components";
-import LatesCategory from "../../../../components/Category/component/latest";
-import LazyLoadOtherComponents from "../../../../components/LazyOtherComponents";
 import { MyContext } from "../../../../context";
+import { Loading, MessageErr } from "@/app/components/Message/Notification";
+import LazyLoadOtherComponents from "@/app/components/LazyOtherComponents";
+import dynamic from "next/dynamic";
+const LatesCategory = dynamic(
+  () => import("@/app/components/Category/component/latest"),
+  {
+    loading: () => <Loading/>,
+  }
+);
+const CategoryProductSidebar = dynamic(
+  () => import("@/app/components/Category/component/sidebar"),
+  {
+    loading: () => <Loading/>,
+  }
+);
+const WeekComponent = dynamic(() => import("@/app/components/Week"), {
+  loading: () => <Loading/>,
+});
+const CategoryHomePage = dynamic(
+  () => import("@/app/components/Category/component/home"),
+  {
+    loading: () => <Loading/>,
+  }
+);
 
 const Video = styled.video``;
 const VideoContainer = styled.div`

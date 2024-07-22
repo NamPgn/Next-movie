@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import MVTable from "../../components/MV/Table";
-import { columnsBackground } from "../../constant";
 import MVLink from "../../components/Location/Link";
 import MVImage from "../../components/MV/Image";
 import { EditOutlined } from "@ant-design/icons";
-import { ApiContext } from "../../context/api";
+import { ApiContext } from "@/context/api";
+import { columnsBackground } from "@/constant";
 
 const Background = () => {
-  const { background } = useContext(ApiContext) || {};
+  const { background }:any = useContext(ApiContext) || {};
   const data = {
     key: background.data?._id,
     url: background.data?.url,

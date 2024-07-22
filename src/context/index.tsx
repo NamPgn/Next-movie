@@ -2,7 +2,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hook";
 import { getUser_id } from "../redux/slice/userSlice";
-import { isAuthentication } from "@/auth/getToken";
+import { isAuthentication } from "@/utils/auth/getToken";
 const Auth: any = isAuthentication();
 
 export const MyContext = createContext(null);
@@ -18,7 +18,6 @@ export const MyContextProvider = (props: any) => {
   };
 
   useEffect(() => {
-
     if (Auth) {
       dispatch(getUser_id(Auth.user._id));
     }

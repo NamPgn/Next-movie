@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { addProduct } from "../../../../redux/slice/product/thunk/product";
 import { useAppDispatch, useAppSelector } from "../../../../hook";
-import { MySelectWrapper } from "../../../../components/Form/component/select";
-import { MyButton } from "../../../../components/MV/Button";
-import MVUpload from "../../../../components/MV/Upload";
-import MVInput from "../../../../components/MV/Input";
-import MVLink from "../../../../components/Location/Link";
 import { EditOutlined } from "@ant-design/icons";
 import { ApiContext } from "../../../../context/api";
 import { useContext, useState } from "react";
+import MVInput from "@/app/components/MV/Input";
+import MVUpload from "@/app/components/MV/Upload";
+import { MySelectWrapper } from "@/app/components/Form/component/select";
+import { MyButton } from "@/app/components/MV/Button";
+import MVLink from "@/app/components/Location/Link";
 const ProductAdd = () => {
   const { categorymain, seri }: any = useContext(ApiContext) || {};
   const { data }: any = useAppSelector((state) => state.category.category);
@@ -20,21 +20,21 @@ const ProductAdd = () => {
   const { handleSubmit, control } = useForm();
   const categoryOptions =
     data &&
-    data.map((item, index) => ({
+    data.map((item: any) => ({
       label: item.name,
       value: item._id,
     }));
 
   const categorymainOptions =
     categorymain &&
-    categorymain?.map((item, index) => ({
+    categorymain?.map((item: any) => ({
       label: item.name,
       value: item._id,
     }));
 
   const typeOptions =
     seri &&
-    seri?.map((item, index) => ({
+    seri?.map((item: any) => ({
       label: item.name,
       value: item._id,
     }));

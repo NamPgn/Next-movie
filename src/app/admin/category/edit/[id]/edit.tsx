@@ -1,26 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {
-  getCateSlice,
-  updateCatgorySlice,
-} from "../../../../redux/slice/category/thunk/category";
 import { toast } from "react-toastify";
-import { getCategory } from "../../../../sevices/category";
-import { useAppDispatch } from "../../../../hook";
 import { MyButton } from "../../../../components/MV/Button";
 import MVImage from "../../../../components/MV/Image";
 import MVUpload from "../../../../components/MV/Upload";
 import MVInput from "../../../../components/MV/Input";
 import { MySelectWrapper } from "../../../../components/Form/component/select";
-import { ApiContext } from "../../../../context/api";
+import { useAppDispatch } from "@/hook";
+import { getCateSlice, updateCatgorySlice } from "@/redux/slice/category/thunk/category";
+import { getCategory } from "@/sevices/category";
+import { ApiContext } from "@/context/api";
 declare var Promise: any;
-const EditCategory = () => {
+const EditCategory = ({params}:any) => {
+  const {id}=params
   const dispatch = useAppDispatch();
-  const { weeks } = useContext(ApiContext);
+  const { weeks }:any = useContext(ApiContext) || {};
   const [state, setState]: any = useState({});
   const { reset, handleSubmit, control } = useForm();
-  const { id } = useParams();
   const weeekOptions =
     weeks &&
     weeks?.map((item: any, index: number) => ({

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import ProductAdmin from "../product";
 import { useAppSelector } from "../../../hook";
+import ProductAdmin from "./page";
 
 const DataProduct = () => {
   const { product, length }: any = useAppSelector(

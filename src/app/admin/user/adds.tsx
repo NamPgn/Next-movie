@@ -1,10 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { importXlsx } from "../../../redux/slice/userSlice";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import { useAppDispatch } from "../../../hook";
+import { redirect } from "next/navigation";
 const DivstyledAuth = styled.div`
   display: flex;
   justifycontent: center;
@@ -15,16 +15,15 @@ const DivstyledAuth = styled.div`
 const InputStyled = styled.input``;
 const CreatingUser = () => {
   const dispath = useAppDispatch();
-  const navigate = useNavigate();
   const { handleSubmit, register } = useForm();
   const onsubmit = (data: any) => {
     const formData = new FormData();
     formData.append("xlsx", data.xlsx[0]);
     dispath(importXlsx(formData));
-    navigate("/dashboard/users");
     toast.success(`Thêm user thành công`, {
       position: "bottom-right",
     });
+    redirect("/dashboard/users");
   };
   return (
     <DivstyledAuth>

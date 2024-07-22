@@ -5,11 +5,10 @@ import { Layout, Menu } from "antd";
 import Link from "next/link";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { MyContext } from "../context";
-import AuthHeader from "../components/Teamplates/Header/component/auth";
 import { TableRouterAdminPage } from "../router";
-import MVRow from "../components/MV/Grid";
-import MVCol from "../components/MV/Grid/Col";
-import { MyButton } from "@/components/MV/Button";
+import MVRow from "@/app/components/MV/Grid";
+import MVCol from "@/app/components/MV/Grid/Col";
+import { MyButton } from "@/app/components/MV/Button";
 
 const { Content, Sider, Header, Footer } = Layout;
 

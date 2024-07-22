@@ -5,8 +5,8 @@ import { message } from "antd";
 import * as yup from "yup";
 import { redirect, useRouter } from "next/navigation";
 import { resetPassword } from "@/sevices/user";
-import { MVError, MVSuccess } from "@/components/Message";
-import AuthForm from "@/components/Form";
+import { MVError, MVSuccess } from "@/app/components/Message";
+import AuthForm from "@/app/components/Form";
 const array = [
   {
     type: "password",

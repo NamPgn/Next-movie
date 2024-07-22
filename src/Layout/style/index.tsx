@@ -17,7 +17,7 @@ export const MainContent = styled.div`
     background-attachment: fixed;
     background-position: center;
     opacity: .2;
-    background-image: url(${(props) => props.background});
+    background-image: url(${(props:any) => props.background});
   }
 }
 `;

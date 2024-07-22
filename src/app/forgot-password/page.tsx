@@ -2,10 +2,10 @@
 import React from "react";
 import { message } from "antd";
 import * as yup from "yup";
-import { MVError, MVSuccess } from "@/components/Message";
 import { redirect } from "next/navigation";
 import { forgotPassword } from "@/sevices/user";
-import AuthForm from "@/components/Form";
+import { MVError, MVSuccess } from "../components/Message";
+import AuthForm from "../components/Form";
 const array = [
   {
     type: "email",

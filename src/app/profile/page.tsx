@@ -1,19 +1,18 @@
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { uploadImage } from "../../../redux/slice/userSlice";
-import { useAppDispatch, useAppSelector } from "../../../hook";
-import { MyContext } from "../../../context";
+import React, { useContext } from "react";
 import { EditOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
-import MVAvatar from "../../../components/MV/Avatar";
 import { useForm } from "react-hook-form";
-import { handleLogout } from "../../function";
-import { MVError, MVSuccess } from "../../../components/Message";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useAppDispatch, useAppSelector } from "@/hook";
+import { uploadImage } from "@/redux/slice/userSlice";
+import { MVError, MVSuccess } from "../components/Message";
+import { handleLogout } from "../function";
+import { redirect } from "next/navigation";
+import MVAvatar from "../components/MV/Avatar";
+import { MyContext } from "@/context";
 const Profile = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const { user } = useContext(MyContext) || {};
+  const { user }: any = useContext(MyContext) || {};
   const shcemaProfile = yup.object().shape({
     username: yup.string().required(),
     email: yup.string().required().email(),
@@ -29,7 +28,7 @@ const Profile = () => {
   });
 
   const isLoading = useAppSelector((state) => state.user.isLoading);
-  const handleEditImage = async (e) => {
+  const handleEditImage = async (e: any) => {
     const selectedFile = e.target.files[0];
     const formData = new FormData();
     formData.append("file", selectedFile);
@@ -44,7 +43,7 @@ const Profile = () => {
       MVError("Image saved failed");
     }
   };
-  const handleEditUserInfo = async (data) => {
+  const handleEditUserInfo = async (data: any) => {
     console.log(data);
   };
   return (
@@ -136,7 +135,7 @@ const Profile = () => {
                 Profile
               </h2>
               <button
-                onClick={() => handleLogout(dispatch, navigate)}
+                onClick={() => handleLogout(dispatch, redirect)}
                 className="inline-flex gap-2 items-center px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md"
               >
                 <LogoutOutlined />

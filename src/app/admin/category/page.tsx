@@ -1,28 +1,23 @@
+"use client"
 import React, { useContext, useEffect, useState } from "react";
 import { Image, Modal } from "antd";
-import {
-  addCateGorySlice,
-  deleteCategorySlice,
-  getAllcate,
-} from "../../redux/slice/category/thunk/category";
-import { category$ } from "../../redux/selectors";
 import { toast } from "react-toastify";
-import { useAppDispatch, useAppSelector } from "../../hook";
-import { pushCateTotype } from "../../sevices/type";
 import { useForm } from "react-hook-form";
 import { MySelectWrapper } from "../../components/Form/component/select";
 import { MyButton } from "../../components/MV/Button";
-import { columnsCategory } from "../../constant";
 import MVTable from "../../components/MV/Table";
-import MVRow from "../../components/MV/Grid";
-import MVCol from "../../components/MV/Grid/Col";
 import MVUpload from "../../components/MV/Upload";
 import MVInput from "../../components/MV/Input";
 import MVLink from "../../components/Location/Link";
 import { TreeSelect } from "antd";
 import { MVError, MVSuccess } from "../../components/Message";
 import MVTags from "../../components/MV/Tag";
-import { ApiContext } from "../../context/api";
+import { useAppDispatch, useAppSelector } from "@/hook";
+import { category$ } from "@/redux/selectors";
+import { ApiContext } from "@/context/api";
+import { addCateGorySlice, deleteCategorySlice, getAllcate } from "@/redux/slice/category/thunk/category";
+import { pushCateTotype } from "@/sevices/type";
+import { columnsCategory } from "@/constant";
 
 const CategoryAdmin = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,7 +35,7 @@ const CategoryAdmin = () => {
   };
   const dispatch = useAppDispatch();
   const category = useAppSelector(category$);
-  const { seri, weeks } = useContext(ApiContext);
+  const { seri, weeks }:any = useContext(ApiContext)||{};
   const { handleSubmit, control } = useForm();
   const [valueId, setValue] = useState();
   useEffect(() => {
@@ -90,7 +85,7 @@ const CategoryAdmin = () => {
     }
   };
 
-  const hanedlePushCategoryToType = async (categoryId) => {
+  const hanedlePushCategoryToType = async (categoryId:any) => {
     const body = {
       categoryId: categoryId,
     };

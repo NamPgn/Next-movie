@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
-import { Image } from "antd";
-import { cart$ } from "../../redux/selectors/Cart";
-import {
-  deleteCartSlice,
-  getAllCartSlice,
-} from "../../redux/slice/cart/thunk/cart";
-import { useAppDispatch, useAppSelector } from "../../hook";
-import MVTable from "../../components/MV/Table";
 import { MyButton } from "../../components/MV/Button";
-import { columsCart } from "../../constant";
 import MVLink from "../../components/Location/Link";
+import { useAppDispatch, useAppSelector } from "@/hook";
+import { cart$ } from "@/redux/selectors/Cart";
+import { deleteCartSlice, getAllCartSlice } from "@/redux/slice/cart/thunk/cart";
+import MVTable from "@/app/components/MV/Table";
+import { columsCart } from "@/constant";
 
 const index = () => {
   const cart = useAppSelector(cart$);
@@ -20,7 +16,7 @@ const index = () => {
   const data =
     cart &&
     cart
-      .filter((item) => item.user !== null)
+      .filter((item:any) => item.user !== null)
       .map((item: any, index: any) => {
         return {
           key: item._id,

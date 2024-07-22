@@ -1,5 +1,9 @@
+import { Loading } from "@/app/components/Message/Notification";
+import dynamic from "next/dynamic";
 import React from "react";
-import Loadmore from "../../../../../components/Loadmore";
+const Loadmore = dynamic(() => import("@/app/components/Loadmore"), {
+  loading: () => <Loading />,
+});
 const index = () => {
   return <Loadmore />;
 };

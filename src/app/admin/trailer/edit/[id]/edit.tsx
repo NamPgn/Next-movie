@@ -1,15 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { editTrailerSlice } from "../../../../redux/slice/trailerSlice";
-import { useAppDispatch } from "../../../../hook";
 import { MyButton } from "../../../../components/MV/Button";
-import { useParams } from "react-router-dom";
+import { useAppDispatch } from "@/hook";
+import { editTrailerSlice } from "@/redux/slice/trailerSlice";
 
-const editTrailerUrl = () => {
+const editTrailerUrl = ({params}:any) => {
   const { handleSubmit, register } = useForm();
   const dispath = useAppDispatch();
-  const { id } = useParams();
+  const { id } = params;
   const onsubmit = async (data: any) => {
     const formData = new FormData();
     formData.append("url", data.url[0]);

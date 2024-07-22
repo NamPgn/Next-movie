@@ -1,4 +1,4 @@
-import { isAuthentication } from "@/auth/getToken";
+import { isAuthentication } from "@/utils/auth/getToken";
 import { Icart } from "../interfaces/cart";
 import intances from "./instances";
 declare var Promise: any;

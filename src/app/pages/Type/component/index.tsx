@@ -1,8 +1,8 @@
 import React from "react";
 import { DivStyledText, DivStyledTitle } from "../style";
-import MVLink from "../../../../components/Location/Link";
+import MVLink from "@/app/components/Location/Link";
 
-const MVTypeDisplay = ({ data, children, ...rest }) => {
+const MVTypeDisplay = ({ data, children, ...rest }:any) => {
   return (
     <React.Fragment>
       <DivStyledText>
