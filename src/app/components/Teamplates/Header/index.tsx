@@ -12,7 +12,6 @@ import {
 } from "@ant-design/icons";
 import { Drawer } from "antd";
 import MVMenuItem from "../../MV/Menu";
-import { DivStyledSearchBarStyle, Icon } from "../../SideBar/styles";
 import AuthHeader from "./component/auth";
 import MVRow from "../../MV/Grid";
 import MVCol from "../../MV/Grid/Col";
@@ -36,7 +35,7 @@ const Header = () => {
     isLoggedInState,
     state: change,
     handleClick: handleClickChangeSidebar,
-  }:any = useContext(MyContext) ?? {};
+  }: any = useContext(MyContext) ?? {};
   const [scrollUp, setScrollUp] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [navSize, setnavSize] = useState("20px 10px");
@@ -105,16 +104,16 @@ const Header = () => {
         }}
       >
         <MVCol span={1}>
-          <Icon
+          <div
             className="text-[21px] md:text-[23px] lg:text-[25px]"
             onClick={handleClickChangeSidebar}
           >
             {change ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
-          </Icon>
+          </div>
         </MVCol>
         <MVCol span={6} className="relative">
-          <DivStyledSearchBarStyle
-            style={{ boxShadow: "#333 0px 2px 10px" }}
+          <input
+            className="p-2 text-white w-full bg-[#1f1f22] rounded-lg text-sm block shadow-[0px_2px_10px_#333]"
             onChange={(e) => handleChange(e.target.value)}
             placeholder="Search..."
           />
@@ -190,8 +189,9 @@ const Header = () => {
             </div>
           </MVCol>
           <MVCol span={16} className="relative">
-            <DivStyledSearchBarStyle
-              onChange={(e) => handleChange(e.target.value)}
+            <input
+              className="p-2 text-white w-full bg-[#1f1f22] rounded-lg text-sm block shadow-[0px_2px_10px_#333]"
+              onChange={(e: any) => handleChange(e.target.value)}
               placeholder="Search..."
             />
             <SearchResults data={results} />

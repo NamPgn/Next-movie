@@ -1,18 +1,6 @@
-"use client"
+"use client";
 import React, { useContext } from "react";
-import {
-  DivStyledRouter,
-  DivStyledTitle,
-  DivstySideBar,
-  DivstyledContent,
-  RouterIcon,
-  RouterLink,
-  RouterText,
-  SibarImage,
-  SideBarText,
-  Text,
-  Title,
-} from "./styles";
+
 import { Spiner } from "../Message/Notification";
 import MVLink from "../Location/Link";
 import ContactAdmin from "../Contact";
@@ -24,9 +12,15 @@ const SideBar = () => {
   const { state }: any = useContext(MyContext) || {};
   const sidebarWidth = state ? "w-1/12" : "w-2/12";
   return (
-    <DivstySideBar className={sidebarWidth}>
-      <DivstyledContent className={sidebarWidth}>
-        <DivStyledTitle justify={state ? "center" : "start"}>
+    <div className="block md:flex md:justify-center md:relative md:text-white">
+      <div
+        className={`p-2 fixed left-0 bottom-0 top-0 bg-[#00000038] bg-opacity-37 z-9 md:p-4 lg:p-5 ${sidebarWidth}`}
+      >
+        <div
+          className={`flex gap-x-1 items-center justify-${
+            state ? "center" : "start"
+          }`}
+        >
           <MVLink
             to={"/"}
             style={{
@@ -34,47 +28,57 @@ const SideBar = () => {
               width: "50px",
             }}
           >
-            <SibarImage src="/img/zyro-image.png" />
+            <img className="object-cover sm:p-1" src="/img/zyro-image.png" />
           </MVLink>
-          <SideBarText className={state ? "hiddenn" : "block text-white"}>
+          <div className={`${state ? "hidden" : "block text-white"} sm:block`}>
             <MVLink to={"/"}>
-              <Title>Hhtrungquoc.tv</Title>
+              <div className="font-medium text-sm mb-1">Hhtrungquoc.tv</div>
             </MVLink>
             <MVLink to={"/"}>
-              <Text>tromphim.netify.app</Text>
+              <div className="text-xs font-normal">tromphim.netify.app</div>
             </MVLink>
-          </SideBarText>
-        </DivStyledTitle>
+          </div>
+        </div>
         <div className="mt-[50px]">
           {!loadingSeri ? (
-            <RouterLink className="sideBarActive">
+            <div className="sideBarActive">
               {seri &&
-                seri.map((item: any, index: any) => (
+                seri.map((item:any, index:number) => (
                   <MVLink
                     title={item.name}
                     to={
-                      item.path == "/"
+                      item.path === "/"
                         ? item.path
                         : item.path + "/" + `${item._id}`
                     }
                     key={index}
                   >
-                    <DivStyledRouter state={state}>
-                      <RouterIcon>{Icons[index]}</RouterIcon>
-                      <RouterText className={state ? "hiddenn" : "block"}>
+                    <div
+                      className={`flex p-2.5 my-2 items-end justify-${
+                        state ? "center" : "start"
+                      } gap-x-2 hover:bg-[#1f1f22] hover:rounded hover:cursor-pointer hover:text-white`}
+                    >
+                      <div className="text-[#d9d9d9] text-xs md:text-sm lg:text-base">
+                        {Icons[index]}
+                      </div>
+                      <div
+                        className={`${
+                          state ? "hidden" : "block"
+                        } sm:hidden lg:block`}
+                      >
                         {item.name}
-                      </RouterText>
-                    </DivStyledRouter>
+                      </div>
+                    </div>
                   </MVLink>
                 ))}
-            </RouterLink>
+            </div>
           ) : (
-            <Spiner size="large" children={undefined} />
+            <Spiner size="large" />
           )}
         </div>
         <ContactAdmin />
-      </DivstyledContent>
-    </DivstySideBar>
+      </div>
+    </div>
   );
 };
 
