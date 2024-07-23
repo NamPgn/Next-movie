@@ -417,7 +417,7 @@ export const TableRouterAdminPage = [
     icon: <DashboardOutlined />,
   },
   {
-    path: "/dashboard/products",
+    path: "/dashboard/product",
     name: "Products",
     icon: <NotificationOutlined />,
   },

@@ -107,19 +107,6 @@ const AuthForm = memo(
                   OR
                 </p>
               </div>
-              <GoogleLogin
-                className="flex justify-center"
-                onClick={handleMessage}
-              >
-                <MVImage
-                  style={{
-                    width: "30px",
-                    height: "30px",
-                  }}
-                  src="https://www.svgrepo.com/show/475656/google-color.svg"
-                  alt=""
-                />
-              </GoogleLogin>
               <div className="lg:mb-6 md:mb-4 mb-2 text-center lg:mt-5 md:mt-3 mt-2 text-slate-400 ">
                 <MVLink
                   to={redirect}

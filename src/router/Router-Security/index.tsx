@@ -1,10 +1,9 @@
-import React from "react";
+"use client"
 import { redirect } from "next/navigation";
 import { isAuthentication } from "@/utils/auth/getToken";
-import MVLink from "@/app/components/Location/Link";
 const PrivateRouter = (props: any) => {
-  const data = isAuthentication();
   try {
+    const data = isAuthentication();
     if (data) {
       if (data.user.role == 0) {
         return redirect("/");
@@ -15,11 +14,7 @@ const PrivateRouter = (props: any) => {
       return redirect("/");
     }
   } catch (error) {
-    return (
-      <div className="text-light container text-center">
-        <MVLink to={"/signin"}>Đăng nhập</MVLink>
-      </div>
-    );
+    return redirect('/signin');
   }
 };
 

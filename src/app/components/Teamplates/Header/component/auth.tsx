@@ -30,7 +30,7 @@ const AuthHeader = ({ isLoggedInState, style }:any) => {
   };
   return (
     <React.Fragment>
-      {auths && isLoggedInState ? (
+      {auths ? (
         <ConfigProvider
           theme={{
             token: {

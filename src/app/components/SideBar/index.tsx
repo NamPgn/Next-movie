@@ -21,7 +21,11 @@ const SideBar = () => {
             state ? "center" : "start"
           }`}
         >
-          <div className={`${state ? "hidden" : "block text-white"} sm:block`}>
+          <div
+            className={`${
+              state ? "hidden" : "block text-white"
+            } hidden md:block`}
+          >
             <MVLink to={"/"}>
               <div className="font-medium text-sm mb-1">Hhtrungquoc.tv</div>
             </MVLink>
@@ -34,7 +38,7 @@ const SideBar = () => {
           {!loadingSeri ? (
             <div className="sideBarActive">
               {seri &&
-                seri.map((item:any, index:number) => (
+                seri.map((item: any, index: number) => (
                   <MVLink
                     title={item.name}
                     to={
@@ -47,17 +51,13 @@ const SideBar = () => {
                     <div
                       className={`flex p-2.5 my-2 items-end justify-${
                         state ? "center" : "start"
-                      } gap-x-2 hover:bg-[#1f1f22] hover:rounded hover:cursor-pointer hover:text-white`}
+                      } md:justify-start justify-center gap-x-2 hover:bg-[#1f1f22] hover:rounded hover:cursor-pointer hover:text-white`}
                     >
                       <div className="text-[#d9d9d9] text-xs md:text-sm lg:text-base">
                         {Icons[index]}
                       </div>
-                      <div
-                        className={`${
-                          state ? "hidden" : "block"
-                        } sm:hidden lg:block`}
-                      >
-                        {item.name}
+                      <div className={`${state ? "hidden" : "block"}`}>
+                        <div className={`hidden md:block`}>{item.name}</div>
                       </div>
                     </div>
                   </MVLink>

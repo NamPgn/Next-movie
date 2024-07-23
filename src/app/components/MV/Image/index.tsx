@@ -6,26 +6,20 @@ interface MVImageProps {
   className?: string;
   children?: React.ReactNode;
   style?: any;
+  title?: string;
 }
-const MVImage: React.FC<MVImageProps> = ({
-  src,
-  alt,
-  style,
-  className,
-  ...rest
-}) => {
+
+const MVImage = ({ src, alt, className, style, title, ...rest }:MVImageProps) => {
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className}`} >
       <Image
-        // placeholder={}
-        // removeWrapper={true}
         loading="lazy"
         src={src}
-        style={style}
         alt={alt}
-        {...rest}
         layout="fill"
         objectFit="cover"
+        title={title}
+        {...rest}
       />
     </div>
   );

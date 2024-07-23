@@ -14,10 +14,10 @@ type MycontextType = {
   state: boolean;
 };
 
-const Auth: any = isAuthentication();
 
 export const MyContext = createContext<MycontextType>({} as MycontextType);
 export const MyContextProvider = (props: any) => {
+const Auth: any = isAuthentication();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
