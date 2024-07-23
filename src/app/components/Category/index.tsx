@@ -21,7 +21,7 @@ const CategoryPage = ({ id }: any) => {
     dispatch(getCateSlice(id));
   }, [id]);
   return (
-    <>
+    <>       
       <Head>
         <title>{c ? `${c.name} - Hoạt Hình Trung Quốc` : "Đang tải..."}</title>
         <meta
