@@ -24,7 +24,7 @@ const SeriNumberMovie = ({ data, isLoading }: any) => {
                 </MVLink>
               ) : null
             )}
-        </div>
+        </div>     
       </div>
     </>
   );
