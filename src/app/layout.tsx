@@ -1,6 +1,6 @@
 import Header from "./components/Teamplates/Header";
-import RootLayout from "./rootLayout";
 import Footer from "@/app/components/Teamplates/Footer";
+import RootLayout from "./rootLayout";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <RootLayout>
