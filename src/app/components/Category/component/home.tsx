@@ -7,7 +7,7 @@ interface ApiResponse {
 }
 async function fetchCategories(page: number): Promise<Icategory[]> {
   const response: any = await (
-    await fetch("https://node-4-mhqo.onrender.com/api/categorys?page=" + page)
+    await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys?page=` + page)
   ).json(); // Thay đổi URL theo API của bạn
 
   if (!response || !response.data) {

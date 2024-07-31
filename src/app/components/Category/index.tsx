@@ -5,7 +5,7 @@ import Image from "next/image";
 
 // Lấy dữ liệu từ server-side
 async function fetchCategory(id: string) {
-  const response = await fetch("http://localhost:8000/api/category/" + id);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` + id);
   const data = await response.json();
   if (!response) {
     return undefined;
