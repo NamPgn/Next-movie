@@ -1,31 +1,15 @@
-"use client";
-import { ApiContextProvider } from "@/context/api";
-import { MyContextProvider } from "@/context";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { GlobalStyle } from "./components/Styled/Global";
+import Header from "./components/Teamplates/Header";
 import RootLayout from "./rootLayout";
-import LayoutWebsite from "@/layout/Client";
-import PrivateRouter from "@/router/Router-Security";
-import LayoutAdmin from "@/layout/Admin";
-import { usePathname } from "next/navigation";
+import Footer from "@/app/components/Teamplates/Footer";
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const isAdmin = pathname?.startsWith('/dashboard'); 
   return (
     <RootLayout>
-      <MyContextProvider>
-        <ApiContextProvider>
-          {isAdmin ? (
-            <PrivateRouter>
-              <LayoutAdmin>{children}</LayoutAdmin>
-            </PrivateRouter>
-          ) : (
-            <LayoutWebsite>{children}</LayoutWebsite>
-          )}
-        </ApiContextProvider>
-      </MyContextProvider>
-      <GlobalStyle />
+      <Header />
+      <div className="text-white min-h-screen px-[10%] py-[10px]">
+        {/* <nav className="bg-gray-700 p-2">Navigation links</nav> */}
+        {children}
+      </div>
+      <Footer />
     </RootLayout>
   );
 }

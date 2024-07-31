@@ -1,12 +1,8 @@
-"use client";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
-import { Provider } from "react-redux";
-import { store } from "@/redux/store/store";
-import Head from "next/head";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Roboto({ subsets: ["latin"], weight: "300" });
 
 export const metadata: Metadata = {
   title: "Hoạt Hình Trung Quốc",
@@ -40,15 +36,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-   
       <body className={inter.className}>
-        <main id="root">
-          <Provider store={store}>
-            {/* <PersistGate loading={null} persistor={persistor}> */}
-            {children}
-            {/* </PersistGate> */}
-          </Provider>
-        </main>
+        <main className="container mx-auto bg-gray-900">{children}</main>
       </body>
     </html>
   );

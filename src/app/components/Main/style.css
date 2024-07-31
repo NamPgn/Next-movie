@@ -1,0 +1,62 @@
+/* styles.css */
+
+.div-styled-content {
+  display: flex;
+  gap: 0 10px;
+}
+
+@media (max-width: 768px) {
+  .div-styled-content {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .div-styled-content {
+    display: flex;
+  }
+}
+
+.div-styled-item {
+  /* Không có thuộc tính CSS cụ thể */
+}
+
+.div-styled-content-text {
+  font-size: 13px;
+}
+
+@media (min-width: 1024px) {
+  .div-styled-content-text {
+    font-size: 15px;
+  }
+}
+
+.div-container {
+  padding: 5px;
+}
+
+@media (min-width: 1024px) {
+  .div-container {
+    padding: 15px;
+  }
+}
+
+.movie {
+  padding-bottom: 62%;
+}
+
+@media (min-width: 768px) {
+  .movie {
+    padding-bottom: 52%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .movie {
+    padding-bottom: 42%;
+  }
+}
+
+.server {
+  /* Không có thuộc tính CSS cụ thể */
+}

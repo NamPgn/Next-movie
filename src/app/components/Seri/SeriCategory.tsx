@@ -1,56 +1,32 @@
-
-import React from "react";
-import { NotUpdate } from "../Message/Notification";
-import { BtnStyledNumber } from "./styles";
 import MVLink from "../Location/Link";
-import MVRow from "../MV/Grid";
-import MVCol from "../MV/Grid/Col";
-const SeriNumberMovie = ({ data, isLoading }:any) => {
-  // const { data, error, isLoading }: any = useSWRWithAxios(
-  //   urlSwr + `/category/products/${id}`
-  // );
-
+import "./index.css"
+const SeriNumberMovie = ({ data, isLoading }: any) => {
   if (isLoading) {
     return <div className="seriLoading">Loading....</div>;
   }
-  // if (error) {
-  //   return <MessageErr />;
-  // }
   return (
-    <div className="bg-[#9b9b9b1f] h-[174px] overflow-y-scroll p-3 rounded-sm seriCategory">
-      <MVRow gutter={[16, 16]}>
-        {data?.products?.length > 0 && data?.products ? (
-          data.products.map((item: any, index: number) =>
-            item.isApproved == true ? (
-              <MVCol
-                lg={3}
-                md={4}
-                sm={5}
-                xs={6}
-                style={{ textAlign: "center" }}
-                key={index}
-              >
-                <MVLink to={"/d/" + item._id + `?c=${item.category}`}>
-                  {!item.dailyMotionServer && item.trailer ? (
-                    <BtnStyledNumber>{item.seri}</BtnStyledNumber>
-                  ) : (
-                    <BtnStyledNumber
-                      className="w-full text-white"
-                    >
-                      {item.seri}
-                    </BtnStyledNumber>
-                  )}
+    <>
+      <div className="scroll-container">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {data &&
+            data.products.map((item: any) =>
+              item.isApproved ? (
+                <MVLink
+                  href={`/d/${item._id}?c=${item.category}`}
+                  key={item._id}
+                  className="block text-center"
+                >
+                  <div
+                    className={`bg-gray-800 hover:bg-gray-700 py-1 rounded sm:text-sm sm:px-5 sm:py-2 md:text-base md:px-5 md:py-2.5`}
+                  >
+                    {item.seri}
+                  </div>
                 </MVLink>
-              </MVCol>
-            ) : (
-              ""
-            )
-          )
-        ) : (
-          <NotUpdate />
-        )}
-      </MVRow>
-    </div>
+              ) : null
+            )}
+        </div>
+      </div>
+    </>
   );
 };
 
