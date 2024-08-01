@@ -1,6 +1,5 @@
 import { fetchProductsCategory } from "@/app/sevices/productsSevices";
 import MVImage from "../../MV/IMAGE";
-import { handleImage } from "@/app/lib/handleImage";
 import MVLink from "../../Location/Link";
 
 const CategoryProductSidebar = async () => {
@@ -14,7 +13,7 @@ const CategoryProductSidebar = async () => {
             <MVLink to={"/q/" + items._id} key={index}>
               <div  className="flex gap-2">
                 <MVImage
-                  src={handleImage(280, items.linkImg) ?? "/default-image.jpg"}
+                  src={items.linkImg}
                   alt={items.name}
                   width={180}
                   height={180}

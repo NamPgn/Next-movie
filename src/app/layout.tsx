@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: "https://tromphim.site/",
     images: [
       {
-        url: "https://res.cloudinary.com/daz3lejjo/image/upload/w_200/f_webp/w_100/v1721825684/category/category_1689076028777-a6e7592292d5428b1bc4.jpg.jpg",
+        url: "https://res.cloudinary.com/daz3lejjo/image/upload/w_200/f_webp/v1721825684/category/category_1689076028777-a6e7592292d5428b1bc4.jpg.jpg",
         width: 800,
         height: 600,
         alt: "Hoạt Hình Trung Quốc",

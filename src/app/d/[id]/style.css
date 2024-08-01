@@ -17,9 +17,6 @@
   }
 }
 
-.div-styled-item {
-  /* Không có thuộc tính CSS cụ thể */
-}
 
 .div-styled-content-text {
   font-size: 13px;
@@ -55,8 +52,4 @@
   .movie {
     padding-bottom: 50%;
   }
-}
-
-.server {
-  /* Không có thuộc tính CSS cụ thể */
 }

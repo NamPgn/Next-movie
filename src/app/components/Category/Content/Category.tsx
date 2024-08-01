@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import MVLink from "../../Location/Link";
 import { PlayCircleOutlined } from "@ant-design/icons";
 import MVImage from "../../MV/IMAGE";
-import { handleImage } from "@/app/lib/handleImage";
 
 interface CategoryContent {
   text?: string;
@@ -28,17 +27,16 @@ const CategoryContents = memo(
     products,
   }: CategoryContent) => {
     const lastItem: any = products ? products[products.length - 1] : "";
-    const imageUrl = handleImage(380, image) ?? "/default-image.jpg";
     return (
       <div className="w-full">
         <div className="relative group">
           <MVLink to={link} className="block">
             <MVImage
-              src={imageUrl}
+              src={image}
               alt={title}
-              width={380}
-              height={200}
-              className="h-[150px] md:h-[200px] lg:h-[320px] object-cover transition-opacity duration-300 group-hover:opacity-40 rounded-lg w-full"
+              width={300}
+              height={300}
+              className="h-[200px] md:h-[300px] lg:h-[300px] object-cover transition-opacity duration-300 group-hover:opacity-40 rounded-lg"
             />
             <div
               style={{
