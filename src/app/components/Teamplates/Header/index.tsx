@@ -10,11 +10,11 @@ export default function Header() {
           <div className="headerLogo flex items-center justify-center">
             <MVLink to={"/"}>
               <MVImage
-                src={""}
+                src={"/images/logo.png"}
                 width={200}
                 height={200}
                 alt="dptk"
-                className="w-[200px] h-[50px]"
+                className="w-full h-[60px] "
               />
             </MVLink>
           </div>

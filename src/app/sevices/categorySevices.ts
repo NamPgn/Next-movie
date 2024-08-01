@@ -4,7 +4,11 @@ import { notFound } from "next/navigation";
 export async function fetchCategories(page: number): Promise<Icategory[]> {
   const response: any = await (
     await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys?page=` + page
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys?page=` + page,
+      {
+        method: "GET",
+        cache: "no-cache",
+      }
     )
   ).json(); // Thay đổi URL theo API của bạn
 
@@ -15,7 +19,13 @@ export async function fetchCategories(page: number): Promise<Icategory[]> {
 }
 
 export async function fetchCategory(id: string) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` + id);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` + id,
+    {
+      method: "GET",
+      cache: "no-cache",
+    }
+  );
   const data = await response.json();
   if (!response) {
     return undefined;
@@ -25,10 +35,15 @@ export async function fetchCategory(id: string) {
   }
   return data;
 }
-
 
 export async function fetchCategorySeeMore(id: string) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` + id);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` + id,
+    {
+      method: "GET",
+      cache: "no-cache",
+    }
+  );
   const data = await response.json();
   if (!response) {
     return undefined;
@@ -39,4 +54,3 @@ export async function fetchCategorySeeMore(id: string) {
 
   return data;
 }
-

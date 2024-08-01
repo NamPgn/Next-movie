@@ -2,39 +2,28 @@ import { notFound } from "next/navigation";
 import { Result } from "antd";
 import "./style.css"; // Nhúng tệp CSS
 import CryptoJS from "crypto-js";
-import SeriDetailProducts from "@/app/components/Seri/SeriDetail";
-import { fetchProduct } from "@/app/sevices/productsSevices";
+import {
+  fetchProduct,
+} from "@/app/sevices/productsSevices";
 import ShowDescriptions from "@/app/components/ShowContent/showDescriptions";
 import { Metadata, ResolvingMetadata } from "next";
+import SeriDetailProducts from "@/app/components/Seri/SeriDetail";
 // import { useSearchParams } from "next/navigation";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
-interface DetailComponentProps {
-  params: { id: string; c: string };
-}
-const cache: { [key: string]: any } = {};
 
-async function getDetail(id: string) {
-  if (cache[id]) {
-    return cache[id]; // Trả về dữ liệu từ cache nếu có
-  }
-
-  const res = await fetchProduct(id);
-  cache[id] = res; // Lưu dữ liệu vào cache
-  return res;
-}
 
 export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const id = params.id;
-  const category: any = await getDetail(id);
+  const category: any = await fetchProduct(id);
 
   return {
-    title: category.name +" Tập "+ category.seri,
+    title: category.name + " Tập " + category.seri,
     description: category.des,
     openGraph: {
       images: category.linkImg,
@@ -46,17 +35,13 @@ const DetailWatched = async ({
 }: {
   params: { id: string; c: string };
 }) => {
-  // const searchParams = useSearchParams();
 
-  // Lấy giá trị của tham số `c` từ URL
-  // const categoryId: any = searchParams.get("c");
   // Fetch dữ liệu từ server
-  const getOneProductDetail: any = await getDetail(params.id);
-  // const productByCategory = await fetchProductsCategory(categoryId);
+  const getOneProductDetail: any = await fetchProduct(params.id);
   if (!getOneProductDetail) {
     notFound(); // Trả về lỗi 404 nếu không tìm thấy dữ liệu
   }
-
+  
   const secretKey =
     process.env.NEXT_PUBLIC_SECERT_CRYPTO_KEY_PRODUCTS_DAILYMOTION_SERVER;
   const decryptedText = CryptoJS.AES.decrypt(
@@ -243,6 +228,7 @@ const DetailWatched = async ({
             </div>
             <h1 className="text-xl font-bold">{getOneProductDetail.name}</h1>
           </div>
+          <SeriDetailProducts seriProducts={getOneProductDetail?.category?.products} />
           <ShowDescriptions content={getOneProductDetail?.category?.des} />
         </div>
       </div>

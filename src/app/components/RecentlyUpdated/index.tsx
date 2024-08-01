@@ -23,7 +23,7 @@ export default function RecentlyUpdated({ data }: any) {
                 title={item.name}
                 image={item.linkImg}
                 link={"/q/" + item._id}
-                products={item.product}
+                products={item.products}
                 typecm={item.typecm}
                 text={item.text}
                 sumSeri={item.sumSeri}
