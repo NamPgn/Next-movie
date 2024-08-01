@@ -10,7 +10,7 @@ export default function Header() {
           <div className="headerLogo flex items-center justify-center">
             <MVLink to={"/"}>
               <MVImage
-                src={"https://hhanime3d.com/public/uploads/logo_anime.webp"}
+                src={""}
                 width={200}
                 height={200}
                 alt="dptk"

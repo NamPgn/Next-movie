@@ -1,4 +1,3 @@
-import { ArrowRightOutlined } from "@ant-design/icons";
 import CategoryContents from "../Category/Content/Category";
 import MVLink from "../Location/Link";
 

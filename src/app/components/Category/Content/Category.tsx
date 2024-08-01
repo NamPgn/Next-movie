@@ -34,9 +34,9 @@ const CategoryContents = memo(
             <MVImage
               src={image}
               alt={title}
-              width={300}
-              height={300}
-              className="h-[200px] md:h-[300px] lg:h-[300px] object-cover transition-opacity duration-300 group-hover:opacity-40 rounded-lg"
+              width={100}
+              height={100}
+              className="h-[272px] md:h-[300px] lg:h-[300px] object-cover transition-opacity duration-300 group-hover:opacity-40 rounded-lg w-full"
             />
             <div
               style={{
