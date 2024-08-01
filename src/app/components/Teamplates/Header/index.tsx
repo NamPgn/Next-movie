@@ -1,6 +1,6 @@
-import Image from "next/image";
 import React from "react";
 import MVLink from "../../Location/Link";
+import MVImage from "../../MV/IMAGE";
 
 export default function Header() {
   return (
@@ -9,7 +9,7 @@ export default function Header() {
         <div className="headerItem">
           <div className="headerLogo flex items-center justify-center">
             <MVLink to={"/"}>
-              <Image
+              <MVImage
                 src={"https://hhanime3d.com/public/uploads/logo_anime.webp"}
                 width={200}
                 height={200}

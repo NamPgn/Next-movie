@@ -1,7 +1,8 @@
 import React, { memo } from "react";
 import MVLink from "../../Location/Link";
 import { PlayCircleOutlined } from "@ant-design/icons";
-import Image from "next/image";
+import MVImage from "../../MV/IMAGE";
+import { handleImage } from "@/app/lib/handleImage";
 
 interface CategoryContent {
   text?: string;
@@ -27,16 +28,17 @@ const CategoryContents = memo(
     products,
   }: CategoryContent) => {
     const lastItem: any = products ? products[products.length - 1] : "";
+    const imageUrl = handleImage(380, image) ?? "/default-image.jpg";
     return (
       <div className="w-full">
         <div className="relative group">
           <MVLink to={link} className="block">
-            <Image
-              src={image}
+            <MVImage
+              src={imageUrl}
               alt={title}
-              width={300}
-              height={300}
-              className="h-[200px] md:h-[300px] lg:h-[400px] object-cover transition-opacity duration-300 group-hover:opacity-40 rounded-lg"
+              width={380}
+              height={200}
+              className="h-[150px] md:h-[200px] lg:h-[320px] object-cover transition-opacity duration-300 group-hover:opacity-40 rounded-lg w-full"
             />
             <div
               style={{
@@ -56,16 +58,20 @@ const CategoryContents = memo(
           <MVLink to={link}>
             <h2
               style={{ color: "#fff" }}
-              className="text-xl md:text-2xl lg:text-3xl font-bold"
+              className="text-sm md:text-md lg:text-lg font-bold"
             >
               {title}
             </h2>
           </MVLink>
         </div>
         <div className="text-sm text-gray-400 mt-2">
-          <div className="font-semibold">{sumSeri ? `${sumSeri} Tập` : ""}</div>
+          <div className="font-semibold sm:text-[12px] md:text-[13px] lg:text-[14px]">
+            {sumSeri ? `${sumSeri} Tập` : ""}
+          </div>
           <div className="flex items-center mt-1 justify-between">
-            <p className="mr-2 text-gray-300">Full HD/Vietsub</p>
+            <p className="mr-2 text-gray-300 sm:text-[12px] md:text-[13px] lg:text-[14px]">
+              Full HD/Vietsub
+            </p>
             <p className="mr-2 text-gray-300">{typecm}</p>
             <p className="text-gray-400 text-sm">({time})</p>
           </div>
