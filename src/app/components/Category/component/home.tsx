@@ -2,7 +2,10 @@ import RecentlyUpdated from "../../RecentlyUpdated";
 import { fetchCategories } from "@/app/sevices/categorySevices";
 
 const CategoryHomePage = async () => {
-  const data: any = await fetchCategories(1);
+  const { data, error }: any = await fetchCategories();
+  // if (error) {
+  //   return <div>An error occurred: {error}</div>;
+  // }
   return (
     <div>
       <RecentlyUpdated data={data} />

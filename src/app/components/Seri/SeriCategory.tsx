@@ -11,7 +11,7 @@ const SeriNumberMovie = ({ data, isLoading }: any) => {
           {data &&
             data.products.map((item: any) => (
               <MVLink
-                href={`/d/${item._id}?c=${item.category}`}
+                href={`/d/${item._id}`}
                 key={item._id}
                 className="block text-center"
               >

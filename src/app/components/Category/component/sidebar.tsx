@@ -3,7 +3,10 @@ import MVImage from "../../MV/IMAGE";
 import MVLink from "../../Location/Link";
 
 const CategoryProductSidebar = async () => {
-  const data = await fetchProductsCategory();
+  const { data, error } = await fetchProductsCategory();
+  if (error) {
+    return <div>An error occurred: {error}</div>;
+  }
   return (
     <>
       <h2 className="text-orange-500 text-xl font-bold mb-4">XEM NHIỀU</h2>

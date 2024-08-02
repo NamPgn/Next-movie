@@ -228,7 +228,7 @@ const DetailWatched = async ({
             </div>
             <h1 className="text-xl font-bold">{getOneProductDetail.name}</h1>
           </div>
-          <SeriDetailProducts seriProducts={getOneProductDetail?.category?.products} />
+          <SeriDetailProducts productId={getOneProductDetail._id} seriProducts={getOneProductDetail?.category?.products} />
           <ShowDescriptions content={getOneProductDetail?.category?.des} />
         </div>
       </div>

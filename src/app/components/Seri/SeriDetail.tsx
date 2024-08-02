@@ -1,19 +1,29 @@
 import React from "react";
 import MVLink from "../Location/Link";
-
-const SeriDetailProducts = ({ seriProducts }: any) => {
+type SeriDetailPropsType = {
+  seriProducts: any;
+  productId: string;
+};
+const SeriDetailProducts = ({
+  seriProducts,
+  productId,
+}: SeriDetailPropsType) => {
   return (
     <>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 ">
         {seriProducts &&
-          seriProducts.map((items:any) =>
+          seriProducts.map((items: any) =>
             items.isApproved ? (
               <MVLink
-                to={`/d/${items._id}?c=${items.category}`}
+                to={`/d/${items._id}`}
                 key={items._id}
-                className="block"
+                className={`link `}
               >
-                <div className="bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors duration-300 ease-in-out shadow-md overflow-hidden">
+                <div
+                  className={`${
+                    items._id === productId ? "active bg-orange-500" : ""
+                  } bg-gray-800  hover:bg-gray-700 text-white rounded-lg transition-colors duration-300 ease-in-out shadow-md overflow-hidden `}
+                >
                   <div className="p-3 text-center">
                     {items.seri ? `Tập ${items.seri}` : ""}
                   </div>

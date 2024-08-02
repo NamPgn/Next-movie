@@ -1,21 +1,29 @@
 import { Icategory } from "@/interfaces/category";
 import { notFound } from "next/navigation";
-
-export async function fetchCategories(page: number): Promise<Icategory[]> {
-  const response: any = await (
-    await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys?page=` + page,
-      {
-        method: "GET",
-        cache: "no-cache",
-      }
-    )
-  ).json(); // Thay đổi URL theo API của bạn
-
-  if (!response || !response.data) {
-    throw new Error("Failed to fetch");
+interface FetchCategoriesResult {
+  data: Icategory[];
+  error?: string;
+}
+export async function fetchCategories(): Promise<FetchCategoriesResult> {
+  try {
+    const response: any = await (
+      await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/latest/next`,
+        {
+          method: "GET",
+          next: {
+            revalidate: 30,
+          },
+        }
+      )
+    ).json(); // Thay đổi URL theo API của bạn
+    if (!response) {
+      notFound();
+    }
+    return response;
+  } catch (error) {
+    return { data: [], error: "Failed to fetch categories" };
   }
-  return response.data;
 }
 
 export async function fetchCategory(id: string) {
