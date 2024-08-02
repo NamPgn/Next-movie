@@ -13,8 +13,8 @@ export default function Header() {
                 src={"/images/logo.png"}
                 width={200}
                 height={200}
-                alt="dptk"
-                className="w-full h-[60px] "
+                alt="Hoạt Hình Trung Quốc"
+                className="w-[160px] h-[60px] "
               />
             </MVLink>
           </div>

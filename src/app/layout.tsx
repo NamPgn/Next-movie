@@ -10,11 +10,10 @@ export const metadata: Metadata = {
     "Trang web hoạt hình trung quốc, cung cấp thông tin và video về hoạt hình nổi tiếng.",
   openGraph: {
     title: "Hoạt Hình Trung Quốc",
-    description: "Đấu phá thương khung phần 5",
     url: "https://tromphim.site/",
     images: [
       {
-        url: "https://res.cloudinary.com/daz3lejjo/image/upload/w_200/f_webp/v1721825684/category/category_1689076028777-a6e7592292d5428b1bc4.jpg.jpg",
+        url: "https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1721825684/category/category_1689076028777-a6e7592292d5428b1bc4.jpg.jpg",
         width: 800,
         height: 600,
         alt: "Hoạt Hình Trung Quốc",

@@ -6,7 +6,7 @@ export default function RecentlyUpdated({ data }: any) {
     <section>
       <div className="flex justify-between items-center">
         <h2 className="text-orange-500 text-xl font-bold mb-4">MỚI CẬP NHẬT</h2>
-        <MVLink to={"/loadmore"}>
+        <MVLink to={"/loadmore"} aria-label="Tải thêm nội dung">
           <div className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center">
             <span className="underline">See More</span>
           </div>
