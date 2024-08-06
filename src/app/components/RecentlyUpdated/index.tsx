@@ -20,10 +20,9 @@ export default function RecentlyUpdated({
           to="/loadmore"
           aria-label="Tải thêm nội dung"
           title="Tải thêm nội dung"
+          className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center underline"
         >
-          <div className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center">
-            <span className="underline">{loadmore}</span>
-          </div>
+          {loadmore}
         </MVLink>
       </div>
 
