@@ -18,17 +18,15 @@ export default function RecentlyUpdated({
     <section>
       <div className="flex justify-between items-center">
         <h2 className="text-orange-500 text-xl font-bold mb-4">{title}</h2>
-        {data.length > 0 && (
-          <MVLink
-            to="/loadmore"
-            aria-label={linkDescription}
-            title={linkDescription}
-          >
-            <div className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center">
-              <span className="underline">{linkText}</span>
-            </div>
-          </MVLink>
-        )}
+        <MVLink
+          to="/loadmore"
+          aria-label={linkText}
+          title={linkDescription}
+        >
+          <div className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center">
+            <span className="underline">{loadmore || `Xem thêm ${title}`}</span>
+          </div>
+        </MVLink>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
