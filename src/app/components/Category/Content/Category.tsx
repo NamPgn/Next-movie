@@ -36,7 +36,7 @@ const CategoryContents = memo(
               alt={title}
               width={300} 
               height={400} 
-              className="w-full h-[272px] md:h-[300px] lg:h-[300px] transition-opacity duration-300 group-hover:opacity-40 rounded-lg"
+              className="w-full h-[272px] md:h-[300px] lg:h-[300px] transition-opacity duration-300 group-hover:opacity-40 rounded-lg object-cover"
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
             />

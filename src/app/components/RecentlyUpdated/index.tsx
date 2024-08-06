@@ -16,11 +16,12 @@ export default function RecentlyUpdated({
     <section>
       <div className="flex justify-between items-center">
         <h2 className="text-orange-500 text-xl font-bold mb-4">{title}</h2>
-        <MVLink to={"/loadmore"} aria-label="Tải thêm nội dung">
-          <div
-            className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center"
-            title="Xem tất cả"
-          >
+        <MVLink
+          to="/loadmore"
+          aria-label="Tải thêm nội dung"
+          title="Tải thêm nội dung"
+        >
+          <div className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center">
             <span className="underline">{loadmore}</span>
           </div>
         </MVLink>
