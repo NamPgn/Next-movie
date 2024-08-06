@@ -1,8 +1,16 @@
 import Link from "next/link";
-
-const MVLink = ({ to, children, ...rest }:any) => {
+import { AnchorHTMLAttributes, ReactNode } from "react";
+type LinkType = {
+  to: string;
+  children: ReactNode;
+};
+const MVLink = ({
+  to,
+  children,
+  ...rest
+}: LinkType & AnchorHTMLAttributes<HTMLAnchorElement>) => {
   return (
-    <Link href={to} {...rest} >
+    <Link href={to} {...rest}>
       {children}
     </Link>
   );

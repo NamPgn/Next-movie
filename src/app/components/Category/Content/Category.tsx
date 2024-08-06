@@ -34,9 +34,11 @@ const CategoryContents = memo(
             <MVImage
               src={image}
               alt={title}
-              width={200}
-              height={200}
-              className="h-[272px] md:h-[300px] lg:h-[300px] object-cover transition-opacity duration-300 group-hover:opacity-40 rounded-lg w-full"
+              width={300} 
+              height={400} 
+              className="w-full h-[272px] md:h-[300px] lg:h-[300px] transition-opacity duration-300 group-hover:opacity-40 rounded-lg"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
             />
             <div
               style={{

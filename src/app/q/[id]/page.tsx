@@ -1,37 +1,16 @@
-import { fetchCategory } from "@/app/sevices/categorySevices";
+import { fetchCategories } from "@/app/sevices/categorySevices";
 import { Metadata } from "next";
 import MVImage from "@/app/components/MV/IMAGE";
 import SeriNumberMovie from "@/app/components/Seri/SeriCategory";
 import ShowDescriptions from "@/app/components/ShowContent/showDescriptions";
-import { cache } from "react";
-import { unstable_noStore as noStore } from "next/cache";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-// const cache: { [key: string]: any } = {};
-
-// async function getDetail(id: string) {
-//   if (cache[id]) {
-//     return cache[id]; // Trả về dữ liệu từ cache nếu có
-//   }
-
-//   const res = await fetchCategory(id);
-//   cache[id] = res; // Lưu dữ liệu vào cache
-//   return res;
-// }
-
-let categoryCache: Record<string, any> = {}
-
-// const fetchCategoryWithCache = cache(async (id: string) => {
-//   const category = await fetchCategory(id)
-//   return category
-// })
-// export const revalidate = 60 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.id;
-  const category: any = await fetchCategory(id);
+  const category: any = await fetchCategories(id);
 
   return {
     title: category.name,
@@ -43,13 +22,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 const CategoryPage = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
-  const category: any = await fetchCategory(id);
+  const category: any = await fetchCategories(id);
   if (!id) {
     return <div className="error">Invalid category ID</div>; // Xử lý trường hợp không có ID
   }
   return (
     <>
-      <div className="bg-gray-900 text-white">
+      <div className="text-white ">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="w-full md:w-1/3">
             <div className="relative">

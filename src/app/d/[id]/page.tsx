@@ -1,12 +1,10 @@
 import { notFound } from "next/navigation";
-import { Result } from "antd";
 import "./style.css"; // Nhúng tệp CSS
 import CryptoJS from "crypto-js";
 import { fetchProduct } from "@/app/sevices/productsSevices";
 import ShowDescriptions from "@/app/components/ShowContent/showDescriptions";
 import { Metadata, ResolvingMetadata } from "next";
 import SeriDetailProducts from "@/app/components/Seri/SeriDetail";
-// import { useSearchParams } from "next/navigation";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -65,17 +63,13 @@ const DetailWatched = async ({
           src={`${getOneProductDetail.trailer}?autoplay=1&mute=1`}
         />
       ) : (
-        <Result
-          icon={"Hiiiii!!"}
-          className="absolute inset-0 text-white mt-5"
-          subTitle="Phim này đang trong quá trình cập nhật video. Vui lòng quay lại sau."
-        />
+        "Phim này đang trong quá trình cập nhật video. Vui lòng quay lại sau."
       )}
     </div>
   );
   return (
-    <div className="bg-gray-900 text-white">
-      <div className="bg-gray-900 p-4 rounded-lg">
+    <div className="text-white">
+      <div className="p-4 rounded-lg">
         <div className="flex flex-col sm:flex-row items-center justify-between">
           <span className="text-orange-500 font-medium mb-2 sm:mb-0 sm:mr-4">
             Đổi Link nếu ko xem được:
@@ -97,8 +91,7 @@ const DetailWatched = async ({
       <div className="flex">
         <div>
           <VideoPlayer />
-         
-         
+
           <SeriDetailProducts
             productId={getOneProductDetail._id}
             seriProducts={getOneProductDetail?.category?.products}

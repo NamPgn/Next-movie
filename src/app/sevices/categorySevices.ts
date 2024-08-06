@@ -4,7 +4,7 @@ interface FetchCategoriesResult {
   data: Icategory[];
   error?: string;
 }
-export async function fetchCategories(): Promise<FetchCategoriesResult> {
+export async function fetchCategorysRecentllyUpdated(): Promise<FetchCategoriesResult> {
   try {
     const response: any = await (
       await fetch(
@@ -26,7 +26,7 @@ export async function fetchCategories(): Promise<FetchCategoriesResult> {
   }
 }
 
-export async function fetchCategory(id: string) {
+export async function fetchCategories(id: string) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` + id,
     {
@@ -50,6 +50,24 @@ export async function fetchCategorySeeMore(id: string) {
     {
       method: "GET",
       cache: "no-cache",
+    }
+  );
+  const data = await response.json();
+  if (!response) {
+    return undefined;
+  }
+  if (!response) {
+    notFound();
+  }
+
+  return data;
+}
+
+export async function fetchCategorys(page: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys?page=` + page,
+    {
+      method: "GET",
     }
   );
   const data = await response.json();
