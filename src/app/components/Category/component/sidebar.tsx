@@ -17,7 +17,7 @@ const CategoryProductSidebar = async () => {
               <div className="flex gap-2 mb-2">
                 <MVImage
                   src={items.linkImg}
-                  alt={items.name}
+                  alt={items.des}
                   width={140}
                   height={140}
                   className="w-[120px] h-[180px]"

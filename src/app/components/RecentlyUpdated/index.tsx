@@ -12,18 +12,20 @@ export default function RecentlyUpdated({
   title,
   data,
 }: CategoryContentType) {
+  const linkText = loadmore || `Xem thêm ${title}`;
+  const linkDescription = `Xem thêm nội dung về ${title}`;
   return (
     <section>
       <div className="flex justify-between items-center">
         <h2 className="text-orange-500 text-xl font-bold mb-4">{title}</h2>
-        {loadmore && (
+        {data.length > 0 && (
           <MVLink
             to="/loadmore"
-            aria-label="Tải thêm nội dung"
-            title="Tải thêm nội dung"
+            aria-label={linkDescription}
+            title={linkDescription}
           >
             <div className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center">
-              <span className="underline">{loadmore}</span>
+              <span className="underline">{linkText}</span>
             </div>
           </MVLink>
         )}
