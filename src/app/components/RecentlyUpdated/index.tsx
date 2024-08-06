@@ -3,7 +3,7 @@ import CategoryContents from "../Category/Content/Category";
 import MVLink from "../Location/Link";
 
 type CategoryContentType = {
-  loadmore?: string;
+  loadmore: string;
   title: string;
   data: Icategory[];
 };

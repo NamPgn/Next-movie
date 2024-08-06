@@ -38,7 +38,7 @@ const LoadMorePage = () => {
   }
   return (
     <div>
-      <RecentlyUpdated title="ALL" data={data.data} />
+      <RecentlyUpdated title="ALL" data={data.data} loadmore=""/>
       <div className="flex items-center gap-4 bg-[#999]">
         <button
           onClick={() => handlePreviosPage()}
