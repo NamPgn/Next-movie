@@ -12,24 +12,19 @@ const VideoPlayer = ({
   const [videoUrl, setVideoUrl] = useState("");
   const [videoStatus, setVideoStatus] = useState("loading");
   const [currentServer, setCurrentServer] = useState("daily");
-  const decryptUrl = (encryptedUrl: string) => {
-    const secretKey =
-      process.env.NEXT_PUBLIC_SECERT_CRYPTO_KEY_PRODUCTS_DAILYMOTION_SERVER ||
-      "";
-    return CryptoJS.AES.decrypt(encryptedUrl, secretKey).toString(
-      CryptoJS.enc.Utf8
-    );
-  };
-
+  const secretKey =
+    process.env.NEXT_PUBLIC_SECERT_CRYPTO_KEY_PRODUCTS_DAILYMOTION_SERVER || "";
+  const data = CryptoJS.AES.decrypt(
+    getOneProductDetail.dailyMotionServer,
+    secretKey
+  ).toString(CryptoJS.enc.Utf8);
   const handleChangeServer = (serverType: string) => {
     setVideoStatus("loading");
     setCurrentServer(serverType);
     let newUrl = "";
     switch (serverType) {
       case "daily":
-        newUrl = getOneProductDetail.dailyMotionServer
-          ? decryptUrl(getOneProductDetail.dailyMotionServer)
-          : "";
+        newUrl = getOneProductDetail.dailyMotionServer ? data : "";
         break;
       case "assby":
         newUrl = getOneProductDetail.server2 || "";
@@ -40,7 +35,6 @@ const VideoPlayer = ({
     }
 
     if (newUrl && newUrl.trim() !== "") {
-      console.log(newUrl);
       setVideoUrl(newUrl);
       setVideoStatus("ready");
     } else {
