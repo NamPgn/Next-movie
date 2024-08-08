@@ -1,0 +1,1 @@
+export const serverBtns = ["daily", "assby", "drive"];

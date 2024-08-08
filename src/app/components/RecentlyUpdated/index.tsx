@@ -3,7 +3,7 @@ import CategoryContents from "../Category/Content/Category";
 import MVLink from "../Location/Link";
 
 type CategoryContentType = {
-  loadmore: string;
+  loadmore?: string;
   title: string;
   data: Icategory[];
 };
@@ -12,19 +12,16 @@ export default function RecentlyUpdated({
   title,
   data,
 }: CategoryContentType) {
-  const linkText = loadmore || `Xem thêm ${title}`;
-  const linkDescription = `Xem thêm nội dung về ${title}`;
   return (
     <section>
       <div className="flex justify-between items-center">
         <h2 className="text-orange-500 text-xl font-bold mb-4">{title}</h2>
-        <MVLink
-          to="/loadmore"
-          aria-label={linkText}
-          title={linkDescription}
-        >
-          <div className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center">
-            <span className="underline">{loadmore || `Xem thêm ${title}`}</span>
+        <MVLink to={"/loadmore"} aria-label="Tải thêm nội dung" title="Tải thêm nội dung">
+          <div
+            className="text-[16px] text-[#fff] flex lg:text-[20px] md:text-[18px] gap-3 justify-center"
+            title="Xem tất cả"
+          >
+            <span className="underline">{loadmore}</span>
           </div>
         </MVLink>
       </div>

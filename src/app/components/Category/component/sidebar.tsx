@@ -15,15 +15,19 @@ const CategoryProductSidebar = async () => {
           data.map((items: any, index: number) => (
             <MVLink to={"/q/" + items._id} key={index}>
               <div className="flex gap-2 mb-2">
-                <MVImage
-                  src={items.linkImg}
-                  alt={items.des}
-                  width={140}
-                  height={140}
-                  className="w-[120px] h-[180px]"
-                  object-fit="cover"
-                />
-                <span className="text-sm">{items.name}</span>
+                <div className="w-5/12">
+                  <MVImage
+                    src={items.linkImg}
+                    alt={items.des}
+                    width={140}
+                    height={140}
+                    className="w-auto h-auto"
+                    object-fit="cover"
+                  />
+                </div>
+                <div className="w-7/12">
+                  <span className="text-sm">{items.name}</span>
+                </div>
               </div>
             </MVLink>
           ))}

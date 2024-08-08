@@ -1,12 +1,13 @@
-import { ObjectId } from 'bson';
+import { ObjectId } from "bson";
+import { Icategory } from "../category";
 
 export interface IProduct {
-  _id?: ObjectId,
+  _id?: ObjectId;
   name: string;
   seri: string;
   image?: string;
   descriptions?: string;
-  category?: ObjectId;
+  category?: Icategory;
   select?: boolean;
   uploadDate: Date;
   options: string;
@@ -18,6 +19,14 @@ export interface IProduct {
   comments: any;
   categorymain?: ObjectId;
   typeId?: ObjectId;
+  type?: string;
+  week?: ObjectId;
+  up?: number;
+  isActive?: number;
+  anotherName?: string;
+  dailyMotionServer: string;
+  server2: string;
+  trailer?: string;
 }
 
 export interface isProductSlice {

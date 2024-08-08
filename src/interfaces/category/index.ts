@@ -1,4 +1,5 @@
 import { ObjectId } from "bson";
+import { IProduct } from "../product";
 
 export interface Icategory {
   _id?: ObjectId;
@@ -6,7 +7,7 @@ export interface Icategory {
   linkImg?: string;
   des: string;
   sumSeri: string | number;
-  products: any;
+  products: IProduct[];
   type: string;
 }
 
