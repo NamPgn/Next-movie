@@ -32,7 +32,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body className={inter.className + " bg-[#23232a]"}>
         <Header />
         <main className="container mx-auto ">
-          <div className="text-white min-h-screen xl:px-[0%] lg:px-[8%] md:px-[8%] px-[3%] py-[10px]">
+          <div className="text-white min-h-screen  lg:px-[8%] md:px-[8%] px-[3%] py-[10px]">
             <div className="flex gap-5 bg-[#1a1a20] p-3">
               <div className="w-full lg:w-9/12">{children}</div>
               <div className="w-3/12 hidden lg:block">
