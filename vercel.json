@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "https://www.hoathinhtrungquoc.site/(.*)",
+      "destination": "https://hoathinhtrungquoc.site/$1",
+      "permanent": true
+    }
+  ]
+}
