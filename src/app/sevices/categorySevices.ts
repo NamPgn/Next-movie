@@ -17,7 +17,7 @@ export async function fetchCategorysRecentllyUpdated(): Promise<FetchCategoriesR
         }
       )
     ).json(); // Thay đổi URL theo API của bạn
-    if (!response) {
+    if (!response) {    
       notFound();
     }
     return response;
