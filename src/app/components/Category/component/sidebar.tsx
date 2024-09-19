@@ -21,7 +21,7 @@ const CategoryProductSidebar = async () => {
                     alt={items.des}
                     width={140}
                     height={140}
-                    className="w-auto h-auto"
+                    className="w-auto h-auto"     
                     object-fit="cover"
                   />
                 </div>
