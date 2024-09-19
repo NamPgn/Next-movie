@@ -13,7 +13,7 @@ const CategoryProductSidebar = async () => {
       <div className="space-y-2">
         {data &&
           data.map((items: any, index: number) => (
-            <MVLink to={"/q/" + items._id} key={index}>
+            <MVLink to={"/q/" + items.slug} key={index}>
               <div className="flex gap-2 mb-2">
                 <div className="w-5/12">
                   <MVImage
