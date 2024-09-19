@@ -1,7 +1,7 @@
 {
   "redirects": [
     {
-      "source": "https://www.hoathinhtrungquoc.site/(.*)",
+      "source": "/(.*)",
       "destination": "https://hoathinhtrungquoc.site/$1",
       "permanent": true
     }
