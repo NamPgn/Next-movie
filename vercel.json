@@ -1,9 +1,12 @@
 {
-  "redirects": [
+  "version": 2,
+  "builds": [
     {
-      "source": "https://www.hoathinhtrungquoc.site/(.*)",
-      "destination": "https://hoathinhtrungquoc.site/$1",
-      "permanent": true
+      "src": "package.json",
+      "use": "@vercel/next"
     }
-  ]
+  ],
+  "rewrites": [],
+  "redirects": [],
+  "headers": []
 }
