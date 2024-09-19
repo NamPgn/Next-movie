@@ -12,9 +12,6 @@
     "@ant-design/cssinjs": "^1.21.0",
     "@ant-design/icons": "^5.3.7",
     "@ant-design/plots": "^2.2.5",
-    "@hookform/resolvercel --prods": "^3.9.0",
-    "@reduxjs/toolkit": "^2.2.6",
-    "antd": "^5.19.2",
     "bson": "^6.8.0",
     "crypto-js": "^4.2.0",
     "html-react-parser": "^5.1.11",
@@ -28,16 +25,10 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.52.1",
-    "react-redux": "^9.1.2",
     "react-slick": "^0.30.2",
     "react-toastify": "^10.0.5",
-    "redux": "^5.0.1",
-    "redux-persist": "^6.0.0",
     "sharp": "^0.33.5",
-    "slick-carousel": "^1.8.1",
-    "styled-components": "^6.1.12",
-    "swr": "^2.2.5",
-    "yup": "^1.4.0"
+    "styled-components": "^6.1.12"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
