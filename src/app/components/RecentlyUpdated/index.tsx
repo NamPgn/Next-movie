@@ -35,7 +35,7 @@ export default function RecentlyUpdated({
                 time={item.time}
                 title={item.name}
                 image={item.linkImg}
-                link={"/q/" + item._id}
+                link={"/q/" + item.slug}
                 products={item.products}
                 typecm={item.typecm}
                 text={item.text}
