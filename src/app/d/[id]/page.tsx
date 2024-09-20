@@ -34,7 +34,6 @@ const DetailWatched = async ({
   if (!getOneProductDetail) {
     notFound(); // Trả về lỗi 404 nếu không tìm thấy dữ liệu
   }
-
   return (
     <div className="text-white">
       <div className="flex">
