@@ -25,7 +25,7 @@ const SeriDetailProducts = ({
     if (currentIndex < seriProducts.length - 1) {
       const nextIndex = currentIndex + 1;
       setCurrentIndex(nextIndex);
-      router.push(`/d/${seriProducts[nextIndex]._id}`);
+      router.push(`/d/${seriProducts[nextIndex].slug}`);
     }
   };
 
@@ -33,7 +33,7 @@ const SeriDetailProducts = ({
     if (currentIndex > 0) {
       const prevIndex = currentIndex - 1;
       setCurrentIndex(prevIndex);
-      router.push(`/d/${seriProducts[prevIndex]._id}`);
+      router.push(`/d/${seriProducts[prevIndex].slug}`);
     }
   };
   return (
@@ -142,7 +142,7 @@ const SeriDetailProducts = ({
           seriProducts.map((items: any) =>
             items.isApproved ? (
               <MVLink
-                to={`/d/${items._id}`}
+                to={`/d/${items.slug}`}
                 key={items._id}
                 className={`link `}
               >
