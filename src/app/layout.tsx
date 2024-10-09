@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-
+import { Analytics } from '@vercel/analytics/react';
 const inter = Roboto({ subsets: ["latin"], weight: "300" });
 
 export const metadata: Metadata = {
@@ -41,10 +41,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </main>
+        <Analytics/>
         <Footer />
-     
-
-     
       </body> 
     </html>
   );

@@ -38,3 +38,21 @@ export async function fetchProductsCategory(): Promise<FetchProductsResult> {
     return { data: [], error: "Failed to fetch" };
   }
 }
+
+export async function fetchProducts(page:number | string): Promise<FetchProductsResult> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/products?page=${page}`,
+      {
+        method: "GET",
+      }
+    );
+    if (!response) {
+      notFound();
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { data: [], error: "Failed to fetch" };
+  }
+}
