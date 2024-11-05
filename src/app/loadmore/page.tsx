@@ -4,13 +4,14 @@ import RecentlyUpdated from "../components/RecentlyUpdated";
 import { Icategory } from "@/interfaces/category";
 import { useAppDispatch, useAppSelector } from "@/lib/hook";
 import { getAllcate } from "@/lib/features/categorys/thunkActions";
-import useAsyncData from "../../../hook/useData";
+import LoadingUsagyuuun from "../components/Loading";
 export type CategoryLoadmore = {
   data: Icategory[];
   totalCount: number;
   totalPages: number;
 };
 const LoadMorePage = () => {
+  const dispatch = useAppDispatch();
   const total = Math.round(44 / 24);
   const [page, setPage] = useState(1);
   const pages = Array(total)
@@ -25,13 +26,13 @@ const LoadMorePage = () => {
   const handlePreviosPage = () => {
     setPage((page) => page - 1);
   };
-  const {
-    data: categorys,
-    isLoading,
-    isError,
-  } = useAsyncData("SEEALL", page, undefined);
+  const categorys = useAppSelector((state) => state.category.category);
+  const isLoading = useAppSelector((state) => state.category.isLoading);
+  useEffect(() => {
+    dispatch(getAllcate(1));
+  }, []);
   if (isLoading) {
-    return <div className="seriLoading">Loading...</div>;
+    return <LoadingUsagyuuun />;
   }
   return (
     <div>

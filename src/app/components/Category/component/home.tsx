@@ -1,14 +1,19 @@
 "use client";
-import useAsyncData from "../../../../../hook/useData";
+import { useEffect } from "react";
 import LoadingUsagyuuun from "../../Loading";
-import RecentlyUpdated from "../../RecentlyUpdated";
+import dynamic from "next/dynamic";
+import { useAppDispatch, useAppSelector } from "@/lib/hook";
+import { getAllCategoryLatest } from "@/lib/features/categorys/thunkActions";
 
+const RecentlyUpdated = dynamic(() => import("../../RecentlyUpdated"));
 const CategoryHomePage = () => {
-  const {
-    data: categorys,
-    isLoading,
-    isError,
-  } = useAsyncData("categorys", 1, undefined);
+  const categorys = useAppSelector((state) => state.category.category);
+  const isLoading = useAppSelector((state) => state.category.isLoading);
+  const isError = useAppSelector((state) => state.category.isError);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getAllCategoryLatest());
+  }, []);
   if (isLoading) {
     return <LoadingUsagyuuun />;
   }

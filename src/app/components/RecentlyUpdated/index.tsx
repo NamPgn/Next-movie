@@ -1,7 +1,7 @@
 import { Icategory } from "@/interfaces/category";
-import CategoryContents from "../Category/Content/Category";
 import MVLink from "../Location/Link";
-
+import dynamic from "next/dynamic";
+const CategoryContents = dynamic(() => import('../Category/Content/Category'))
 type CategoryContentType = {
   loadmore?: string;
   title: string;
