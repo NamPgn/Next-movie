@@ -2,6 +2,7 @@ import { ObjectId } from "bson";
 import { IProduct } from "../product";
 
 export interface Icategory {
+  time: string;
   _id?: ObjectId;
   name: string;
   linkImg?: string;

@@ -3,6 +3,7 @@ import { IProduct } from "@/interfaces/product";
 import React, { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
 import { serverBtns } from "@/constant";
+import LoadingUsagyuuun from "@/app/components/Loading";
 
 const VideoPlayer = ({
   getOneProductDetail,
@@ -88,7 +89,9 @@ const VideoPlayer = ({
         );
     }
   };
-
+  if (videoStatus == "loading") {
+    return <LoadingUsagyuuun />;
+  }
   return (
     <>
       <div className="movie relative aspect-video">{renderVideo()}</div>

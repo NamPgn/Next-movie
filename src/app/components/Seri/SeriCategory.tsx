@@ -9,7 +9,7 @@ const SeriNumberMovie = ({ data, isLoading }: any) => {
       <div className="scroll-container">
         <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {data &&
-            data.products.map((item: any) => (
+            data?.products?.map((item: any) => (
               <MVLink
                 to={`/d/${item.slug}`}
                 key={item._id}

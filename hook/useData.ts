@@ -26,11 +26,12 @@ const useAsyncData = (type: DataTypes, page?: any, id?: any) => {
   const dataFromStore: any = useAppSelector((state) => {
     if (type === "categorys") return state.category.category;
     if (type === "SEEALL") return state.category.category;
+    if (type === "DETAIL") return state.category.details;
     return defaultCategoryLoadmore;
   });
 
   const { data, error, isLoading } = useSWR(
-    dataFromStore?.data ? `/api/${type}?page=${page}` : null,
+    dataFromStore?.data ? `http://localhost:8001/api/${type}?page=${page}` : null,
     {
       fetcher: async () => {
         if (type === "categorys") {
@@ -41,12 +42,14 @@ const useAsyncData = (type: DataTypes, page?: any, id?: any) => {
           const result = await dispatch(getAllcate(page));
           return result.payload?.data;
         }
-    
+        if (type === "DETAIL") {
+          const result = await dispatch(getCateSlice(id));
+          return result.payload?.data;
+        }
       },
       revalidateOnFocus: false,
     }
   );
-
   useEffect(() => {
     if (data && type === "categorys") {
       dispatch({ type: "categorys/setCategorys", payload: data });
@@ -54,10 +57,9 @@ const useAsyncData = (type: DataTypes, page?: any, id?: any) => {
     if (data && type === "SEEALL") {
       dispatch({ type: "categorys/setCategorysSeeAll", payload: data });
     }
-    if (data && type === "SEEALL") {
-        dispatch({ type: "categorys/detail", payload: data });
-      }
-    // Có thể thêm xử lý các loại dữ liệu khác ở đây nếu cần
+    if (data && type === "DETAIL") {
+      dispatch({ type: "categorys/detail", payload: data });
+    }
   }, [data, dispatch, type]);
   return {
     data: dataFromStore,

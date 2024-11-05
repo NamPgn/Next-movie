@@ -12,7 +12,6 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.id;
   const category: any = await fetchCategories(id);
-
   return {
     title: category.name,
     description: category.des,

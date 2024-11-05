@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 type ImageInterFace = {
-  src: string;
+  src: string | any;
   alt: string;
   width?: number;
   height?: number;
