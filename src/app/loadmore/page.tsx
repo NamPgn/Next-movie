@@ -1,17 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 import RecentlyUpdated from "../components/RecentlyUpdated";
-import { fetchCategorys } from "../sevices/categorySevices";
 import { Icategory } from "@/interfaces/category";
-type CategoryLoadmoreType = {
+import { useAppDispatch, useAppSelector } from "@/lib/hook";
+import { getAllcate } from "@/lib/features/categorys/thunkActions";
+import useAsyncData from "../../../hook/useData";
+export type CategoryLoadmore = {
   data: Icategory[];
-  length: number;
+  totalCount: number;
+  totalPages: number;
 };
 const LoadMorePage = () => {
-  const [data, setData] = useState<CategoryLoadmoreType>(
-    {} as CategoryLoadmoreType
-  );
-  const [isLoading, setIsLoading] = useState(true);
   const total = Math.round(44 / 24);
   const [page, setPage] = useState(1);
   const pages = Array(total)
@@ -26,19 +25,13 @@ const LoadMorePage = () => {
   const handlePreviosPage = () => {
     setPage((page) => page - 1);
   };
-  useEffect(() => {
-    (async () => {
-      const data = await fetchCategorys(page);
-      setIsLoading(false);
-      setData(data);
-    })();
-  }, [page]);
+  const { data: categorys, isLoading, isError } = useAsyncData('categorys', page);
   if (isLoading) {
     return <div className="seriLoading">Loading...</div>;
   }
   return (
     <div>
-      <RecentlyUpdated title="ALL" data={data.data} loadmore=""/>
+      <RecentlyUpdated title="ALL" data={categorys.data} loadmore="" />
       <div className="flex items-center gap-4 bg-[#999]">
         <button
           onClick={() => handlePreviosPage()}

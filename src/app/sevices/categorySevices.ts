@@ -1,4 +1,5 @@
 import { Icategory } from "@/interfaces/category";
+import axios from "axios";
 import { notFound } from "next/navigation";
 interface FetchCategoriesResult {
   data: Icategory[];
@@ -17,7 +18,7 @@ export async function fetchCategorysRecentllyUpdated(): Promise<FetchCategoriesR
         }
       )
     ).json(); // Thay đổi URL theo API của bạn
-    if (!response) {    
+    if (!response) {
       notFound();
     }
     return response;
@@ -80,3 +81,7 @@ export async function fetchCategorys(page: number) {
 
   return data;
 }
+
+export const searCategory = async (data: any) => {
+  return await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys/search?value=${data}`);
+};

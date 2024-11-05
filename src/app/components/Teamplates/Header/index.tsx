@@ -1,10 +1,37 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import MVLink from "../../Location/Link";
 import MVImage from "../../MV/IMAGE";
+import { debounce } from "lodash";
+import { searCategory } from "@/app/sevices/categorySevices";
+import SearchResults from "../../Search";
 
 export default function Header() {
+  const [searchValue, setSearchValue] = useState("");
+  const [results, setResults] = useState([]);
+
+  const debouncedSearch = debounce(async (val: string) => {
+    const data: any = await searCategory(val);
+    if (data) {
+      setResults(data.data);
+    }
+  }, 100);
+
+  const handleChange = async (val: any) => {
+    setSearchValue(val);
+    debouncedSearch(val);
+  };
+
+  useEffect(() => {
+    debouncedSearch(searchValue);
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [searchValue]);
+
   return (
     <div>
+      
       <header className="bg-[#1a1a1a] text-white py-4">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
@@ -21,30 +48,18 @@ export default function Header() {
               </MVLink>
             </div>
 
-            {/* Navigation */}
-            <nav className="hidden md:flex space-x-6">
-              <MVLink to="/" className="hover:text-yellow-400">
-                Trang chủ
-              </MVLink>
-              <MVLink to="/phim-moi" className="hover:text-yellow-400">
-                Phim mới
-              </MVLink>
-              <MVLink to="/the-loai" className="hover:text-yellow-400">
-                Thể loại
-              </MVLink>
-              <MVLink to="/top-phim" className="hover:text-yellow-400">
-                Top phim
-              </MVLink>
-            </nav>
-
-            {/* Search Bar */}
-            <div className="headerSearch relative">
+            <div className="headerSearch relative w-4/12">
               <input
+                onChange={(e) => handleChange(e.target.value)}
                 type="text"
                 placeholder="Tìm kiếm phim..."
-                className="bg-[#333] text-white px-4 py-2 rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="bg-[#333] text-white px-4 py-2 rounded-full w-full focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
-              <button className="absolute right-3 top-1/2 transform -translate-y-1/2" title="Tìm kiếm">
+              <SearchResults data={results} />
+              <button
+                className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                title="Tìm kiếm"
+              >
                 <svg
                   className="w-5 h-5 text-gray-400"
                   fill="none"
@@ -60,19 +75,6 @@ export default function Header() {
                   ></path>
                 </svg>
               </button>
-            </div>
-
-            {/* User Actions */}
-            <div className="hidden md:flex items-center space-x-4">
-              <MVLink to="/dang-nhap" className="hover:text-yellow-400">
-                Đăng nhập
-              </MVLink>
-              <MVLink
-                to="/dang-ky"
-                className="bg-yellow-400 text-black px-4 py-2 rounded-full hover:bg-yellow-300"
-              >
-                Đăng ký
-              </MVLink>
             </div>
 
             {/* Mobile Menu Button */}

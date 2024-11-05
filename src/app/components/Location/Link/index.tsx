@@ -10,7 +10,7 @@ const MVLink = ({
   ...rest
 }: LinkType & AnchorHTMLAttributes<HTMLAnchorElement>) => {
   return (
-    <Link href={to} {...rest}>
+    <Link href={to} {...rest} prefetch={true}>
       {children}
     </Link>
   );

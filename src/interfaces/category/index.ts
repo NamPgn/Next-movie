@@ -13,8 +13,9 @@ export interface Icategory {
 
 export interface isCategorysSlice {
   category: {
-    data: string[];
-    length: number;
+    data: Icategory[];
+    totalCount: number;
+    totalPages: number;
   };
   isError: boolean;
   isLoading: boolean;

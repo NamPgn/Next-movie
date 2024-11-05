@@ -1,14 +1,22 @@
+"use client";
+import useAsyncData from "../../../../../hook/useData";
 import RecentlyUpdated from "../../RecentlyUpdated";
-import { fetchCategorysRecentllyUpdated } from "@/app/sevices/categorySevices";
 
-const CategoryHomePage = async () => {
-  const { data, error }: any = await fetchCategorysRecentllyUpdated();
-  if (error) {
-    return <div>An error occurred: {error}</div>;
+const CategoryHomePage = () => {
+  const { data: categorys, isLoading, isError } = useAsyncData("categorys", 1);
+  if (isLoading) {
+    return <div className="seriLoading">Loading...</div>;
+  }
+  if (isError) {
+    return <div>Server error</div>;
   }
   return (
     <div>
-      <RecentlyUpdated data={data} title="MỚI CẬP NHẬT" loadmore="SEE MORE" />
+      <RecentlyUpdated
+        data={categorys.data}
+        title="MỚI CẬP NHẬT"
+        loadmore="SEE MORE"
+      />
     </div>
   );
 };

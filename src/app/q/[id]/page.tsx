@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import MVImage from "@/app/components/MV/IMAGE";
 import SeriNumberMovie from "@/app/components/Seri/SeriCategory";
 import ShowDescriptions from "@/app/components/ShowContent/showDescriptions";
+import Comments from "@/app/components/Comments";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
