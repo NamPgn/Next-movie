@@ -31,7 +31,6 @@ export default function Header() {
 
   return (
     <div>
-      
       <header className="bg-[#1a1a1a] text-white py-4">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
@@ -48,7 +47,7 @@ export default function Header() {
               </MVLink>
             </div>
 
-            <div className="headerSearch relative w-4/12">
+            <div className="headerSearch relative w-full md:w-4/12 mx-auto">
               <input
                 onChange={(e) => handleChange(e.target.value)}
                 type="text"

@@ -12,6 +12,10 @@ export const getCategory = async (id: string): Promise<Icategory> => {
   return await intances.get(`/category/${id}`);
 };
 
+export const getCategoryLatest = async (): Promise<Icategory> => {
+  return await intances.get(`/category/latest/next`);
+};
+
 // export const addCate = async (data: any): Promise<Icategory> => {
 //   return await intances.post(`/category/${dataToken.user._id}`, data, {
 //     headers: {

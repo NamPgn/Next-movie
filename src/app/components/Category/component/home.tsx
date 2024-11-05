@@ -3,7 +3,7 @@ import useAsyncData from "../../../../../hook/useData";
 import RecentlyUpdated from "../../RecentlyUpdated";
 
 const CategoryHomePage = () => {
-  const { data: categorys, isLoading, isError } = useAsyncData("categorys", 1);
+  const { data: categorys, isLoading, isError } = useAsyncData("categorys", 1,undefined);
   if (isLoading) {
     return <div className="seriLoading">Loading...</div>;
   }
@@ -15,7 +15,7 @@ const CategoryHomePage = () => {
       <RecentlyUpdated
         data={categorys.data}
         title="MỚI CẬP NHẬT"
-        loadmore="SEE MORE"
+        loadmore="SEE All"
       />
     </div>
   );

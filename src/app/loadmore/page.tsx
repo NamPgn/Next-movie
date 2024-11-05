@@ -25,7 +25,11 @@ const LoadMorePage = () => {
   const handlePreviosPage = () => {
     setPage((page) => page - 1);
   };
-  const { data: categorys, isLoading, isError } = useAsyncData('categorys', page);
+  const {
+    data: categorys,
+    isLoading,
+    isError,
+  } = useAsyncData("SEEALL", page, undefined);
   if (isLoading) {
     return <div className="seriLoading">Loading...</div>;
   }

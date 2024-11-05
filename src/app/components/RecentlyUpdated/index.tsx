@@ -15,7 +15,7 @@ export default function RecentlyUpdated({
   return (
     <section>
       <div className="flex justify-between items-center">
-        <h2 className="text-orange-500 text-xl font-bold mb-4">{title}</h2>
+        <h2 title={title} aria-label="Xem thêm" className="text-orange-500 text-xl font-bold mb-4">{title}</h2>
         <MVLink
           to={"/loadmore"}
           aria-label="Tải thêm nội dung"

@@ -2,10 +2,14 @@
 import useSWR from "swr";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hook";
-import { getAllcate } from "@/lib/features/categorys/thunkActions";
+import {
+  getAllcate,
+  getAllCategoryLatest,
+  getCateSlice,
+} from "@/lib/features/categorys/thunkActions";
 import { Icategory } from "@/interfaces/category";
 
-type DataTypes = "products" | "categorys";
+type DataTypes = "products" | "categorys" | "SEEALL" | "DETAIL";
 export type CategoryLoadmore = {
   data: Icategory[];
   totalCount: number;
@@ -16,29 +20,43 @@ const defaultCategoryLoadmore: CategoryLoadmore = {
   totalCount: 0,
   totalPages: 0,
 };
-const useAsyncData = (type: DataTypes, page: number) => {
+const useAsyncData = (type: DataTypes, page?: any, id?: any) => {
   const dispatch = useAppDispatch();
 
-  const dataFromStore: CategoryLoadmore = useAppSelector((state) => {
+  const dataFromStore: any = useAppSelector((state) => {
     if (type === "categorys") return state.category.category;
+    if (type === "SEEALL") return state.category.category;
     return defaultCategoryLoadmore;
   });
+
   const { data, error, isLoading } = useSWR(
     dataFromStore?.data ? `/api/${type}?page=${page}` : null,
     {
       fetcher: async () => {
         if (type === "categorys") {
+          const result = await dispatch(getAllCategoryLatest());
+          return result.payload?.data;
+        }
+        if (type === "SEEALL") {
           const result = await dispatch(getAllcate(page));
           return result.payload?.data;
         }
+    
       },
       revalidateOnFocus: false,
     }
   );
+
   useEffect(() => {
     if (data && type === "categorys") {
       dispatch({ type: "categorys/setCategorys", payload: data });
     }
+    if (data && type === "SEEALL") {
+      dispatch({ type: "categorys/setCategorysSeeAll", payload: data });
+    }
+    if (data && type === "SEEALL") {
+        dispatch({ type: "categorys/detail", payload: data });
+      }
     // Có thể thêm xử lý các loại dữ liệu khác ở đây nếu cần
   }, [data, dispatch, type]);
   return {

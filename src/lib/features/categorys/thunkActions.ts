@@ -7,12 +7,21 @@ import {
   // getAllCategoryNotReq,
   // updateCate,
   getCategory,
+  getCategoryLatest,
 } from "@/sevices/categorys";
 
 export const getAllcate = createAsyncThunk(
   "category/getAllcate",
   async (page: number) => {
     const { data }: any = await getAllcategory(page);
+    return data;
+  }
+);
+
+export const getAllCategoryLatest = createAsyncThunk(
+  "category/getAllcate",
+  async () => {
+    const { data }: any = await getCategoryLatest();
     return data;
   }
 );
