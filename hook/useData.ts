@@ -31,7 +31,9 @@ const useAsyncData = (type: DataTypes, page?: any, id?: any) => {
   });
 
   const { data, error, isLoading } = useSWR(
-    dataFromStore?.data ? `http://localhost:8001/api/${type}?page=${page}` : null,
+    dataFromStore?.data
+      ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/${type}?page=${page}`
+      : null,
     {
       fetcher: async () => {
         if (type === "categorys") {
