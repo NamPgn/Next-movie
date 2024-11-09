@@ -12,14 +12,27 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.id;
   const category: any = await fetchCategories(id);
+  
   return {
-    title: category.name,
-    description: category.des,
+    title: `${category.name} | Hoạt Hình Trung Quốc`,
+    description: `Khám phá ${category.name} với nội dung hấp dẫn và chất lượng HD. Cập nhật nhanh nhất các tập phim hoạt hình Trung Quốc với Vietsub, xem ngay tại ${category.name}.`,
     openGraph: {
-      images: category.linkImg,
+      title: `${category.name} - Hoạt Hình Trung Quốc`,
+      description: `Xem phim ${category.name} với chất lượng HD, nội dung phong phú, Vietsub cập nhật mới nhất.`,
+      url: `https://hoathinhtrungquoc.site/${id}`,
+      images: [
+        {
+          url: category.linkImg,
+          width: 800,
+          height: 600,
+          alt: `${category.name} - Hoạt Hình Trung Quốc`,
+        },
+      ],
+      type: "website",
     },
   };
 }
+
 const CategoryPage = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
   const category: any = await fetchCategories(id);
