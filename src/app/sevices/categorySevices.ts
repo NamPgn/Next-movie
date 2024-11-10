@@ -82,6 +82,21 @@ export async function fetchCategorys(page: number) {
   return data;
 }
 
-export const searCategory = async (data: any) => {
-  return await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys/search?value=${data}`);
-};
+export async function fetchWeeks(page: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys?page=` + page,
+    {
+      method: "GET",
+    }
+  );
+  const data = await response.json();
+  if (!response) {
+    return undefined;
+  }
+  if (!response) {
+    notFound();
+  }
+
+  return data;
+}
+

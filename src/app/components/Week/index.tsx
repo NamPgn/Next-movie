@@ -1,140 +1,122 @@
-// "use client";
+"use client";
 
-// import React, { useContext, useEffect, useState } from "react";
-// import SliderComponent from "../Slider";
-// import CategoryContents from "../Category/Content/Category";
-// import { Loading } from "../Message/Notification";
-// import { ApiContext } from "@/context/api";
-// import { getCategoryByWeek } from "@/sevices/week";
-// import { settingsSlider } from "@/constant";
+import React, { useEffect, useState } from "react";
+import { WEEKDAY } from "@/constant";
+import { getCategoryByWeek } from "@/sevices/categorys";
+import CategoryContents from "../Category/Content/Category";
+import useFetch from "../../../../hook/useFecht";
+import Title from "../MV/Title";
 
-// export default function WeekComponent() {
-//   const { weeks }:any = useContext(ApiContext) || {};
-//   const weekdays = [
-//     "Chủ nhật",
-//     "Thứ 2",
-//     "Thứ 3",
-//     "Thứ 4",
-//     "Thứ 5",
-//     "Thứ 6",
-//     "Thứ 7",
-//   ];
-//   var today = new Date();
-//   var day = today.getDay();
-//   const [isLoading, setIsLoading] = useState(true);
-//   const [tabs, setTabs] = useState(weekdays[day]);
-//   const [categorys, setCategory]: any = useState([]);
-//   const handleTabClick = (tabId:any) => {
-//     setTabs(tabId);
-//   };
+interface WeekComponentProps {
+  title: string;
+}
 
-//   useEffect(() => {
-//     (async () => {
-//       const { data } = await getCategoryByWeek(tabs);
-//       setIsLoading(false);
-//       setCategory(data);
-//     })();
-//     return setIsLoading(true);
-//   }, [tabs]);
-//   return (
-//     // <Tabs
-//     //   defaultActiveKey="1"
-//     //   style={style}
-//     //   centered
-//     //   items={
-//     //     weeks &&
-//     //     weeks.map((item: any, i: string) => ({
-//     //       label: item.name,
-//     //       key: (i + 1).toString(),
-//     //       children: (
-//     //         <SliderComponent
-//     //           content={
-//     //             item.products.length <= 0 && item.category.length <= 0 ? (
-//     //               <div classNameName="text-center py-4">Chưa có</div>
-//     //             ) : item.products.length <= 0 && item.category.length > 0 ? (
-//     //               item.category.map((item: any, index: number) => (
-//     //                 <div key={index} classNameName="pl-2 pr-2">
-//     //                   <CategoryContents
-//     //                     title={item.name}
-//     //                     link={"/q/" + item._id}
-//     //                     image={item.linkImg}
-//     //                     time={item.time}
-//     //                     sumSeri={item.sumSeri}
-//     //                     products={item.products}
-//     //                   />
-//     //                 </div>
-//     //               ))
-//     //             ) : (
-//     //               item.products.map((item: any, index: number) => (
-//     //                 <div key={index} classNameName="pl-2 pr-2">
-//     //                   <CategoryContents
-//     //                     title={item.name}
-//     //                     link={"/d/" + item._id + `?c=${item.typeId}`}
-//     //                     image={item.image}
-//     //                     time={item.time}
-//     //                     products={item.products}
-//     //                   />
-//     //                 </div>
-//     //               ))
-//     //             )
-//     //           }
-//     //           settings={settingsSlider}
-//     //         />
-//     //       ),
-//     //     }))
-//     //   }
-//     // ></Tabs>
+interface Category {
+  _id: string;
+  name: string;
+  slug: string;
+  linkImg: string;
+  time: string;
+  sumSeri: string;
+  products: any;
+}
 
-//     <div className="my-10">
-//       <div className="lg:px-[150px] md:px-[100px] justify-items-center grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-5 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
-//         {weeks &&
-//           weeks.map((items:any) => (
-//             <div
-//               key={items._id}
-//               className={
-//                 tabs === items.name ? "active border-none" : "cursor-pointer"
-//               }
-//               onClick={() => handleTabClick(items.name)}
-//             >
-//               <div className="text-[11px] md:text-[12px] lg:text-[14px] flex justify-center items-center px-4 py-2 text-white rounded-lg w-full ">
-//                 <p>{items.name}</p>
-//               </div>
-//             </div>
-//           ))}
-//       </div>
-//       <div className="my-5 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
-//         {isLoading == true ? (
-//           <Loading />
-//         ) : (
-//           <SliderComponent
-//             settings={settingsSlider}
-//             content={categorys?.content?.map(
-//               (itemsCategory: any, index: number) => {
-//                 return (
-//                   <div className="px-2" key={itemsCategory._id}>
-//                     <CategoryContents
-//                       title={itemsCategory.name}
-//                       link={"/q/" + itemsCategory._id}
-//                       image={itemsCategory.linkImg}
-//                       time={itemsCategory.time}
-//                       sumSeri={itemsCategory.sumSeri}
-//                       products={itemsCategory.products}
-//                     />
-//                   </div>
-//                 );
-//               }
-//             )}
-//           />
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
+interface WeekData {
+  _id: string;
+  name: string;
+}
 
-import React from 'react'
+interface CategoryResponse {
+  content: Category[];
+}
 
-export default function page() {
+export default function WeekComponent({ title }: WeekComponentProps) {
+  const { data: weeks, error } = useFetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/weeks`
+  );
+  const today = new Date();
+  const day = today.getDay();
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [tabs, setTabs] = useState(WEEKDAY[day]);
+  const [categorys, setCategory] = useState<CategoryResponse | null>(null);
+
+  const handleTabClick = (tabId: string) => {
+    setTabs(tabId);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await getCategoryByWeek(tabs);
+        setCategory(data);
+      } catch (error) {
+        console.error("Error fetching category data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [tabs]);
+
+  if (error) {
+    return (
+      <div className="text-center text-red-500 p-4">
+        Error loading schedule data
+      </div>
+    );
+  }
+
   return (
-    <div>page</div>
-  )
+    <div>
+      <Title>Lịch Phát Sóng</Title>
+      <div className="container mx-auto">
+        {/* Week days tabs */}
+        <div className="grid grid-cols-7 gap-1 mt-4 mb-4">
+          {weeks?.map((item: WeekData) => (
+            <button
+              key={item._id}
+              className={`${
+                tabs === item.name
+                  ? "bg-[#0284C7] text-white"
+                  : "bg-[#27272A] text-white hover:bg-[#3F3F46] cursor-pointer"
+              }`}
+              onClick={() => handleTabClick(item.name)}
+              aria-label={`Xem lịch ${item.name}`}
+            >
+              <div className="text-[14px] py-2 text-center">
+                <span>{item.name}</span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Content grid */}
+        <div className="my-5 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
+          {isLoading ? (
+            <div className="text-center py-8 text-white h-screen">
+              <span className="animate-pulse">Đang tải...</span>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {categorys?.content?.map((item: Category) => (
+                <div className="px-2" key={item._id}>
+                  <CategoryContents
+                    title={item.name}
+                    link={`/q/${item.slug}`}
+                    image={item.linkImg}
+                    time={item.time}
+                    sumSeri={item.sumSeri}
+                    products={item.products}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }

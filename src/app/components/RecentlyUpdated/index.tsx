@@ -1,7 +1,10 @@
 import { Icategory } from "@/interfaces/category";
 import MVLink from "../Location/Link";
 import dynamic from "next/dynamic";
-const CategoryContents = dynamic(() => import('../Category/Content/Category'))
+import LazyLoadOtherComponents from "../LazyOtherComponents";
+import WeekComponent from "../Week";
+import Title from "../MV/Title";
+const CategoryContents = dynamic(() => import("../Category/Content/Category"));
 type CategoryContentType = {
   loadmore?: string;
   title: string;
@@ -15,7 +18,7 @@ export default function RecentlyUpdated({
   return (
     <section>
       <div className="flex justify-between items-center">
-        <h2 title={title} aria-label="Xem thêm" className="text-orange-500 text-xl font-bold mb-4">{title}</h2>
+        <Title>Mới Cập Nhật</Title>
         <MVLink
           to={"/loadmore"}
           aria-label="Tải thêm nội dung"
@@ -49,6 +52,10 @@ export default function RecentlyUpdated({
             );
           })}
       </div>
+
+      <LazyLoadOtherComponents>
+        <WeekComponent title={"Lịch Chiếu"} />
+      </LazyLoadOtherComponents>
     </section>
   );
 }

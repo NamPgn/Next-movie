@@ -9,6 +9,7 @@ type ImageInterFace = {
   objectFit?: string;
   placeholder?: "blur" | "empty";
   blurDataURL?: string;
+  title?: string;
 };
 export default function MVImage({
   alt,

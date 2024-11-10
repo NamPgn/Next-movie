@@ -36,6 +36,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
           <div className="w-full md:w-1/3">
             <div className="relative">
               <MVImage
+                title={category.name}
                 src={category?.linkImg}
                 alt={category?.name}
                 width={300}

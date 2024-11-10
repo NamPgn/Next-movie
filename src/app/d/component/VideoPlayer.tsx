@@ -54,7 +54,7 @@ const VideoPlayer = ({
           <iframe
             allowFullScreen
             title="video-player"
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full max-w-full"
             src={videoUrl}
             onLoad={() => setVideoStatus("playing")}
             onError={() => setVideoStatus("error")}
@@ -89,12 +89,10 @@ const VideoPlayer = ({
         );
     }
   };
-  if (videoStatus == "loading") {
-    return <LoadingUsagyuuun />;
-  }
+
   return (
     <>
-      <div className="movie relative aspect-video">{renderVideo()}</div>
+      <div className="movie relative aspect-video w-full">{renderVideo()}</div>
       <div className="p-4 rounded-lg bg-gray-900 mt-4">
         <div className="flex flex-col sm:flex-row items-center justify-between">
           <span className="text-orange-500 font-medium mb-2 sm:mb-0 sm:mr-4">

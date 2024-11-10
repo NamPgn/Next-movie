@@ -4,7 +4,7 @@ import MVLink from "../../Location/Link";
 import MVImage from "../../MV/IMAGE";
 import { debounce } from "lodash";
 import SearchResults from "../../Search";
-import { searCategory } from "@/app/sevices/categorySevices";
+import { searCategory } from "@/sevices/categorys";
 
 export default function Header() {
   const [searchValue, setSearchValue] = useState("");

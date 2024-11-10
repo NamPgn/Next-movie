@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /private/
 Allow: /
-Sitemap: https://tromphim.site/sitemap.xml
+Sitemap: https://hoathinhtrungquoc.site/sitemap.xml
