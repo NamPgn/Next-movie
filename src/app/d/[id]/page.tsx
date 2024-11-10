@@ -17,18 +17,10 @@ export async function generateMetadata(
   const id = params.id;
   const res: any = await fetchProduct(id);
   return {
-    title: `${res.category.name} - Tập ${res.seri} | Xem Phim Hoạt Hình Trung Quốc HD`,
+    title: res.category.name + " Tập " + res.seri,
     description: res.category.des,
     openGraph: {
-      url: `https://hoathinhtrungquoc.site/${id}`,
-      images: [
-        {
-          url:res.category.linkImg,
-          secureUrl:res.category.linkImg,
-          width: 800,
-          height: 600,
-        }
-      ],
+      images: res.category.linkImg,
     },
   };
 }

@@ -13,20 +13,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.id;
   const category: any = await fetchCategories(id);
   return {
-    title: `${category.name} - Hoạt Hình Trung Quốc`,
+    title: category.name,
     description: category.des,
     openGraph: {
-      url: `https://hoathinhtrungquoc.site/${id}`,
-      images: [
-        {
-          url:category.linkImg,
-          secureUrl:category.linkImg,
-          alt: `${category.name} - Hoạt Hình Trung Quốc`,
-          width: 800,
-          height: 600,
-        }
-      ],
-      
+      images: category.linkImg,
     },
   };
 }
