@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hoạt Hình Trung Quốc",
     url: "https://hoathinhtrungquoc.site/",
-    description:
-      "HH3D tuyển chọn phim bộ, phim lẻ hoạt trung quốc 3D viêt sub mới nhất với đồ họa đẹp mắt, nội dung lôi cuốn, hấp dẫn, phim xem nhanh và chất lượng HD.",
     images: [
       {
         url: "https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1721825684/category/category_1689076028777-a6e7592292d5428b1bc4.jpg.jpg",

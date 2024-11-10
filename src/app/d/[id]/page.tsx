@@ -16,23 +16,19 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const id = params.id;
   const res: any = await fetchProduct(id);
-  
   return {
-    title: `${res.category.name} - Tập ${res.seri} | Hoạt Hình Trung Quốc`,
-    description: `Xem ${res.category.name} Tập ${res.seri}, phim hoạt hình Trung Quốc với nội dung hấp dẫn, đồ họa đẹp mắt và chất lượng HD. Cập nhật tập mới nhất tại ${res.category.name}.`,
+    title: `${res.category.name} - Tập ${res.seri} | Xem Phim Hoạt Hình Trung Quốc HD`,
+    description: res.category.des,
     openGraph: {
-      title: `${res.category.name} - Tập ${res.seri}`,
-      description: `Tập ${res.seri} của ${res.category.name}, thuộc thể loại phim hoạt hình Trung Quốc. Cập nhật mới nhất với chất lượng HD và Vietsub.`,
       url: `https://hoathinhtrungquoc.site/${id}`,
       images: [
         {
-          url: res.category.linkImg,
+          url:res.category.linkImg,
+          secureUrl:res.category.linkImg,
           width: 800,
           height: 600,
-          alt: `${res.category.name} - Tập ${res.seri} | Hoạt Hình Trung Quốc`,
-        },
+        }
       ],
-      type: "video.episode",
     },
   };
 }
