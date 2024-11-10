@@ -21,6 +21,8 @@ export async function generateMetadata(
     description: res.category.des,
     openGraph: {
       images: res.category.linkImg,
+      type: "video.episode",
+      url: `https://hoathinhtrungquoc.site/d/${res.category.slug}-episode-${res.seri}`,
     },
   };
 }
