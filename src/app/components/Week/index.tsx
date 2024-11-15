@@ -94,7 +94,7 @@ export default function WeekComponent({ title }: WeekComponentProps) {
         </div>
 
         {/* Content grid */}
-        <div className="my-5 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
+        <div className="my-5 text-medium text-gray-500 dark:text-gray-400 rounded-lg w-full">
           {isLoading ? (
             <div className="text-center py-8 text-white h-screen">
               <span className="animate-pulse">Đang tải...</span>

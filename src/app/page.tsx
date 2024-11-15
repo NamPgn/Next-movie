@@ -1,12 +1,15 @@
 import CategoryHomePage from "./components/Category/component/home";
 import Group from "./components/Internet/Group";
+import MainLayout from "./MainLayout";
 
 const HomePage = () => {
   return (
-    <div>
-      <Group/>
-      <CategoryHomePage />
-    </div>
+    <>
+      <MainLayout>
+        <Group />
+        <CategoryHomePage />
+      </MainLayout>
+    </>
   );
 };
 

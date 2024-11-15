@@ -15,10 +15,11 @@ export default function RecentlyUpdated({
   title,
   data,
 }: CategoryContentType) {
+  
   return (
     <section>
       <div className="flex justify-between items-center">
-        <Title>Mới Cập Nhật</Title>
+        <Title>{title}</Title>
         <MVLink
           to={"/loadmore"}
           aria-label="Tải thêm nội dung"

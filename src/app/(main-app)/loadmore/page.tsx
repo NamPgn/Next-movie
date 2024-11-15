@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-import RecentlyUpdated from "../components/RecentlyUpdated";
 import { Icategory } from "@/interfaces/category";
 import { useAppDispatch, useAppSelector } from "@/lib/hook";
 import { getAllcate } from "@/lib/features/categorys/thunkActions";
-import LoadingUsagyuuun from "../components/Loading";
+import LoadingUsagyuuun from "@/app/components/Loading";
+import RecentlyUpdated from "@/app/components/RecentlyUpdated";
 export type CategoryLoadmore = {
   data: Icategory[];
   totalCount: number;

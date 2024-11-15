@@ -4,6 +4,7 @@ import MVImage from "@/app/components/MV/IMAGE";
 import SeriNumberMovie from "@/app/components/Seri/SeriCategory";
 import ShowDescriptions from "@/app/components/ShowContent/showDescriptions";
 import Comments from "@/app/components/Comments";
+import { Badge } from "@/components/ui/badge";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -65,16 +66,18 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
           <div className="w-full md:w-2/3">
             <h1 className="text-lg font-bold mb-2">{category.name}</h1>
             <div className="flex items-center gap-4 text-sm text-gray-400 mb-2">
-              <span> {category.time}</span>
-              <span className="bg-blue-600 text-white px-2 py-1 rounded">
-                {category.sumSeri} Tập
-              </span>
+              <span> Tổng:</span>
+              <Badge variant="secondary">{category.sumSeri} Tập</Badge>
             </div>
-            <div className="mb-2">
+            <div className="flex items-center gap-4 text-sm text-gray-400 mb-2">
+              <span> Thời Gian:</span>
+              <Badge variant="secondary">{category.time}</Badge>
+            </div>
+            <div className="flex items-center gap-4 text-sm text-gray-400 mb-2 ">
               <span className="text-gray-400">Thể Loại: </span>
-              <span>{category.type}</span>
+              <Badge variant="secondary">{category.type}</Badge>
             </div>
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-4 ">
               <span className="text-gray-400 mr-2">Đánh giá: </span>
               <div className="flex">
                 {[...Array(10)].map((_, i) => (
@@ -109,6 +112,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </div>
       </div>
+      <Comments id={category?._id} />
     </>
   );
 };
