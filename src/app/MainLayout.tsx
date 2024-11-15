@@ -1,7 +1,9 @@
 import React from "react";
 import CategoryProductSidebar from "./components/Category/component/sidebar";
 
+
 const MainLayout = ({ children }: any) => {
+
   return (
       <main className="container mx-auto">
         <div className="text-white min-h-screen lg:px-[8%] md:px-[8%] px-[3%] py-[10px]">

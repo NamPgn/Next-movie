@@ -14,3 +14,8 @@ export const editImageUser = async (id: any, data: any) =>
       Authorization: `Bearer ${dataToken.token}`,
     },
   });
+
+  export const refreshTokenAuth = async (refreshToken: any) => {
+    return await intances.post("/refreshToken", refreshToken);
+  };
+  
