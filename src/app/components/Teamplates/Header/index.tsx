@@ -9,12 +9,26 @@ import AuthHeader from "./component/auth";
 import { isAuthentication } from "../../../../../hook/isGetValue";
 import { useAppSelector } from "@/lib/hook";
 import { RootState } from "@/lib/store";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
   const { user } = isAuthentication();
   const userInfor = useAppSelector((state: RootState) => state.user);
   const [searchValue, setSearchValue] = useState("");
   const [valueSearch, setvalueSearch] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
   const [results, setResults] = useState([]);
   const debouncedSearch = debounce(async (val) => {
     const data = await searCategory(val);
@@ -44,7 +58,7 @@ export default function Header() {
     <header className="bg-[#1a1a1a] text-white py-4">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 hidden md:block">
           <MVLink to="/" aria-label="Trang chủ">
             <MVImage
               src="/images/logo.png"
@@ -75,6 +89,77 @@ export default function Header() {
             Tiên Hiệp
           </MVLink>
         </nav>
+
+        {/* Mobile Navigation Menu */}
+        <Sheet >
+          <SheetTrigger asChild>
+            <button
+              className="lg:hidden"
+              title="menu"
+              aria-label="Mở menu"
+              onClick={toggleMobileMenu}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                ></path>
+              </svg>
+            </button>
+          </SheetTrigger>
+          <SheetContent className="text-white bg-[#23232a]">
+            <SheetHeader>
+              <div className="flex-shrink-0">
+                <MVLink to="/" aria-label="Trang chủ">
+                  <MVImage
+                    src="/images/logo.png"
+                    width={160}
+                    height={60}
+                    alt="Hoạt Hình Trung Quốc"
+                    className="w-auto h-10 object-contain"
+                  />
+                </MVLink>
+              </div>
+            </SheetHeader>
+
+            <MVLink
+              to="/"
+              className="block py-2 hover:text-gray-400"
+              title="Trang chủ"
+            >
+              Trang chủ
+            </MVLink>
+            <MVLink
+              to="/tu-tien"
+              className="block py-2 hover:text-gray-400"
+              title="Tu Tiên"
+            >
+              Tu Tiên
+            </MVLink>
+            <MVLink
+              to="/ova"
+              className="block py-2 hover:text-gray-400"
+              title="OVA"
+            >
+              OVA
+            </MVLink>
+            <MVLink
+              to="/tien-hiep"
+              className="block py-2 hover:text-gray-400"
+              title="Tiên Hiệp"
+            >
+              Tiên Hiệp
+            </MVLink>
+          </SheetContent>
+        </Sheet>
 
         {/* Search Bar */}
         <div className="relative w-full max-w-xs lg:max-w-md mx-4">
@@ -110,25 +195,7 @@ export default function Header() {
         </div>
 
         {/* Login Button */}
-
         <AuthHeader userId={user} userInfor={userInfor} />
-        {/* Mobile Menu Button */}
-        <button className="lg:hidden" title="menu" aria-label="Mở menu">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            ></path>
-          </svg>
-        </button>
       </div>
     </header>
   );

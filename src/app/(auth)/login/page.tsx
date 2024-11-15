@@ -33,7 +33,7 @@ export default function LoginPage() {
     }
   };
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[#23232a]">
+    <div className="flex justify-center items-center min-h-screen bg-[#23232a] p-5">
       <div className="w-full max-w-md p-8 bg-[#1a1a20] rounded-lg shadow-lg">
         <h2 className="text-center text-white text-3xl font-semibold mb-8">
           Đăng Nhập
