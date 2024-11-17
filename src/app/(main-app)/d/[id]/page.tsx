@@ -40,7 +40,7 @@ const DetailWatched = async ({
   return (
     <div className="text-white">
       <div className="flex">
-        <div>
+        <div className="w-full">
           <VideoPlayer getOneProductDetail={getOneProductDetail} />
           <SeriDetailProducts
             productId={getOneProductDetail._id}
