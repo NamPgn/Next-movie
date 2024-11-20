@@ -5,6 +5,7 @@ import SeriNumberMovie from "@/app/components/Seri/SeriCategory";
 import ShowDescriptions from "@/app/components/ShowContent/showDescriptions";
 import Comments from "@/app/components/Comments";
 import { Badge } from "@/components/ui/badge";
+import MVLink from "@/app/components/Location/Link";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -58,22 +59,26 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                   />
                 </svg>
               </div>
-              <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white py-2 px-4 rounded-full font-bold">
-                ► Xem phim
-              </button>
+              <MVLink
+                to={category?.products[category.products.length - 1]?.slug}
+              >
+                <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white py-2 px-4 rounded-full font-bold">
+                  ► Xem phim
+                </button>
+              </MVLink>
             </div>
           </div>
           <div className="w-full md:w-2/3">
             <h1 className="text-lg font-bold mb-2">{category.name}</h1>
-            <div className="flex items-center gap-4 text-sm text-gray-400 mb-2">
+            <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
               <span> Tổng:</span>
               <Badge variant="secondary">{category.sumSeri} Tập</Badge>
             </div>
-            <div className="flex items-center gap-4 text-sm text-gray-400 mb-2">
+            <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
               <span> Thời Gian:</span>
               <Badge variant="secondary">{category.time}</Badge>
             </div>
-            <div className="flex items-center gap-4 text-sm text-gray-400 mb-2 ">
+            <div className="flex items-center gap-2 text-sm text-gray-400 mb-2 ">
               <span className="text-gray-400">Thể Loại: </span>
               <Badge variant="secondary">{category.type}</Badge>
             </div>

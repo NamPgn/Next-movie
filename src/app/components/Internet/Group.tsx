@@ -19,7 +19,10 @@ const Group = () => {
                   rel="noopener noreferrer"
                   aria-label="Truy cập trang Facebook Cộng đồng Phim"
                 >
-                  <button className="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 shadow-md group transition-all duration-300">
+                  <button
+                    className="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 shadow-md group transition-all duration-300"
+                    aria-label="Truy cập trang Facebook Cộng đồng Phim"
+                  >
                     <svg
                       className="transition-all duration-300 group-hover:scale-110"
                       xmlns="http://www.w3.org/2000/svg"

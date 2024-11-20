@@ -38,7 +38,7 @@ import ProfileForm from "./me/page";
 const AuthHeader = ({ userInfor }: any) => {
   const dispath = useAppDispatch();
   const { handleSuccess } = useToastMessages();
-  
+
   return (
     <>
       {userInfor?.isLogin ? (
@@ -138,7 +138,7 @@ const AuthHeader = ({ userInfor }: any) => {
         </DropdownMenu>
       ) : (
         <MVLink to="/login">
-          <Button className="lg:block bg-yellow-600  hover:bg-yellow-500">
+          <Button className="lg:block bg-yellow-600 hover:bg-yellow-700 text-white font-bold">
             Đăng Nhập
           </Button>
         </MVLink>
