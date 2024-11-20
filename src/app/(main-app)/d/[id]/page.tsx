@@ -17,12 +17,12 @@ export async function generateMetadata(
   const id = params.id;
   const res: any = await fetchProduct(id);
   return {
-    title: res.category.name + " Tập " + res.seri,
-    description: res.category.des,
+    title: res?.category?.name + " Tập " + res?.seri,
+    description: res?.category?.des,
     openGraph: {
-      images: res.category.linkImg,
+      images: res?.category?.linkImg,
       type: "video.episode",
-      url: `https://hoathinhtrungquoc.site/d/${res.category.slug}-episode-${res.seri}`,
+      url: `https://hoathinhtrungquoc.site/d/${res?.category?.slug}-episode-${res?.seri}`,
     },
   };
 }
@@ -34,6 +34,8 @@ const DetailWatched = async ({
 }) => {
   // Fetch dữ liệu từ server
   const getOneProductDetail = await fetchProduct(params.id);
+  console.log(getOneProductDetail)
+
   if (!getOneProductDetail) {
     notFound(); // Trả về lỗi 404 nếu không tìm thấy dữ liệu
   }

@@ -100,3 +100,21 @@ export async function fetchWeeks(page: number) {
   return data;
 }
 
+
+export async function fetchCategorySitemap() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys`,
+    {
+      method: "GET",
+    }
+  );
+  const data = await response.json();
+  if (!response) {
+    return undefined;
+  }
+  if (!response) {
+    notFound();
+  }
+
+  return data;
+}
