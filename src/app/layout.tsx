@@ -35,7 +35,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <html lang="vi">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="google-site-verification"  content="rvLdVjZgcGyGsCss87hFQ59mpF6aOtiXLeaqiFoyBow" />
+        <meta name="google-site-verification" content="klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE" />
       </Head>
       <body className={inter.className + " bg-[#23232a] "}>
         <StoreProvider>
