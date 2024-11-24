@@ -100,12 +100,12 @@ export async function fetchWeeks(page: number) {
   return data;
 }
 
-
 export async function fetchCategorySitemap() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys`,
     {
       method: "GET",
+      cache: "no-cache",
     }
   );
   const data = await response.json();
