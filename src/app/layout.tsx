@@ -34,7 +34,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
       <Head>
-      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" href="/favicon.png" sizes="any" />
         <meta
           name="google-site-verification"
           content="klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE"
