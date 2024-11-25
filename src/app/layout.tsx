@@ -24,14 +24,6 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
-  icons: [
-    {
-      rel: "icon",
-      type: "image/png",
-      sizes: "256x256",
-      url: "/favicon.png",
-    },
-  ],
 };
 import Header from "./components/Teamplates/Header";
 import Footer from "@/app/components/Teamplates/Footer";
@@ -42,6 +34,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
       <Head>
+      <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta
           name="google-site-verification"
           content="klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE"
