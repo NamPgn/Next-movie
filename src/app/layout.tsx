@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 const inter = Roboto({ subsets: ["latin"], weight: "300" });
 
 export const metadata: Metadata = {
@@ -24,12 +24,14 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
-  icons:[
+  icons: [
     {
-      url:"/favicon.ico",
-      href:"/favicon.ico"
-    }
-  ]
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      url: "/favicon.png",
+    },
+  ],
 };
 import Header from "./components/Teamplates/Header";
 import Footer from "@/app/components/Teamplates/Footer";
@@ -40,7 +42,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
       <Head>
-        <meta name="google-site-verification" content="klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE" />
+        <meta
+          name="google-site-verification"
+          content="klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE"
+        />
       </Head>
       <body className={inter.className + " bg-[#23232a] "}>
         <StoreProvider>
