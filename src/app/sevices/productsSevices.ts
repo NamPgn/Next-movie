@@ -39,7 +39,9 @@ export async function fetchProductsCategory(): Promise<FetchProductsResult> {
   }
 }
 
-export async function fetchProducts(page:number | string): Promise<FetchProductsResult> {
+export async function fetchProducts(
+  page: number | string
+): Promise<FetchProductsResult> {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/products?page=${page}`,

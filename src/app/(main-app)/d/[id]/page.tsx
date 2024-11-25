@@ -32,12 +32,10 @@ const DetailWatched = async ({
 }: {
   params: { id: string; c: string };
 }) => {
-  // Fetch dữ liệu từ server
   const getOneProductDetail = await fetchProduct(params.id);
-  console.log(getOneProductDetail)
 
   if (!getOneProductDetail) {
-    notFound(); // Trả về lỗi 404 nếu không tìm thấy dữ liệu
+    notFound();
   }
   return (
     <div className="text-white">
