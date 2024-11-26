@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     google: "klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE",
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: '/icon.ico',
   },
 };
 import Header from "./components/Teamplates/Header";
@@ -40,7 +40,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
       <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.ico" sizes="any" />
       </Head>
       <body className={inter.className + " bg-[#23232a] "}>
         <StoreProvider>
