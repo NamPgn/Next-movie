@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
+  verification: {
+    google: "klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE",
+  },
 };
 import Header from "./components/Teamplates/Header";
 import Footer from "@/app/components/Teamplates/Footer";
@@ -34,11 +37,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
       <Head>
-      <link rel="icon" href="/favicon.png" sizes="any" />
-        <meta
-          name="google-site-verification"
-          content="klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE"
-        />
+        <link rel="icon" href="/favicon.png" sizes="any" />
       </Head>
       <body className={inter.className + " bg-[#23232a] "}>
         <StoreProvider>
