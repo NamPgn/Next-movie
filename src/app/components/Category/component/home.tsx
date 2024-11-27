@@ -1,23 +1,21 @@
 "use client";
 
-import useAsyncData from "../../../../../hook/useData";
+import useFetch from "../../../../../hook/useFecht";
 import LoadingUsagyuuun from "../../Loading";
 import dynamic from "next/dynamic";
 
-
 const RecentlyUpdated = dynamic(() => import("../../RecentlyUpdated"));
 const CategoryHomePage = () => {
- 
   const {
     data: categorys,
     isLoading,
-    isError,
-  } = useAsyncData("categorys", 1, undefined);
- 
+    error,
+  } = useFetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/category/latest/next`);
+
   if (isLoading) {
     return <LoadingUsagyuuun />;
   }
-  if (isError) {
+  if (error) {
     return <div>Server error</div>;
   }
 
