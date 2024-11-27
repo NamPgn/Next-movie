@@ -1,0 +1,5 @@
+[[redirects]]
+from = "https://hoathinhtrungquoc.site/*"
+to = "https://hhhihi.site/:splat"
+status = 301
+force = true
