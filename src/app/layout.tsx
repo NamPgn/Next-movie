@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "https://hoathinhtrungquoc.site/",
     images: [
       {
-        url: "https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1730816245/category/hoa-giang-ho-chi-bat-luong-nhan-phan-6-300x450.jpg.jpg",
+        url: "https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1732691384/hoa-giang-ho-chi-bat-luong-nhan-phan-6-2-1_qkxcfi.jpg",
         width: 800,
         height: 600,
         alt: "Hoạt Hình Trung Quốc",
