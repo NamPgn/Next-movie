@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "https://hoathinhtrungquoc.site/",
     images: [
       {
-        url: "https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1730816245/category/hoa-giang-ho-chi-bat-luong-nhan-phan-6-300x450.jpg.jpg",
+        url: "https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1732691384/hoa-giang-ho-chi-bat-luong-nhan-phan-6-2-1_qkxcfi.jpg",
         width: 800,
         height: 600,
         alt: "Hoạt Hình Trung Quốc",
@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE",
+  },
+  icons: {
+    icon: '/icon.ico',
   },
 };
 import Header from "./components/Teamplates/Header";
@@ -37,7 +40,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
       <Head>
-        <link rel="icon" href="/favicon.png" sizes="any" />
+        <link rel="icon" href="/icon.ico" sizes="any" />
       </Head>
       <body className={inter.className + " bg-[#23232a] "}>
         <StoreProvider>
