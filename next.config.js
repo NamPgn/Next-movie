@@ -11,12 +11,10 @@ module.exports = async (phase, { defaultConfig }) => {
       ],
     },
     webpack(config) {
-      // Lấy rule xử lý file SVG mặc định của Next.js
       const fileLoaderRule = config.module.rules.find((rule) =>
         rule.test?.test?.('.svg')
       );
 
-      // Cập nhật rule để hỗ trợ cả `@svgr/webpack` và xử lý SVG dạng URL
       config.module.rules.push(
         {
           ...fileLoaderRule,
@@ -30,8 +28,6 @@ module.exports = async (phase, { defaultConfig }) => {
           use: ["@svgr/webpack"], // Sử dụng @svgr/webpack
         }
       );
-
-      // Loại trừ SVG khỏi rule mặc định của Next.js
       fileLoaderRule.exclude = /\.svg$/i;
 
       return config;
@@ -39,13 +35,13 @@ module.exports = async (phase, { defaultConfig }) => {
     async redirects() {
       return [
         {
-          source: 'https://hoathinhtrungquoc.site/:path*',
+          source: '/:path*',  // Sử dụng đường dẫn tương đối
           destination: 'https://hhhihi.site/:path*',
-          permanent: true, 
+          permanent: true,  // Mã trạng thái 301 cho redirect vĩnh viễn
         },
       ]
     },
   };
-  
+
   return nextConfig;
 };
