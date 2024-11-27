@@ -19,27 +19,18 @@ module.exports = async (phase, { defaultConfig }) => {
         {
           ...fileLoaderRule,
           test: /\.svg$/i,
-          resourceQuery: /url/, // *.svg?url
+          resourceQuery: /url/,
         },
         {
           test: /\.svg$/i,
-          issuer: /\.[jt]sx?$/, // Xử lý khi được import trong JS/TS
-          resourceQuery: { not: [/url/] }, // Không áp dụng nếu có `?url`
-          use: ["@svgr/webpack"], // Sử dụng @svgr/webpack
+          issuer: /\.[jt]sx?$/,
+          resourceQuery: { not: [/url/] }, 
+          use: ["@svgr/webpack"],
         }
       );
       fileLoaderRule.exclude = /\.svg$/i;
 
       return config;
-    },
-    async redirects() {
-      return [
-        {
-          source: '/:path*',  // Sử dụng đường dẫn tương đối
-          destination: 'https://hhhihi.site/:path*',
-          permanent: true,  // Mã trạng thái 301 cho redirect vĩnh viễn
-        },
-      ]
     },
   };
 
