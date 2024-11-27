@@ -36,7 +36,16 @@ module.exports = async (phase, { defaultConfig }) => {
 
       return config;
     },
+    async redirects() {
+      return [
+        {
+          source: 'https://hoathinhtrungquoc.site/:path*',
+          destination: 'https://hhhihi.site/:path*',
+          permanent: true, 
+        },
+      ]
+    },
   };
-
+  
   return nextConfig;
 };
