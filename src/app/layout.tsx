@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/toaster";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Roboto({ subsets: ["latin"], weight: "300" });
 
 export const metadata: Metadata = {
@@ -49,6 +50,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Header />
           {children}
           <Analytics />
+          <SpeedInsights />
           <Footer />
           <Toaster />
         </StoreProvider>
