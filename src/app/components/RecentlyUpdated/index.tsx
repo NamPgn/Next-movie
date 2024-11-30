@@ -1,10 +1,8 @@
 import { Icategory } from "@/interfaces/category";
 import MVLink from "../Location/Link";
 import dynamic from "next/dynamic";
-import LazyLoadOtherComponents from "../LazyOtherComponents";
 import WeekComponent from "../Week";
 import Title from "../MV/Title";
-import SeeAllIcon from "@/assets/icons/see-all.svg";
 const CategoryContents = dynamic(() => import("../Category/Content/Category"));
 type CategoryContentType = {
   loadmore?: string;
@@ -32,7 +30,19 @@ export default function RecentlyUpdated({
             title="Xem tất cả"
           >
             <span className="decoration-wavy decoration-2">{loadmore}</span>
-            <SeeAllIcon className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:translate-x-1" />
+            <svg
+              className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:translate-x-1"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              />
+            </svg>
           </div>
         </MVLink>
       </div>
@@ -56,10 +66,7 @@ export default function RecentlyUpdated({
             );
           })}
       </div>
-
-      <LazyLoadOtherComponents>
-        <WeekComponent title={"Lịch Chiếu"} />
-      </LazyLoadOtherComponents>
+      <WeekComponent title={"Lịch Chiếu"} />
     </div>
   );
 }

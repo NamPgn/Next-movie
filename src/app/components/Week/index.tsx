@@ -6,6 +6,7 @@ import { getCategoryByWeek } from "@/sevices/categorys";
 import CategoryContents from "../Category/Content/Category";
 import useFetch from "../../../../hook/useFecht";
 import Title from "../MV/Title";
+import LazyLoadOtherComponents from "../LazyOtherComponents";
 
 interface WeekComponentProps {
   title: string;
@@ -70,7 +71,7 @@ export default function WeekComponent({ title }: WeekComponentProps) {
   }
 
   return (
-    <div>
+    <LazyLoadOtherComponents>
       <Title>Lịch Phát Sóng</Title>
       <div className="container mx-auto">
         {/* Week days tabs */}
@@ -117,6 +118,6 @@ export default function WeekComponent({ title }: WeekComponentProps) {
           )}
         </div>
       </div>
-    </div>
+    </LazyLoadOtherComponents>
   );
 }
