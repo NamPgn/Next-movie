@@ -44,6 +44,32 @@
     --ring: 228 73% 13%;
 
     --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -58,18 +84,18 @@
 
 .scroll-containers-comment {
   max-height: 40rem;
-  overflow-y: auto; 
+  overflow-y: auto;
   background-color: #1a202c;
-  border-radius: 0.75rem; 
+  border-radius: 0.75rem;
   padding: 1rem;
-  margin-top: 1rem; 
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem; 
+  gap: 1rem;
 }
 
 .scroll-containers-comment::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 .scroll-containers-comment::-webkit-scrollbar-thumb {
@@ -79,4 +105,49 @@
 
 .scroll-containers-comment::-webkit-scrollbar-track {
   background-color: #2d3748; /* Màu nền của thanh cuộn */
+}
+@layer base {
+  :root {
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+.flex-container {
+  display: flex;
+  gap: 16px; /* Khoảng cách giữa các cột */
+  align-items: flex-start; /* Căn chỉnh các item ở đầu */
+  padding: 16px; /* Khoảng cách tổng thể */
+}
+
+.flex-container .column {
+  border-radius: 8px; /* Bo góc mềm mại */
+  background-color: #f9f9f9; /* Màu nền sáng nhẹ */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+  padding: 16px;
+}
+
+.flex-container .left-column {
+  width: 25%; /* Cột trái chiếm 1/4 */
+}
+
+.flex-container .right-column {
+  width: 75%; /* Cột phải chiếm 3/4 */
 }

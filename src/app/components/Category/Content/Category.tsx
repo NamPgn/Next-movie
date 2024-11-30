@@ -6,10 +6,10 @@ import MVImage from "../../MV/IMAGE";
 interface CategoryContent {
   text?: string;
   title: string;
-  link: any;
-  image: string;
+  link?: any;
+  image?: string;
   sumSeri?: any;
-  time: string;
+  time?: string;
   typecm?: string;
   year?: string;
   products?: [];
@@ -58,7 +58,7 @@ const CategoryContents = memo(
           <MVLink to={link}>
             <h2
               style={{ color: "#fff" }}
-              className="text-sm md:text-md lg:text-lg font-bold"
+              className="text-sm md:text-md lg:text-lg font-bold line-clamp-1"
             >
               {title}
             </h2>
@@ -73,7 +73,7 @@ const CategoryContents = memo(
               Full HD/Vietsub
             </p>
             <p className="mr-2 text-gray-300">{typecm}</p>
-            <p className="text-gray-400 text-sm">({time})</p>
+            <p className="text-gray-400 text-sm">{time}</p>
           </div>
           <div className="font-semibold mt-2">{year ? `${year}` : ""}</div>
         </div>

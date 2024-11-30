@@ -20,9 +20,16 @@ export const getCategoryByWeek = async (name: any) => {
   return await intances.get(`/week?w=${name}`);
 };
 
-
 export const searCategory = async (data: any) => {
-  return await intances.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys/search?value=${data}`);
+  return await intances.get(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys/search?value=${data}`
+  );
+};
+
+export const getReleasesCategory = async () => {
+  return await intances.get(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys/releases`
+  );
 };
 // export const addCate = async (data: any): Promise<Icategory> => {
 //   return await intances.post(`/category/${dataToken.user._id}`, data, {

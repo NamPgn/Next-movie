@@ -22,4 +22,5 @@ export interface isCategorysSlice {
   isLoading: boolean;
   categoryNotReqId: string[];
   details: {};
+  releases?:[]
 }

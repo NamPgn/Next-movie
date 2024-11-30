@@ -3,6 +3,7 @@ import {
   getAllcate,
   // getAllCategoryNotReqSlice,
   getCateSlice,
+  getReleasesCategorys,
   // addCateGorySlice,
   // updateCatgorySlice,
   // deleteCategorySlice,
@@ -18,6 +19,7 @@ const state: isCategorysSlice = {
   isError: false,
   categoryNotReqId: [],
   details: {},
+  releases: [],
 };
 const categorySlice = createSlice({
   name: "category",
@@ -35,6 +37,15 @@ const categorySlice = createSlice({
       .addCase(getAllcate.rejected, (state, action) => {
         state.isError = true;
       });
+
+    builder
+      .addCase(getReleasesCategorys.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.releases = action.payload;
+      })
+      .addCase(getReleasesCategorys.pending, (state, action) => {
+        state.isLoading = true;
+      })
 
     // builder
     //   .addCase(getAllCategoryNotReqSlice.fulfilled, (state, action) => {

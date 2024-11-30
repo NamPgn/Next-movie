@@ -8,6 +8,7 @@ import {
   // updateCate,
   getCategory,
   getCategoryLatest,
+  getReleasesCategory,
 } from "@/sevices/categorys";
 
 export const getAllcate = createAsyncThunk(
@@ -30,6 +31,14 @@ export const getCateSlice = createAsyncThunk(
   "category/getOne",
   async (id: string) => {
     const { data }: any = await getCategory(id);
+    return data;
+  }
+);
+
+export const getReleasesCategorys = createAsyncThunk(
+  "category/Release",
+  async () => {
+    const { data }: any = await getReleasesCategory();
     return data;
   }
 );
