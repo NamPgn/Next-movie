@@ -1,4 +1,5 @@
 import { Icategory } from "@/interfaces/category";
+import axios from "axios";
 import { notFound } from "next/navigation";
 interface FetchCategoriesResult {
   data: Icategory[];
@@ -11,7 +12,9 @@ export async function fetchCategorysRecentllyUpdated(): Promise<FetchCategoriesR
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/latest/next`,
         {
           method: "GET",
-          cache: "no-cache",
+          next: {
+            revalidate: 30,
+          },
         }
       )
     ).json();
