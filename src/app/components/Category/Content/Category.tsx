@@ -30,12 +30,12 @@ const CategoryContents = memo(
     return (
       <div className="w-full">
         <div className="relative group">
-          <MVLink to={link} className="block">
+          <MVLink to={link} prefetch={true} className="block">
             <MVImage
               src={image}
               alt={title}
-              width={300} 
-              height={400} 
+              width={300}
+              height={400}
               className="w-full h-[272px] md:h-[300px] lg:h-[300px] transition-opacity duration-300 group-hover:opacity-40 rounded-lg object-cover"
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
@@ -55,7 +55,7 @@ const CategoryContents = memo(
           </MVLink>
         </div>
         <div className="mt-4">
-          <MVLink to={link}>
+          <MVLink to={link} prefetch={true}>
             <h2
               style={{ color: "#fff" }}
               className="text-sm md:text-md lg:text-lg font-bold line-clamp-1"

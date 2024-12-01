@@ -74,7 +74,11 @@ const Comments = ({ id }: { id: string | any }) => {
               />
               {!user ? (
                 <div className="relative my-5 text-center bg-gray-900 rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-                  <MVLink className="hover:text-orange-500" to="/login">
+                  <MVLink
+                    prefetch={false}
+                    className="hover:text-orange-500"
+                    to="/login"
+                  >
                     Đăng nhập để bình luận
                   </MVLink>
                 </div>

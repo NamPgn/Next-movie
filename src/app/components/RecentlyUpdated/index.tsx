@@ -19,6 +19,7 @@ export default function RecentlyUpdated({
       <div className="flex justify-between items-center">
         <Title>{title}</Title>
         <MVLink
+          prefetch={false}
           to={"/loadmore"}
           aria-label="Tải thêm nội dung"
           title="Tải thêm nội dung"
@@ -66,7 +67,6 @@ export default function RecentlyUpdated({
             );
           })}
       </div>
-      
     </div>
   );
 }

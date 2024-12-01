@@ -52,6 +52,7 @@ const CategoryProductSidebar = async () => {
           data.map((item: any, index: number) => (
             <div key={index}>
               <MVLink
+                prefetch={true}
                 to={`/q/${item.slug}`}
                 className="flex items-start gap-4 p-2 rounded-lg hover:bg-gray-700 transition-all duration-300"
               >
@@ -88,11 +89,7 @@ const CategoryProductSidebar = async () => {
                       </svg>
                       <div className=" mt-[2px]">{item.year}</div>
                     </div>
-                    <div
-                      className={`text-${
-                        colorsTrend[index]
-                      }`}
-                    >
+                    <div className={`text-${colorsTrend[index]}`}>
                       {iconTrend[index]}
                     </div>
                   </div>

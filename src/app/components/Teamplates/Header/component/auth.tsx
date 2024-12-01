@@ -137,7 +137,7 @@ const AuthHeader = ({ userInfor }: any) => {
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <MVLink to="/login">
+        <MVLink prefetch={false} to="/login">
           <Button className="lg:block bg-yellow-600 hover:bg-yellow-700 text-white font-bold">
             Đăng Nhập
           </Button>

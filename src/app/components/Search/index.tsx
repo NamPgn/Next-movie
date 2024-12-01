@@ -8,6 +8,7 @@ const SearchResults = ({ data, handleClick }: any) => {
       <div className="p-4 flex min-w-[240px] flex-col gap-1 font-sans text-base font-normal text-blue-gray-700">
         {data.map((item: any) => (
           <MVLink
+            prefetch={false}
             to={`/q/${item.slug}`}
             key={item._id}
             onClick={() => handleClick()}

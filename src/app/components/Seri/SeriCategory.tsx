@@ -11,6 +11,8 @@ const SeriNumberMovie = ({ data, isLoading }: any) => {
           {data &&
             data?.products?.map((item: any) => (
               <MVLink
+              prefetch={true}
+              
                 to={`/d/${item.slug}`}
                 key={item._id}
                 className="block text-center"

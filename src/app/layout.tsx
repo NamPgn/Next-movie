@@ -37,6 +37,7 @@ import Footer from "@/app/components/Teamplates/Footer";
 import React from "react";
 import StoreProvider from "./StoreProvider";
 import Head from "next/head";
+import PagesTopLoader from "./pageLoading";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
@@ -44,6 +45,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <link rel="icon" href="/icon.ico" sizes="any" />
       </Head>
       <body className={inter.className + " bg-[#23232a] "}>
+        <PagesTopLoader />
         <StoreProvider>
           <Header />
           {children}

@@ -66,6 +66,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                 </svg>
               </div>
               <MVLink
+                prefetch={true}
                 to={category?.products[category.products.length - 1]?.slug}
               >
                 <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white py-2 px-4 rounded-full font-bold">

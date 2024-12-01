@@ -43,7 +43,9 @@ const SeriDetailProducts = ({
           <button
             onClick={handlePrevious}
             disabled={currentIndex <= 0}
-            className={`bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white px-4 py-2 rounded-l transition duration-300 ease-in-out flex items-center ${currentIndex <= 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white px-4 py-2 rounded-l transition duration-300 ease-in-out flex items-center ${
+              currentIndex <= 0 ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             <svg
               className="w-4 h-4 mr-2"
@@ -64,7 +66,11 @@ const SeriDetailProducts = ({
           <button
             onClick={handleNext}
             disabled={currentIndex >= seriProducts.length - 1}
-            className={`bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white px-4 py-2 rounded-r transition duration-300 ease-in-out flex items-center ${currentIndex >= seriProducts.length - 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white px-4 py-2 rounded-r transition duration-300 ease-in-out flex items-center ${
+              currentIndex >= seriProducts.length - 1
+                ? "opacity-50 cursor-not-allowed"
+                : ""
+            }`}
           >
             Tập tiếp theo
             <svg
@@ -142,6 +148,7 @@ const SeriDetailProducts = ({
           seriProducts.map((items: any) =>
             items.isApproved ? (
               <MVLink
+                prefetch={false}
                 to={`/d/${items.slug}`}
                 key={items._id}
                 className={`link `}

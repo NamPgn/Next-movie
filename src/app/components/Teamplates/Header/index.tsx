@@ -57,7 +57,7 @@ export default function Header() {
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex-shrink-0 hidden md:block">
-          <MVLink to="/" aria-label="Trang chủ">
+          <MVLink prefetch={false} to="/" aria-label="Trang chủ">
             <MVImage
               src="/images/logo.png"
               width={160}
@@ -70,16 +70,32 @@ export default function Header() {
 
         {/* Navigation Menu */}
         <nav className="hidden lg:flex space-x-6">
-          <MVLink to="/" className="hover:text-gray-400" title="Trang chủ">
+          <MVLink
+            prefetch={false}
+            to="/"
+            className="hover:text-gray-400"
+            title="Trang chủ"
+          >
             Trang chủ
           </MVLink>
-          <MVLink to="/tu-tien" className="hover:text-gray-400" title="Tu Tiên">
+          <MVLink
+            prefetch={false}
+            to="/tu-tien"
+            className="hover:text-gray-400"
+            title="Tu Tiên"
+          >
             Tu Tiên
           </MVLink>
-          <MVLink to="/ova" className="hover:text-gray-400" title="OVA">
+          <MVLink
+            prefetch={false}
+            to="/ova"
+            className="hover:text-gray-400"
+            title="OVA"
+          >
             OVA
           </MVLink>
           <MVLink
+            prefetch={false}
             to="/tien-hiep"
             className="hover:text-gray-400"
             title="Tiên Hiệp"
@@ -116,7 +132,7 @@ export default function Header() {
           <SheetContent className="text-white bg-[#23232a]">
             <SheetHeader>
               <div className="flex-shrink-0">
-                <MVLink to="/" aria-label="Trang chủ">
+                <MVLink prefetch={false} to="/" aria-label="Trang chủ">
                   <MVImage
                     src="/images/logo.png"
                     width={160}
@@ -129,6 +145,7 @@ export default function Header() {
             </SheetHeader>
 
             <MVLink
+            prefetch={false}
               to="/"
               className="block py-2 hover:text-gray-400"
               title="Trang chủ"
@@ -136,6 +153,7 @@ export default function Header() {
               Trang chủ
             </MVLink>
             <MVLink
+            prefetch={false}
               to="/tu-tien"
               className="block py-2 hover:text-gray-400"
               title="Tu Tiên"
@@ -143,6 +161,7 @@ export default function Header() {
               Tu Tiên
             </MVLink>
             <MVLink
+            prefetch={false}
               to="/ova"
               className="block py-2 hover:text-gray-400"
               title="OVA"
@@ -150,6 +169,7 @@ export default function Header() {
               OVA
             </MVLink>
             <MVLink
+            prefetch={false}
               to="/tien-hiep"
               className="block py-2 hover:text-gray-400"
               title="Tiên Hiệp"
