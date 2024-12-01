@@ -6,6 +6,7 @@ import ShowDescriptions from "@/app/components/ShowContent/showDescriptions";
 import Comments from "@/app/components/Comments";
 import { Badge } from "@/components/ui/badge";
 import MVLink from "@/app/components/Location/Link";
+import { Icategory } from "@/interfaces/category";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -13,9 +14,14 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.id;
-  const category: any = await fetchCategories(id);
+  const category: Icategory = await fetchCategories(id);
+  const lastCategory: any = category.products[0];
   return {
-    title: category.name,
+    title:
+      category.name +
+      ` | Tập ${lastCategory.seri} - Tập ${
+        Number(lastCategory.seri) + 1
+      } - Tập ${Number(lastCategory.seri) + 2}`,
     description: category.des,
     openGraph: {
       images: category.linkImg,

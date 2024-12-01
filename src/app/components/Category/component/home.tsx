@@ -1,8 +1,6 @@
 import { fetchCategorysRecentllyUpdated } from "@/app/sevices/categorySevices";
-import useAsyncData from "../../../../../hook/useData";
-import LoadingUsagyuuun from "../../Loading";
 import dynamic from "next/dynamic";
-import { Icategory } from "@/interfaces/category";
+import WeekComponent from "../../Week";
 
 const RecentlyUpdated = dynamic(() => import("../../RecentlyUpdated"));
 const CategoryHomePage = async () => {
@@ -27,6 +25,7 @@ const CategoryHomePage = async () => {
         title="MỚI CẬP NHẬT"
         loadmore="Xem Thêm"
       />
+      <WeekComponent title={"Lịch Chiếu"} />
     </div>
   );
 };

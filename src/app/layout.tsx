@@ -3,12 +3,11 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/toaster";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Roboto({ subsets: ["latin"], weight: "300" });
 
 export const metadata: Metadata = {
-  title:
-    "Hoạt Hình Trung Quốc - Xem Hoạt Hình 3D Anime Vietsub Online | HHHIHI",
+  title: "Hoạt Hình Hi Hi - Xem Hoạt Hình 3D Anime Vietsub Online | HHHIHI",
 
   description:
     "HH3D tuyển chọn phim bộ, phim lẻ hoạt trung quốc 3D viêt sub mới nhất với đồ họa đẹp mắt, nội dung lôi cuốn, hấp dẫn, phim xem nhanh và chất lượng HD.",

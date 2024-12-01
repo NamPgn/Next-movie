@@ -66,7 +66,7 @@ export default function RecentlyUpdated({
             );
           })}
       </div>
-      <WeekComponent title={"Lịch Chiếu"} />
+      
     </div>
   );
 }
