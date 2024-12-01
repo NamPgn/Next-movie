@@ -8,7 +8,6 @@ const inter = Roboto({ subsets: ["latin"], weight: "300" });
 
 export const metadata: Metadata = {
   title: "Hoạt Hình Hi Hi - Xem Hoạt Hình 3D Anime Vietsub Online | HHHIHI",
-
   description:
     "HH3D tuyển chọn phim bộ, phim lẻ hoạt trung quốc 3D viêt sub mới nhất với đồ họa đẹp mắt, nội dung lôi cuốn, hấp dẫn, phim xem nhanh và chất lượng HD.",
   openGraph: {
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
     ],
     type: "website",
     siteName:
-      "Hoạt Hình Trung Quốc - Xem Hoạt Hình 3D Anime Vietsub Online | HHHIHI",
+      "Hoạt Hình Hi Hi - Xem Hoạt Hình 3D Anime Vietsub Online | HHHIHI",
   },
   verification: {
     google: "klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE",
