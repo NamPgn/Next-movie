@@ -11,14 +11,14 @@ export const metadata: Metadata = {
   description:
     "HH3D tuyển chọn phim bộ, phim lẻ hoạt trung quốc 3D viêt sub mới nhất với đồ họa đẹp mắt, nội dung lôi cuốn, hấp dẫn, phim xem nhanh và chất lượng HD.",
   openGraph: {
-    title: "Hoạt Hình Trung Quốc",
+    title: "Hoạt Hình Hi Hi",
     url: `${process.env.NEXT_PUBLIC_URL}`,
     images: [
       {
         url: "https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1732691384/hoa-giang-ho-chi-bat-luong-nhan-phan-6-2-1_qkxcfi.jpg",
         width: 800,
         height: 600,
-        alt: "Hoạt Hình Trung Quốc",
+        alt: "Hoạt Hình Hi Hi",
       },
     ],
     type: "website",
