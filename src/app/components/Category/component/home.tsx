@@ -10,7 +10,6 @@ const CategoryHomePage = async () => {
   //   isError,
   // } = useAsyncData("categorys", 1, undefined);
   const categorys: any = await fetchCategorysRecentllyUpdated();
-
   // if (isLoading) {
   //   return <LoadingUsagyuuun />;
   // }

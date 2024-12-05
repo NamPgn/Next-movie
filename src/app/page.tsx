@@ -1,6 +1,6 @@
 import CategoryHomePage from "./components/Category/component/home";
 import Group from "./components/Internet/Group";
-import MainLayout from "./MainLayout";
+import MainLayout from "./mainLayout";
 
 const HomePage = () => {
   return (

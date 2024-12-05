@@ -1,4 +1,4 @@
-import MainLayout from "../MainLayout";
+import MainLayout from "../mainLayout";
 export default function Layout({ children }: any) {
   return (
       <MainLayout>

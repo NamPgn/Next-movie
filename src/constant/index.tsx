@@ -9,3 +9,24 @@ export const WEEKDAY = [
   "Thứ 6",
   "Thứ 7",
 ];
+
+export const METADATA_LAYOUT = {
+  TITLE:
+    "Hoạt Hình Hi Hi - Xem Hoạt Hình 3D Anime Vietsub Online | HHHIHI | Hoạt Hình Trung Quốc",
+  DESCRIPTIONS:
+    "HH3D tuyển chọn phim bộ, phim lẻ hoạt hình trung quốc 3D viêt sub mới nhất với đồ họa đẹp mắt, nội dung lôi cuốn, hấp dẫn, phim xem nhanh và chất lượng HD.",
+  OPNEGRAPH: {
+    TITLE: "Hoạt Hình Hi Hi",
+    IMAGE: {
+      url: "https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1732691384/hoa-giang-ho-chi-bat-luong-nhan-phan-6-2-1_qkxcfi.jpg",
+      width: 800,
+      height: 600,
+      alt: "Hoạt Hình Hi Hi",
+    },
+    TYPE: "website",
+  },
+  SITE_NAME:
+    "Hoạt Hình Hi Hi - Xem Hoạt Hình 3D Anime Vietsub Online | HHHIHI | Hoạt Hình Trung Quốc",
+  VERIFICATION: "klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE",
+  ICON: "/icon.ico",
+};
