@@ -15,7 +15,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.id;
   const category: Icategory = await fetchCategories(id);
-  const lastCategory: any = category.products[0];
+  const lastCategory: any = category?.products[0];
   return {
     title:
       category.name +
@@ -40,16 +40,22 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
   return (
     <>
       <div className="text-white ">
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="w-full md:w-1/3">
-            <div className="relative">
+        <div className="flex flex-col lg:flex-row gap-6 lg:items-start items-center">
+          <div className="md:w-3/12 w-1/4">
+            <div
+              className="relative lg:p-0  md:w-full 
+                h-auto
+                mx-auto"
+            >
               <MVImage
                 title={category.name}
                 src={category?.linkImg}
                 alt={category?.name}
                 width={300}
-                height={450}
-                className="rounded-lg w-full"
+                height={300}
+                className="rounded-lg 
+                "
+                objectFit="cover"
               />
               <div className="absolute top-2 left-2 bg-red-500 p-1 rounded">
                 <svg
@@ -65,17 +71,21 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                   />
                 </svg>
               </div>
-              <MVLink
-                prefetch={true}
-                to={category?.products[category.products.length - 1]?.slug}
-              >
-                <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white py-2 px-4 rounded-full font-bold">
-                  ► Xem phim
-                </button>
-              </MVLink>
             </div>
+
+            <MVLink
+              prefetch={true}
+              to={
+                "/d/" + category?.products[category.products.length - 1]?.slug
+              }
+            >
+              <button className="mt-2 text-xs bg-orange-500 text-white py-2 px-4 rounded-sm font-bold w-full">
+                ► Xem phim
+              </button>
+            </MVLink>
           </div>
-          <div className="w-full md:w-2/3">
+
+          <div className="w-full lg:w-9/12 ">
             <h1 className="text-lg font-bold mb-2">{category.name}</h1>
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
               <span> Tổng:</span>
@@ -113,15 +123,14 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
             </div>
 
             <SeriNumberMovie data={category} />
-            <div>
-              <h2 className="text-xl font-bold text-orange-500 mb-2 mt-2">
-                NỘI DUNG PHIM
-              </h2>
-              <h3 className="font-bold mb-2">{category.name}</h3>
-              <ShowDescriptions content={category.des} />
-              <button className="text-blue-400 mt-2">Mở rộng</button>
-            </div>
           </div>
+        </div>
+        <div>
+          <h2 className="text-xl font-bold text-orange-500 mb-2 mt-2">
+            NỘI DUNG PHIM
+          </h2>
+          <h3 className="font-bold mb-2">{category.name}</h3>
+          <ShowDescriptions content={category.des} />
         </div>
       </div>
       <Comments id={category?._id} />

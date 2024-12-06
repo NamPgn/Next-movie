@@ -56,11 +56,11 @@ const CategoryContents = memo(
             </div>
             {/* Tiêu đề */}
             <div
-              className="absolute bottom-0 w-full left-0 right-0 text-white text-sm font-bold px-2 pt-5 pb-2 line-clamp-1 shadow-lg"
+              className="absolute bottom-0 w-full left-0 right-0 text-white text-sm font-bold px-2 pt-5 pb-2 whitespace-nowrap text-ellipsis shadow-lg"
               style={{
                 background:
                   "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Tùy chỉnh shadow
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", 
               }}
             >
               {title}
