@@ -74,7 +74,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
             </div>
 
             <MVLink
-              prefetch={true}
+              prefetch={false}
               to={
                 "/d/" + category?.products[category.products.length - 1]?.slug
               }
