@@ -12,7 +12,7 @@ export async function fetchCategorysRecentllyUpdated(): Promise<FetchCategoriesR
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/latest/next`,
         {
           method: "GET",
-          next: { revalidate: 10 },
+          cache: "no-cache",
         }
       )
     ).json();
