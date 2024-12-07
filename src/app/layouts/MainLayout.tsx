@@ -4,7 +4,7 @@ import CategoryProductSidebar from "../components/Category/component/sidebar";
 const MainLayout = ({ children }: any) => {
   return (
     <main className="container mx-auto">
-      <div className="text-white min-h-screen lg:px-[5%] md:px-[6%] px-[2%] py-[10px]">
+      <div className="text-white min-h-screen lg:px-[8%] md:px-[8%] px-[3%] py-[10px]">
         <div className="bg-[#1a1a20] p-3">
           <div className="flex gap-5 ">
             <div className="w-full lg:w-9/12">{children}</div>
