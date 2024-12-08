@@ -42,19 +42,14 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
       <div className="text-white ">
         <div className="flex flex-col lg:flex-row gap-6 lg:items-start items-center">
           <div className="md:w-3/12 w-1/4">
-            <div
-              className="relative lg:p-0  md:w-full 
-                h-auto
-                mx-auto"
-            >
+            <div className="relative lg:p-0  md:w-full mx-auto">
               <MVImage
                 title={category.name}
                 src={category?.linkImg}
                 alt={category?.name}
                 width={300}
                 height={300}
-                className="rounded-lg 
-                "
+                className="rounded-lg h-full"
                 objectFit="cover"
               />
               <div className="absolute top-2 left-2 bg-red-500 p-1 rounded">

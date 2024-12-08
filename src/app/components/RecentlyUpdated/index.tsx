@@ -1,7 +1,6 @@
 import { Icategory } from "@/interfaces/category";
 import MVLink from "../Location/Link";
 import dynamic from "next/dynamic";
-import WeekComponent from "../Week";
 import Title from "../MV/Title";
 const CategoryContents = dynamic(() => import("../Category/Content/Category"));
 type CategoryContentType = {

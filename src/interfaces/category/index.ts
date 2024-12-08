@@ -2,6 +2,7 @@ import { ObjectId } from "bson";
 import { IProduct } from "../product";
 
 export interface Icategory {
+  data: any;
   time: string;
   slug?:string;
   _id?: ObjectId;

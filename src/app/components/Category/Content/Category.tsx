@@ -21,9 +21,6 @@ const CategoryContents = memo(
     link,
     image,
     sumSeri,
-    time,
-    typecm,
-    year,
     products,
   }: CategoryContent) => {
     const lastItem: any = products ? products[products.length - 1] : "";
@@ -48,7 +45,11 @@ const CategoryContents = memo(
               }}
               className="absolute top-2 left-2 text-white text-xs rounded-[4px] px-2 py-1 font-medium"
             >
-              {lastItem ? `Tập ${lastItem.seri}` : "Trống"}
+              {sumSeri == lastItem.seri
+                ? "Full Hd Vietsub"
+                : lastItem
+                ? `Tập ${lastItem.seri}`
+                : "Trống"}
             </div>
             {/* Nút Play */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
@@ -56,11 +57,11 @@ const CategoryContents = memo(
             </div>
             {/* Tiêu đề */}
             <div
-              className="absolute bottom-0 w-full left-0 right-0 text-white text-sm font-bold px-2 pt-5 pb-2 whitespace-nowrap text-ellipsis shadow-lg"
+              className="absolute bottom-0 w-full left-0 right-0 text-white text-sm font-bold px-2 pt-5 pb-2 whitespace-nowrap text-ellipsis shadow-lg overflow-hidden"
               style={{
                 background:
                   "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", 
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
               }}
             >
               {title}

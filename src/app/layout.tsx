@@ -21,9 +21,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: METADATA_LAYOUT.ICON,
-  }, 
-
-  
+  },
 };
 import Header from "./components/Teamplates/Header";
 import Footer from "@/app/components/Teamplates/Footer";
@@ -32,6 +30,8 @@ import StoreProvider from "./StoreProvider";
 import Head from "next/head";
 import PagesTopLoader from "./pageLoading";
 import { METADATA_LAYOUT } from "@/constant";
+import ReactQueryProvider from "./QueryClientProvider";
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
@@ -41,12 +41,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body className={inter.className + " bg-[#23232a] "}>
         <PagesTopLoader />
         <StoreProvider>
-          <Header />
-          {children}
-          <Analytics />
-          <SpeedInsights />
-          <Footer />
-          <Toaster />
+          <ReactQueryProvider>
+            <Header />
+            {children}
+            <Analytics />
+            <SpeedInsights />
+            <Footer />
+            <Toaster />
+          </ReactQueryProvider>
         </StoreProvider>
       </body>
     </html>
