@@ -6,9 +6,14 @@ import LoadingUsagyuuun from "../../Loading";
 import { getCategoryLatest } from "@/sevices/categorys";
 
 const RecentlyUpdated = dynamic(() => import("../../RecentlyUpdated"));
+
 const CategoryHomePage = () => {
+  // const { categorys: val, setCategory } = useCategoryStore((state: any) => ({
+  //   categorys: state.categorys,
+  //   setCategory: state.setCategory,
+  // }));
   const {
-    data: categorys,
+    data: val,
     isLoading,
     isError,
   } = useQuery({
@@ -27,7 +32,7 @@ const CategoryHomePage = () => {
   return (
     <div>
       <RecentlyUpdated
-        data={categorys?.data}
+        data={val?.data}
         title="MỚI CẬP NHẬT"
         loadmore="Xem Thêm"
       />

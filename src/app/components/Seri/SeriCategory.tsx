@@ -6,12 +6,12 @@ const SeriNumberMovie = ({ data, isLoading }: any) => {
   }
   return (
     <>
-      <div className="scroll-container">
-        <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {data &&
-            data?.products?.map((item: any) => (
+      {data.isMovie == "drama" ? (
+        <div className="scroll-container">
+          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {data?.products?.map((item: any) => (
               <MVLink
-              prefetch={true}
+                prefetch={true}
                 to={`/d/${item.slug}`}
                 key={item._id}
                 className="block text-center"
@@ -23,8 +23,15 @@ const SeriNumberMovie = ({ data, isLoading }: any) => {
                 </div>
               </MVLink>
             ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <MVLink prefetch={false} to={`/d/${data?.products[0].slug}`}>
+          <button className="mt-2 text-xs bg-orange-500 text-white py-2 px-4 rounded-sm font-bold w-full">
+            ► Xem phim
+          </button>
+        </MVLink>
+      )}
     </>
   );
 };

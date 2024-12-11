@@ -46,6 +46,7 @@ const DetailWatched = async ({
             productId={getOneProductDetail._id}
             seriProducts={getOneProductDetail?.category?.products}
             name={getOneProductDetail.name}
+            isMovie={getOneProductDetail?.category?.isMovie}
           />
           <ShowDescriptions content={getOneProductDetail?.category?.des} />
         </div>

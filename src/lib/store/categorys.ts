@@ -1,6 +1,6 @@
-import { create } from "lodash";
+import { create } from "zustand";
 
 export const useCategoryStore = create((set: any) => ({
-  test: "test",
+  categorys: [],
   setCategory: (data: any) => set({ categorys: data }),
 }));

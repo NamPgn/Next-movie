@@ -18,10 +18,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const lastCategory: any = category?.products[0];
   return {
     title:
-      category.name +
-      ` | Tập ${lastCategory.seri} - Tập ${
-        Number(lastCategory.seri) + 1
-      } - Tập ${Number(lastCategory.seri) + 2}`,
+      category?.isMovie !== "drama"
+        ? category.name +
+          ` | Tập ${lastCategory.seri} - Tập ${
+            Number(lastCategory.seri) + 1
+          } - Tập ${Number(lastCategory.seri) + 2}`
+        : category?.name,
+
     description: category.des,
     openGraph: {
       images: category.linkImg,

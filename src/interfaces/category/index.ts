@@ -4,7 +4,7 @@ import { IProduct } from "../product";
 export interface Icategory {
   data: any;
   time: string;
-  slug?:string;
+  slug?: string;
   _id?: ObjectId;
   name: string;
   linkImg?: string;
@@ -12,6 +12,7 @@ export interface Icategory {
   sumSeri: string | number;
   products: IProduct[];
   type: string;
+  isMovie?: string;
 }
 
 export interface isCategorysSlice {
@@ -24,5 +25,5 @@ export interface isCategorysSlice {
   isLoading: boolean;
   categoryNotReqId: string[];
   details: {};
-  releases?:[]
+  releases?: [];
 }

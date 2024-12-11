@@ -6,12 +6,14 @@ type SeriDetailPropsType = {
   seriProducts: any;
   productId: string;
   name: string;
+  isMovie: string;
 };
 
 const SeriDetailProducts = ({
   seriProducts,
   productId,
   name,
+  isMovie,
 }: SeriDetailPropsType) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const router = useRouter();
@@ -143,29 +145,34 @@ const SeriDetailProducts = ({
         </div>
         <h1 className="text-xl font-bold">{name}</h1>
       </div>
-      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-2 ">
-        {seriProducts &&
-          seriProducts.map((items: any) =>
-            items.isApproved ? (
-              <MVLink
-                prefetch={false}
-                to={`/d/${items.slug}`}
-                key={items._id}
-                className={`link `}
-              >
-                <div
-                  className={`${
-                    items._id === productId ? "active bg-orange-500" : ""
-                  } bg-gray-800  hover:bg-gray-700 text-white rounded-lg transition-colors duration-300 ease-in-out shadow-md overflow-hidden `}
+
+      {isMovie == "drama" ? (
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-2 ">
+          {seriProducts &&
+            seriProducts.map((items: any) =>
+              items.isApproved && !items.isMovie ? (
+                <MVLink
+                  prefetch={false}
+                  to={`/d/${items.slug}`}
+                  key={items._id}
+                  className={`link `}
                 >
-                  <div className="p-3 text-center">
-                    {items.seri ? `Tập ${items.seri}` : ""}
+                  <div
+                    className={`${
+                      items._id === productId ? "active bg-orange-500" : ""
+                    } bg-gray-800  hover:bg-gray-700 text-white rounded-lg transition-colors duration-300 ease-in-out shadow-md overflow-hidden `}
+                  >
+                    <div className="p-3 text-center">
+                      {items.seri ? `Tập ${items.seri}` : ""}
+                    </div>
                   </div>
-                </div>
-              </MVLink>
-            ) : null
-          )}
-      </div>
+                </MVLink>
+              ) : null
+            )}
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };
