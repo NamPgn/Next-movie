@@ -16,13 +16,7 @@ interface CategoryContent {
 }
 
 const CategoryContents = memo(
-  ({
-    title,
-    link,
-    image,
-    sumSeri,
-    products,
-  }: CategoryContent) => {
+  ({ title, link, image, sumSeri, products }: CategoryContent) => {
     const lastItem: any = products ? products[products.length - 1] : "";
     return (
       <div className="w-full ">
@@ -40,10 +34,9 @@ const CategoryContents = memo(
             {/* Tag Tập */}
             <div
               style={{
-                background:
-                  "linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%)",
+                background: "#0000007b",
               }}
-              className="absolute top-2 left-2 text-white text-xs rounded-[4px] px-2 py-1 font-medium"
+              className="absolute top-2 left-2 text-white text-xs rounded-[2px] px-2 py-1 font-medium"
             >
               {sumSeri == lastItem.seri
                 ? "Full Hd Vietsub"

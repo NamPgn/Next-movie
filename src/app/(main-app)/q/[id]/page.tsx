@@ -44,8 +44,9 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
     <>
       <div className="text-white ">
         <div className="flex flex-col lg:flex-row gap-6 lg:items-start items-center">
+          {/* Hình ảnh anime */}
           <div className="md:w-3/12 w-1/4">
-            <div className="relative lg:p-0  md:w-full mx-auto">
+            <div className="relative lg:p-0 md:w-full mx-auto">
               <MVImage
                 title={category.name}
                 src={category?.linkImg}
@@ -55,36 +56,28 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                 className="rounded-lg h-full"
                 objectFit="cover"
               />
-              <div className="absolute top-2 left-2 bg-red-500 p-1 rounded">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-white"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
             </div>
-
-            <MVLink
-              prefetch={false}
-              to={
-                "/d/" + category?.products[category.products.length - 1]?.slug
-              }
-            >
-              <button className="mt-2 text-xs bg-orange-500 text-white py-2 px-4 rounded-sm font-bold w-full">
-                ► Xem phim
-              </button>
-            </MVLink>
+            {category.isMovie == "drama" && (
+              <MVLink
+                prefetch={false}
+                to={
+                  "/d/" + category?.products[category.products.length - 1]?.slug
+                }
+              >
+                <button className="mt-4 bg-[#ca8a04] text-white text-xs w-full font-semibold py-2 px-2 rounded md:text-sm md:py-3 md:px-6">
+                  ► Xem Ngay
+                </button>
+              </MVLink>
+            )}
           </div>
 
+          {/* Thông tin anime */}
           <div className="w-full lg:w-9/12 ">
-            <h1 className="text-lg font-bold mb-2">{category.name}</h1>
+            <h1 className="text-lg font-bold">{category.name}</h1>
+            <p className="text-sm text-gray-500 my-1">
+              22.1M Lượt xem | Cập nhật lúc{" "}
+              {category.hour ? category.hour : "10h"} mỗi {category.week.name}
+            </p>
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
               <span> Tổng:</span>
               <Badge variant="secondary">{category.sumSeri} Tập</Badge>
@@ -95,8 +88,16 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-2 ">
               <span className="text-gray-400">Thể Loại: </span>
-              <Badge variant="secondary">{category.type}</Badge>
+              <span className="bg-blue-100 text-blue-600 text-xs font-medium px-3 py-1 rounded">
+                Anime
+              </span>
+              <span className="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded">
+                {category.type}
+              </span>
+
+              {/* <Badge variant="secondary">{category.type}</Badge> */}
             </div>
+
             <div className="flex items-center mb-4 ">
               <span className="text-gray-400 mr-2">Đánh giá: </span>
               <div className="flex">
@@ -116,18 +117,24 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                 (10 điểm / 11 lượt)
               </span>
             </div>
-            <div className="bg-gray-800 inline-block px-3 py-1 rounded mb-4">
-              FULL HD
-            </div>
-
+            {category.isMovie !== "drama" && (
+              <MVLink
+                prefetch={false}
+                to={
+                  "/d/" + category?.products[category.products.length - 1]?.slug
+                }
+              >
+                <button className="bg-[#ca8a04] w-full md:w-auto text-white text-xs  font-semibold py-2 px-2 rounded md:text-sm md:py-3 md:px-6">
+                  ► Xem Ngay
+                </button>
+              </MVLink>
+            )}
             <SeriNumberMovie data={category} />
           </div>
         </div>
-        <div>
-          <h2 className="text-xl font-bold text-orange-500 mb-2 mt-2">
-            NỘI DUNG PHIM
-          </h2>
-          <h3 className="font-bold mb-2">{category.name}</h3>
+
+        {/* Nội dung phim */}
+        <div className="mt-5">
           <ShowDescriptions content={category.des} />
         </div>
       </div>

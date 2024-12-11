@@ -33,7 +33,7 @@ export default function Header() {
     if (data) {
       setResults(data.data);
     }
-  }, 100);
+  }, 900);
 
   const handleChange = (val: string) => {
     setvalueSearch(val);
@@ -69,7 +69,7 @@ export default function Header() {
         </div>
 
         {/* Navigation Menu */}
-        <nav className="hidden lg:flex space-x-6">
+        {/* <nav className="hidden lg:flex space-x-6">
           <MVLink
             prefetch={false}
             to="/"
@@ -78,31 +78,7 @@ export default function Header() {
           >
             Trang chủ
           </MVLink>
-          <MVLink
-            prefetch={false}
-            to="/tu-tien"
-            className="hover:text-gray-400"
-            title="Tu Tiên"
-          >
-            Tu Tiên
-          </MVLink>
-          <MVLink
-            prefetch={false}
-            to="/ova"
-            className="hover:text-gray-400"
-            title="OVA"
-          >
-            OVA
-          </MVLink>
-          <MVLink
-            prefetch={false}
-            to="/tien-hiep"
-            className="hover:text-gray-400"
-            title="Tiên Hiệp"
-          >
-            Tiên Hiệp
-          </MVLink>
-        </nav>
+        </nav> */}
 
         {/* Mobile Navigation Menu */}
         <Sheet>
@@ -145,7 +121,7 @@ export default function Header() {
             </SheetHeader>
 
             <MVLink
-            prefetch={false}
+              prefetch={false}
               to="/"
               className="block py-2 hover:text-gray-400"
               title="Trang chủ"
@@ -153,7 +129,7 @@ export default function Header() {
               Trang chủ
             </MVLink>
             <MVLink
-            prefetch={false}
+              prefetch={false}
               to="/tu-tien"
               className="block py-2 hover:text-gray-400"
               title="Tu Tiên"
@@ -161,7 +137,7 @@ export default function Header() {
               Tu Tiên
             </MVLink>
             <MVLink
-            prefetch={false}
+              prefetch={false}
               to="/ova"
               className="block py-2 hover:text-gray-400"
               title="OVA"
@@ -169,7 +145,7 @@ export default function Header() {
               OVA
             </MVLink>
             <MVLink
-            prefetch={false}
+              prefetch={false}
               to="/tien-hiep"
               className="block py-2 hover:text-gray-400"
               title="Tiên Hiệp"
@@ -186,7 +162,7 @@ export default function Header() {
             onChange={(e) => handleChange(e.target.value)}
             type="text"
             placeholder="Tìm kiếm phim..."
-            className="bg-[#333] text-white px-4 py-2 rounded-full w-full focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            className="bg-[#333] text-white px-4 py-2 rounded-sm w-full focus:outline-none focus:ring-2 focus:ring-yellow-400"
             aria-label="Tìm kiếm phim"
           />
           <SearchResults data={results} handleClick={handleClick} />
@@ -195,7 +171,7 @@ export default function Header() {
             title="Tìm kiếm"
             aria-label="Tìm kiếm"
           >
-            <SearchIcon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />
+            <SearchIcon className="w-4 h-4 " />
           </button>
         </div>
 
