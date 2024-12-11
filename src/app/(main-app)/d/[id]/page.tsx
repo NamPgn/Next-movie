@@ -17,7 +17,10 @@ export async function generateMetadata(
   const id = params.id;
   const res: any = await fetchProduct(id);
   return {
-    title: res?.category?.name + " Tập " + res?.seri,
+    title:
+      res.category?.isMovie == "drama"
+        ? res?.category?.name + " Tập " + res?.seri
+        : res?.category?.name,
     description: res?.category?.des,
     openGraph: {
       images: res?.category?.linkImg,

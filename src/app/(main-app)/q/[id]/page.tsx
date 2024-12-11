@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const lastCategory: any = category?.products[0];
   return {
     title:
-      category?.isMovie !== "drama"
+      category?.isMovie == "drama"
         ? category.name +
           ` | Tập ${lastCategory.seri} - Tập ${
             Number(lastCategory.seri) + 1
