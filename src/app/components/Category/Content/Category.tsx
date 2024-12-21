@@ -21,7 +21,7 @@ const CategoryContents = memo(
     return (
       <div className="w-full ">
         <div className="relative group rounded-md overflow-hidden">
-          <MVLink to={link} prefetch={true} className="relative ">
+          <MVLink to={link} prefetch={false} className="relative ">
             <MVImage
               src={image}
               alt={title}
@@ -36,7 +36,7 @@ const CategoryContents = memo(
               style={{
                 background: "#0000007b",
               }}
-              className="absolute top-2 left-2 text-white text-xs rounded-[2px] px-2 py-1 font-medium"
+              className="absolute top-2 left-2 text-white text-xs rounded-[2px] px-2 py-1 font-medium "
             >
               {sumSeri == lastItem.seri
                 ? "Full Hd Vietsub"

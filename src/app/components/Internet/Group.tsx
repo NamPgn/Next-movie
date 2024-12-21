@@ -5,11 +5,9 @@ const Group = () => {
     <div className="mb-2">
       <div className="col-span-12 lg:col-span-3 bg-gradient-to-r flex-auto w-42 h-42 from-gray-800 to-gray-600 dark:from-gray-800 dark:to-gray-700 shadow-lg rounded-lg">
         <div className="md:p-3 p-2 bg-gray-800 rounded-lg shadow-md text-white">
-          <header className="">
-            <blockquote className="my-2 border-orange-500 pl-4 italic text-lg font-semibold text-center">
-              Cộng Đồng Phim
-            </blockquote>
-          </header>
+          <blockquote className="my-2 border-orange-500 pl-4 italic text-lg font-semibold text-center">
+            Cộng Đồng Phim
+          </blockquote>
           <nav>
             <ul className="flex justify-center items-center gap-4">
               <li>

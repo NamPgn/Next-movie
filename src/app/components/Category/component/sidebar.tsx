@@ -52,7 +52,7 @@ const CategoryProductSidebar = async () => {
           data.map((item: any, index: number) => (
             <div key={index}>
               <MVLink
-                prefetch={true}
+                prefetch={false}
                 to={`/q/${item.slug}`}
                 className="flex items-start gap-4 p-2 rounded-lg hover:bg-gray-700 transition-all duration-300"
               >
