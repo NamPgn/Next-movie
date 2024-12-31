@@ -38,10 +38,10 @@ const CategoryContents = memo(
               }}
               className="absolute top-2 left-2 text-white text-xs rounded-[2px] px-2 py-1 font-medium "
             >
-              {sumSeri == lastItem.seri
+              {sumSeri == lastItem?.seri
                 ? "Full Hd Vietsub"
                 : lastItem
-                ? `Tập ${lastItem.seri}`
+                ? `Tập ${lastItem?.seri}`
                 : "Trống"}
             </div>
             {/* Nút Play */}
