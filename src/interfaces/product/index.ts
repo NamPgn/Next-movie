@@ -2,6 +2,7 @@ import { ObjectId } from "bson";
 import { Icategory } from "../category";
 
 export interface IProduct {
+  assby: any;
   _id?: ObjectId;
   name: string;
   seri: string;

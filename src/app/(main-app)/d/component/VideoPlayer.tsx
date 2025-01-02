@@ -3,7 +3,6 @@ import { IProduct } from "@/interfaces/product";
 import React, { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
 import { serverBtns } from "@/constant";
-import LoadingUsagyuuun from "@/app/components/Loading";
 
 const VideoPlayer = ({
   getOneProductDetail,
@@ -31,6 +30,9 @@ const VideoPlayer = ({
         newUrl = getOneProductDetail.server2 || "";
         break;
       case "drive":
+        if (newUrl == "") {
+          setVideoUrl("");
+        }
         newUrl = getOneProductDetail.link || "";
         break;
     }
@@ -89,59 +91,69 @@ const VideoPlayer = ({
         );
     }
   };
-
+  const arrLink = [
+    getOneProductDetail.dailyMotionServer,
+    getOneProductDetail.server2,
+    getOneProductDetail.link,
+  ];
   return (
     <>
-      <div className="movie relative aspect-video w-full">{renderVideo()}</div>
-      <div className="flex justify-between mt-1">
-        <div className="text-[#FDB813] mb-2 text-sm mt-2">
-          Mẹo: Chọn Server hoặc Nguồn link khác khi lỗi!
-        </div>
-        <div
-          className="bg-[#151111] hover:bg-red-600 items-center text-sm text-white shadow text-center py-1 px-2 rounded cursor-pointer self-center"
-          data-modal-toggle="report-modal"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            aria-hidden="true"
-            className="w-5 h-5 inline"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-          </svg>
-          <span className="hidden md:inline">Báo Lỗi</span>
-        </div>
-      </div>
-      <div className="p-4 rounded-lg bg-[#272727] mt-4">
-        <div className="flex flex-col sm:flex-row items-center justify-between">
-          <span className="text-orange-500 font-medium mb-2 sm:mb-0 sm:mr-4">
-            Đổi Link nếu không xem được:
-          </span>
-          <div className="flex space-x-2">
-            {serverBtns.map((server, index) => (
+    {/* Video Player */}
+    <div className="relative aspect-video w-full rounded overflow-hidden">
+      {renderVideo()}
+    </div>
+  
+    {/* Mẹo và Đổi Server */}
+    <div className="p-3 rounded bg-[#272727] mt-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        {/* Mẹo */}
+        <span className="text-[#FDB813] text-sm mb-2 sm:mb-0">
+          Mẹo: Chọn Server khác khi lỗi!
+        </span>
+  
+        {/* Đổi Server */}
+        <div className="flex flex-wrap gap-2">
+          {serverBtns
+            .filter((server, index) => arrLink[index])
+            .map((server, index) => (
               <button
                 key={server}
                 onClick={() => handleChangeServer(server)}
-                className={`px-3 py-1 rounded transition duration-300 ease-in-out ${
+                className={`px-5 py-3 rounded text-xs transition ${
                   currentServer === server
                     ? "bg-orange-500 text-white"
-                    : "bg-gray-800 text-orange-500 hover:bg-gray-700"
+                    : "bg-gray-900 text-orange-500 hover:bg-gray-700"
                 }`}
               >
-                Link {index + 1}
+                Server {index + 1}
               </button>
             ))}
-          </div>
         </div>
+        <div className="flex justify-end mt-3">
+      <button
+        className="flex items-center bg-[#151111] hover:bg-red-500 text-white py-1 px-2 rounded text-xs transition"
+        data-modal-toggle="report-modal"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="2"
+          stroke="currentColor"
+          className="w-4 h-4 mr-1"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        Báo Lỗi
+      </button>
+    </div>
       </div>
-    </>
+    </div>
+  </>
   );
 };
 

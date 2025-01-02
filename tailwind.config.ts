@@ -19,6 +19,22 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+				spring: {
+          primary: '#FFD700', // Vàng
+          secondary: '#FF69B4', // Hồng phấn
+        },
+        summer: {
+          primary: '#FFA500', // Cam
+          secondary: '#87CEEB', // Xanh dương nhạt
+        },
+        fall: {
+          primary: '#D2691E', // Nâu cam
+          secondary: '#FF4500', // Đỏ cam
+        },
+        winter: {
+          primary: '#00BFFF', // Xanh băng
+          secondary: '#FFFFFF', // Trắng
+        },
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

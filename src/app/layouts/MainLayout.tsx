@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryProductSidebar from "../components/Category/component/sidebar";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 
 const MainLayout = ({ children }: any) => {
   return (
