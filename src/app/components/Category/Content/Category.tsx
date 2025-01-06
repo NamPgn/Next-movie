@@ -19,65 +19,63 @@ const CategoryContents = memo(
   ({ title, link, image, sumSeri, products }: CategoryContent) => {
     const lastItem: any = products ? products[products.length - 1] : "";
     return (
-      <div className="w-full ">
-        <div className="relative group rounded-md overflow-hidden">
-          <MVLink to={link} prefetch={false} className="relative ">
-            <MVImage
-              src={image}
-              alt={title}
-              width={300}
-              height={400}
-              className="w-full h-[272px] md:h-[300px] lg:h-[300px] transition-opacity duration-300 group-hover:opacity-40  object-cover"
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
-            />
-            {/* Tag Tập */}
-            <div
-              style={{
-                background: "#0000007b",
-              }}
-              className="absolute top-2 left-2 text-white text-xs rounded-[2px] px-2 py-1 font-medium "
-            >
-              {sumSeri == lastItem?.seri
-                ? "Full Hd Vietsub"
-                : lastItem
-                ? `Tập ${lastItem?.seri}`
-                : "Trống"}
-            </div>
-            {/* Nút Play */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
-              <PlayCircleOutlined className="text-white text-5xl" />
-            </div>
-            {/* Tiêu đề */}
-            <div
-              className="absolute bottom-0 w-full left-0 right-0 text-white text-sm font-bold px-2 pt-5 pb-2 whitespace-nowrap text-ellipsis shadow-lg overflow-hidden"
-              style={{
-                background:
-                  "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-              }}
-            >
-              {title}
-            </div>
-          </MVLink>
-        </div>
-        {/* Thông tin bổ sung */}
-        {/* <div className="mt-4">
-          <div className="text-sm text-gray-400 mt-2">
-            <div className="font-semibold sm:text-[12px] md:text-[13px] lg:text-[14px]">
-              {sumSeri ? `${sumSeri} Tập` : ""}
-            </div>
-            <div className="flex items-center mt-1 justify-between">
-              <p className="mr-2 text-gray-300 sm:text-[12px] md:text-[13px] lg:text-[14px]">
-                Full HD/Vietsub
-              </p>
-              <p className="mr-2 text-gray-300">{typecm}</p>
-              <p className="text-gray-400 text-sm">{time}</p>
-            </div>
-            <div className="font-semibold mt-2">{year ? `${year}` : ""}</div>
+      <div className="w-full">
+      <div className="relative group rounded-md overflow-hidden shadow-lg transition-shadow duration-300">
+        <MVLink to={link} prefetch={false} className="relative">
+          <MVImage
+            src={image}
+            alt={title}
+            width={300}
+            height={400}
+            className="w-full h-[272px] md:h-[300px] lg:h-[320px] transition-transform duration-300 group-hover:scale-105 object-cover rounded-md"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
+          />
+          {/* Tag Tập */}
+          <div
+            style={{
+              background: "#000000b3",
+            }}
+            className="absolute top-2 left-2 text-white text-[10px] sm:text-xs rounded-sm px-2 py-[2px] font-medium shadow-md"
+          >
+            {sumSeri === lastItem?.seri
+              ? "Full HD Vietsub"
+              : lastItem
+              ? `Tập ${lastItem?.seri}`
+              : "Trống"}
           </div>
-        </div> */}
+          {/* Nút Play */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="bg-opacity-50 rounded-full transition-transform duration-300">
+              <PlayCircleOutlined className="text-white text-3xl" />
+            </div>
+          </div>
+          {/* Tiêu đề */}
+          <div
+            className="absolute bottom-0 w-full left-0 text-white text-base font-semibold px-3 py-2
+              truncate shadow-lg"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))",
+            }}
+          >
+            {title}
+          </div>
+        </MVLink>
       </div>
+    
+      {/* Thông tin bổ sung */}
+      {/* <div className="mt-3 px-2">
+        <div className="text-gray-400 text-xs sm:text-sm font-medium">
+          <div className="flex items-center justify-between">
+            <span>{sumSeri ? `${sumSeri} Tập` : "N/A"}</span>
+            <span>{typecm ?? "Thể loại"}</span>
+            <span>{year ? `${year}` : "N/A"}</span>
+          </div>
+        </div>
+      </div> */}
+    </div>
+    
     );
   }
 );
