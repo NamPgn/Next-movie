@@ -1,3 +1,5 @@
+import { SuggestionItem } from "@/app/components/Search";
+
 export const serverBtns = ["daily", "assby", "drive"];
 
 export const WEEKDAY = [
@@ -30,3 +32,18 @@ export const METADATA_LAYOUT = {
   VERIFICATION: "klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE",
   ICON: "/icon.ico",
 };
+
+export const SEARCH_SUGGEST:SuggestionItem[] = [
+  {
+    NAME: "Tiên Nghịch",
+    URL: "/q/tien-nghich",
+  },
+  {
+    NAME: "Đấu phá thương khung phần 5",
+    URL: "/q/dau-pha-thuong-khung-phan-5",
+  },
+  {
+    NAME: "Mục Thần Ký",
+    URL: "/q/muc-than-ky",
+  },
+];

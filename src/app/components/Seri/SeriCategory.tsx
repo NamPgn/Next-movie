@@ -1,5 +1,4 @@
 import MVLink from "../Location/Link";
-import "./index.css";
 const SeriNumberMovie = ({ data, isLoading }: any) => {
   if (isLoading) {
     return <div className="seriLoading">Loading....</div>;
@@ -7,7 +6,7 @@ const SeriNumberMovie = ({ data, isLoading }: any) => {
   return (
     <>
       {data.isMovie == "drama" ? (
-        <div className="scroll-container">
+        <div className="scroll-container h-[174px]">
           <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-4 pr-1">
             {data?.products?.map((item: any) => (
               <MVLink
