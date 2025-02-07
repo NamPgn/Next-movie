@@ -168,7 +168,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
         </div>
       </div>
 
-      {/* <Comments id={category?._id} /> */}
+      <Comments id={category?._id} />
     </>
   );
 };
