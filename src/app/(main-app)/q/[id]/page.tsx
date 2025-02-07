@@ -83,15 +83,17 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
             </p>
 
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm text-gray-300">
-              <div className="flex items-center">
-                <span className="font-semibold">Tổng:</span>
-                <Badge
-                  variant="secondary"
-                  className="ml-2 bg-yellow-500 text-black"
-                >
-                  {category?.sumSeri || "0"} Tập
-                </Badge>
-              </div>
+              {category.isMovie  === "drama" && (
+                <div className="flex items-center">
+                  <span className="font-semibold">Tổng:</span>
+                  <Badge
+                    variant="secondary"
+                    className="ml-2 bg-yellow-500 text-black"
+                  >
+                    {category?.sumSeri || "0"} Tập
+                  </Badge>
+                </div>
+              )}
               <div className="flex items-center">
                 <span className="font-semibold">Thời Lượng:</span>
                 <Badge
@@ -114,9 +116,9 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
             </div>
 
             {/* Đánh giá */}
-            <div className="md:flex items-center justify-center lg:justify-start ">
+            <div className="flex items-center justify-center lg:justify-start gap-2 md:gap-0">
               <span className="text-gray-400 font-semibold">Đánh giá: </span>
-              <div className="flex">
+              <div className="md:flex block text-center">
                 <div className="flex md:ml-3 ">
                   {[...Array(10)].map((_, i) => (
                     <svg
@@ -145,7 +147,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                   category?.products[category.products.length - 1]?.slug
                 }`}
               >
-                <button className="bg-yellow-600 hover:bg-yellow-500 w-full lg:w-auto text-white font-semibold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <button className="bg-yellow-600 mt-5 hover:bg-yellow-500 w-full lg:w-auto text-white font-semibold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
                   ► Xem Ngay
                 </button>
               </MVLink>
@@ -166,7 +168,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
         </div>
       </div>
 
-      <Comments id={category?._id} />
+      {/* <Comments id={category?._id} /> */}
     </>
   );
 };
