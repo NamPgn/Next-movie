@@ -47,7 +47,7 @@ const CategoryProductSidebar = async () => {
   return (
     <>
       <Title>xem nhiều</Title>
-      <div className="space-y-4 p-2 bg-[#2a2c31] rounded-lg">
+      <div className="space-y-4  rounded-lg">
         {data &&
           data.map((item: any, index: number) => (
             <div key={index}>

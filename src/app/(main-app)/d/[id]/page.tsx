@@ -46,6 +46,7 @@ const DetailWatched = async ({
         <div className="w-full">
           <VideoPlayer getOneProductDetail={getOneProductDetail} />
           <SeriDetailProducts
+          getOneProductDetail={getOneProductDetail}
             productId={getOneProductDetail._id}
             seriProducts={getOneProductDetail?.category?.products}
             name={getOneProductDetail.name}

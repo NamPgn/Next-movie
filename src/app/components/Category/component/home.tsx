@@ -30,7 +30,7 @@ const CategoryHomePage = () => {
     return <div>Server error</div>;
   }
   return (
-    <div>
+    <div className="p-3">
       <RecentlyUpdated
         data={val?.data}
         title="MỚI CẬP NHẬT"

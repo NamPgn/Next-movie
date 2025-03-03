@@ -37,7 +37,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     return () => {
-      debouncedSearch.cancel(); // Clean up debounce
+      debouncedSearch.cancel();
     };
   }, [debouncedSearch]);
  

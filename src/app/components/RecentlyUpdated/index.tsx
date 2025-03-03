@@ -14,7 +14,7 @@ export default function RecentlyUpdated({
   data,
 }: CategoryContentType) {
   return (
-    <div>
+    <div className="p-3">
       <div className="flex justify-between items-center">
         <Title>{title}</Title>
         <MVLink

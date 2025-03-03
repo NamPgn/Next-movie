@@ -18,6 +18,7 @@ const VideoPlayer = ({
     getOneProductDetail.dailyMotionServer,
     secretKey
   ).toString(CryptoJS.enc.Utf8);
+
   const handleChangeServer = (serverType: string) => {
     setVideoStatus("loading");
     setCurrentServer(serverType);
@@ -30,13 +31,9 @@ const VideoPlayer = ({
         newUrl = getOneProductDetail.server2 || "";
         break;
       case "drive":
-        if (newUrl == "") {
-          setVideoUrl("");
-        }
         newUrl = getOneProductDetail.link || "";
         break;
     }
-
     if (newUrl && newUrl.trim() !== "") {
       setVideoUrl(newUrl);
       setVideoStatus("ready");
@@ -48,6 +45,7 @@ const VideoPlayer = ({
   useEffect(() => {
     handleChangeServer("daily");
   }, [getOneProductDetail]);
+
   const renderVideo = () => {
     switch (videoStatus) {
       case "ready":
@@ -71,13 +69,13 @@ const VideoPlayer = ({
       case "unavailable":
         return (
           <div className="absolute inset-0 flex items-center justify-center">
-            Video đang trong quá trình cập nhật. Vui lòng quay lại sau.
+            Video đang trong quá trình cập nhật.
           </div>
         );
       case "error":
         return (
           <div className="absolute inset-0 flex items-center justify-center">
-            Có lỗi xảy ra khi tải video. Vui lòng thử lại sau.
+            Có lỗi xảy ra khi tải video.
           </div>
         );
       default:
@@ -97,63 +95,58 @@ const VideoPlayer = ({
     getOneProductDetail.link,
   ];
   return (
-    <>
-    {/* Video Player */}
-    <div className="relative aspect-video w-full rounded overflow-hidden">
-      {renderVideo()}
-    </div>
-  
-    {/* Mẹo và Đổi Server */}
-    <div className="p-3 rounded bg-[#272727] mt-4">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        {/* Mẹo */}
-        <span className="text-[#FDB813] text-sm mb-2 sm:mb-0">
-          Mẹo: Chọn Server khác khi lỗi!
-        </span>
-  
-        {/* Đổi Server */}
-        <div className="flex flex-wrap gap-2">
+    <div>
+      {/* Video Player */}
+      <div className="relative aspect-video w-full rounded overflow-hidden bg-black">
+        {renderVideo()}
+      </div>
+
+      {/* Chọn Server */}
+      <div className="flex justify-between items-center bg-[rgba(0,0,0,.7)] px-[25px] py-[25px]">
+        <div className="text-white text-lg font-semibold ">Chọn server</div>
+        <div className="flex justify-end">
+          <button className="bg-black  text-[#408BEA] py-1 px-3 rounded text-xs" style={{ border:" solid 1px rgb(255 255 255 / 14%) " }}>
+            Report Error
+          </button>
+        </div>
+      </div>
+      <div className="border-b-4 border-[rgba(255,255,255,.08)]"></div>
+
+      <div className="bg-[rgba(0,0,0,.7)] p-4 border-b-4 border-[rgba(255,255,255,.08)]">
+        <div className="flex flex-col gap-2">
           {serverBtns
             .filter((server, index) => arrLink[index])
             .map((server, index) => (
               <button
                 key={server}
                 onClick={() => handleChangeServer(server)}
-                className={`px-5 py-3 rounded text-xs transition ${
+                className={`flex items-center p-3 w-full text-white transition font-bold ${
                   currentServer === server
-                    ? "bg-orange-500 text-white"
-                    : "bg-gray-900 text-orange-500 hover:bg-gray-700"
+                    ? "bg-[rgba(255,255,255,.1)] text-white"
+                    : " text-gray-400 hover:bg-[#222] hover:text-white"
                 }`}
               >
-                Server {index + 1}
+                <span className="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    className={`w-5 h-5 ${
+                      currentServer === server ? "text-white" : "text-gray-500"
+                    }`}
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  Vietsub #{index + 1}
+                </span>
               </button>
             ))}
         </div>
-        <div className="flex justify-end mt-3">
-      <button
-        className="flex items-center bg-[#151111] hover:bg-red-500 text-white py-1 px-2 rounded text-xs transition"
-        data-modal-toggle="report-modal"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="2"
-          stroke="currentColor"
-          className="w-4 h-4 mr-1"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        Báo Lỗi
-      </button>
-    </div>
+        <p className="text-[#FDB813] text-sm mt-2">
+          Nếu không xem được vui lòng đổi server #2 hoặc #3 hoặc tải lại trang!
+        </p>
       </div>
     </div>
-  </>
   );
 };
 

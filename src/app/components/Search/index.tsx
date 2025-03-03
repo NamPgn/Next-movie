@@ -34,7 +34,6 @@ const SearchResults: React.FC<SearchResultsProps> = ({
         {searchValue.trim() ? (
           data.length > 0 ? (
             data.map((item: any) =>{
-              console.log(item)
               return  <MVLink prefetch={false} to={`/q/${item.slug}`} key={item._id}>
               <div className="flex items-center gap-4 p-4 w-full max-w-full transition-all rounded-lg bg-[#2c2c2f] text-start hover:bg-[#1c1c1d] hover:text-white active:bg-blue-900">
                 {/* Hình ảnh minh họa */}
