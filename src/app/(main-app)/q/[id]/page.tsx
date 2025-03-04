@@ -82,7 +82,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
               {category.name}
             </h1>
             <p className="text-sm text-gray-400 text-center lg:text-left">
-              <span>{category.anotherName}</span>
+              <span>{category?.anotherName}</span>
             </p>
             <p className="text-sm text-gray-400 text-center lg:text-left">
               <span className="font-semibold text-yellow-500">22.1M</span> Lượt
