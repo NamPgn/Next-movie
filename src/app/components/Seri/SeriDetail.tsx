@@ -125,7 +125,7 @@ const SeriDetailProducts = ({
 
           {/* Chia sẻ */}
           <div className="border-t border-gray-700 mt-4 pt-3 flex items-center">
-            <span className="text-gray-300 text-sm">Chia sẻ</span>
+            <span className="text-gray-300 text-sm font-bold">Chia sẻ</span>
             <span className="text-white font-semibold ml-1">2</span>
             <div className="flex items-center gap-2 ml-3">
               <a href="#" className="bg-[#1877F2] p-2 rounded">

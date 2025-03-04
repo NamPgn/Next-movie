@@ -7,6 +7,12 @@ import Comments from "@/app/components/Comments";
 import { Badge } from "@/components/ui/badge";
 import MVLink from "@/app/components/Location/Link";
 import { Icategory } from "@/interfaces/category";
+import {
+  FaFacebookF,
+  FaPinterestP,
+  FaTwitter,
+  FaWhatsapp,
+} from "react-icons/fa6";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -42,7 +48,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
   }
   return (
     <>
-      <div className="text-white bg-gradient-to-b from-gray-800 via-gray-900 to-black p-6 rounded-lg shadow-lg">
+      <div className="text-white bg-gradient-to-b from-gray-800 via-gray-900 to-black p-6 rounded-sm ">
         <div className="flex flex-col lg:flex-row gap-6 lg:items-start items-center">
           {/* Hình ảnh anime */}
           <div className="w-full md:w-1/2 lg:w-1/4">
@@ -76,6 +82,9 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
               {category.name}
             </h1>
             <p className="text-sm text-gray-400 text-center lg:text-left">
+              <span>{category.anotherName}</span>
+            </p>
+            <p className="text-sm text-gray-400 text-center lg:text-left">
               <span className="font-semibold text-yellow-500">22.1M</span> Lượt
               xem | Cập nhật lúc{" "}
               <span className="text-yellow-500">{category.hour || "10h"}</span>{" "}
@@ -83,7 +92,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
             </p>
 
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm text-gray-300">
-              {category.isMovie  === "drama" && (
+              {category.isMovie === "drama" && (
                 <div className="flex items-center">
                   <span className="font-semibold">Tổng:</span>
                   <Badge
@@ -164,6 +173,25 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
           </h2>
           <div className="bg-gray-800 p-4 rounded-lg shadow-inner">
             <ShowDescriptions content={category.des} />
+          </div>
+        </div>
+
+        <div className="border-t border-gray-700 mt-4 pt-3 flex items-center">
+          <span className="text-gray-300 text-sm font-bold">Chia sẻ</span>
+          <span className="text-white font-semibold ml-1">2</span>
+          <div className="flex items-center gap-2 ml-3">
+            <a href="#" className="bg-[#1877F2] p-2 rounded">
+              <FaFacebookF className="text-white w-4 h-4" />
+            </a>
+            <a href="#" className="bg-[#1DA1F2] p-2 rounded">
+              <FaTwitter className="text-white w-4 h-4" />
+            </a>
+            <a href="#" className="bg-[#E60023] p-2 rounded">
+              <FaPinterestP className="text-white w-4 h-4" />
+            </a>
+            <a href="#" className="bg-[#25D366] p-2 rounded">
+              <FaWhatsapp className="text-white w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>

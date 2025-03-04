@@ -47,7 +47,7 @@ const Comments = ({ id }: { id: string | any }) => {
   };
   return (
     <div className="mt-5">
-      <section className="bg-gray-800 py-8 lg:py-5 antialiased rounded-lg">
+      <section className="bg-gray-800 py-8 lg:py-5 antialiased rounded-sm">
         <div className="mx-auto px-4">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-lg lg:text-2xl font-bold text-white">
