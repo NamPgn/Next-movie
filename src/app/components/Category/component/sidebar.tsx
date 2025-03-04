@@ -57,7 +57,7 @@ const CategoryProductSidebar = async () => {
                 className="flex items-start gap-4 p-2 rounded-lg hover:bg-gray-700 transition-all duration-300"
               >
                 {/* Hình ảnh */}
-                <div className="w-4/12 h-32">
+                <div className="w-4/12 h-28">
                   <MVImage
                     width={200}
                     height={200}
@@ -76,7 +76,7 @@ const CategoryProductSidebar = async () => {
                   <h3 className="text-sm font-semibold text-gray-100 mb-2 line-clamp-2">
                     {item.name}
                   </h3>
-                  <p className="text-sm text-gray-400 mb-1">{item.type}</p>
+
                   <div className="flex justify-between items-center">
                     <div className="text-sm text-gray-400 flex items-center gap-1">
                       <svg
@@ -87,12 +87,15 @@ const CategoryProductSidebar = async () => {
                       >
                         <path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" />
                       </svg>
+                      <div className="flex gap-4 items-center justify-between">
                       <div className=" mt-[2px]">{item.year}</div>
-                    </div>
-                    <div className={`text-${colorsTrend[index]}`}>
-                      {iconTrend[index]}
+                      <div className={`text-${colorsTrend[index]}`}>
+                        {iconTrend[index]}
+                      </div>
+                      </div>
                     </div>
                   </div>
+                  
                 </div>
               </MVLink>
 

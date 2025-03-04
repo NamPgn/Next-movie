@@ -49,7 +49,7 @@ const SeriDetailProducts = ({
     }
   };
   return (
-    <div className="space-y-5 bg-[rgba(255,255,255,.08)] shadow-lg">
+    <div className=" bg-[rgba(255,255,255,.08)] shadow-lg">
       {/* Thanh điều hướng */}
       <div className="flex items-center justify-between bg-[rgba(0,0,0,.5)] p-3">
         <button

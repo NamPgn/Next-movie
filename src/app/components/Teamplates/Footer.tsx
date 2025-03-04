@@ -1,23 +1,27 @@
 import React from "react";
+import { FaFacebookF, FaYoutube, FaArrowUp, FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <>
-      <div className="text-white bg-[#15151b]">
-        <footer className="footer">
-          <div className="footer-bottom footer-border-top light py-3">
-            <div className="text-center">
-              <p className="m-0">
-                © 2023 Copyright{" "}
-                <a href="#" className="text-reset">
-                  | Ph Ang
-                </a>
-              </p>
-            </div>
-          </div>
-        </footer>
+    <footer className="bg-[#15151b] text-white py-4">
+      <div className="container mx-auto flex justify-between items-center px-4">
+        <p className="text-sm">© Ph Ang</p>
+
+        <div className="flex items-center gap-3">
+  <a href="https://www.facebook.com/phanhhh3d" className="pr-3 border-r border-gray-500">
+    <FaFacebookF className="hover:text-gray-400 cursor-pointer" />
+  </a>
+  <a href="https://www.tiktok.com/@tieu_loli" >
+    <FaTiktok className="hover:text-gray-400 cursor-pointer" />
+  </a>
+</div>
+
+        <button className="bg-gray-700 p-2 rounded-md hover:bg-gray-600">
+          <FaArrowUp className="text-white" />
+        </button>
       </div>
-    </>
+    </footer>
   );
 };
+
 export default Footer;

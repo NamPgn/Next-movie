@@ -111,7 +111,6 @@ const VideoPlayer = ({
         </div>
       </div>
       <div className="border-b-4 border-[rgba(255,255,255,.08)]"></div>
-
       <div className="bg-[rgba(0,0,0,.7)] p-4 border-b-4 border-[rgba(255,255,255,.08)]">
         <div className="flex flex-col gap-2">
           {serverBtns
