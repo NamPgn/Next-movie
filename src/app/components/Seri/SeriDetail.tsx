@@ -95,7 +95,7 @@ const SeriDetailProducts = ({
                   prefetch={false}
                   to={`/d/${item.slug}`}
                   key={item._id}
-                  className={`px-3 py-2 rounded-sm text-sm font-medium transition-all ${
+                  className={`px-3 py-2 rounded-sm text-sm font-medium transition-all text-center ${
                     item._id === productId
                       ? "bg-gray-400 text-white"
                       : "bg-gray-600 hover:bg-gray-500 text-white"
