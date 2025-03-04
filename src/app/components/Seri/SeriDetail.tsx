@@ -64,7 +64,7 @@ const SeriDetailProducts = ({
           <FaCircleLeft /> NEXT
         </button>
         <button className="flex items-center gap-2 px-4 py-2 text-sm text-white">
-        <MdOutlineMenu /> ALL
+          <MdOutlineMenu /> ALL
         </button>
         <button
           onClick={handleNext}
@@ -89,7 +89,7 @@ const SeriDetailProducts = ({
             <h2 className="text-lg text-white pb-[15px] mb-[8px] font-bold">
               Chọn tập phim
             </h2>
-            <div className="grid grid-cols-10 gap-2 max-h-80 overflow-y-auto scroll-container px-2">
+            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-10 gap-2 max-h-80 overflow-y-auto scroll-container px-2">
               {seriProducts.map((item: any) => (
                 <MVLink
                   prefetch={false}
@@ -117,8 +117,7 @@ const SeriDetailProducts = ({
             <strong className="text-white font-bold line-clamp-2 mt-8">
               {getOneProductDetail?.category?.des}
             </strong>{" "}
-            –{" "}
-            {getOneProductDetail?.summary}{" "}
+            – {getOneProductDetail?.summary}{" "}
             <a href="#" className="text-blue-400 hover:underline">
               Xem thêm
             </a>
