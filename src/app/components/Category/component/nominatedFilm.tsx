@@ -10,6 +10,9 @@ const NominatedFilm = async ({ slug }: any) => {
       <RecentlyUpdated data={data} title="Phim đề cử" loadmore="Xem Thêm" />
     </div>
   );
+
+
+  
 };
 
 export default NominatedFilm;
