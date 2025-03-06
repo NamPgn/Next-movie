@@ -13,6 +13,8 @@ import {
   FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa6";
+import CommentSection from "@/app/components/Comments/CommentSection";
+import NominatedFilm from "@/app/components/Category/component/nominatedFilm";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -195,8 +197,8 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </div>
       </div>
-
-      <Comments id={category?._id} />
+      <CommentSection />
+      <NominatedFilm slug={category?.slug} />
     </>
   );
 };

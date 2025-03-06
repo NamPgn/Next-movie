@@ -39,6 +39,24 @@ export async function fetchProductsCategory(): Promise<FetchProductsResult> {
   }
 }
 
+export async function fetchCategoryNominated(slug:any): Promise<FetchProductsResult> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/getAllCategoryNotRequest/${slug}`,
+      {
+        method: "GET",
+      }
+    );
+    if (!response) {
+      notFound();
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { data: [], error: "Failed to fetch" };
+  }
+}
+
 export async function fetchProducts(
   page: number | string
 ): Promise<FetchProductsResult> {

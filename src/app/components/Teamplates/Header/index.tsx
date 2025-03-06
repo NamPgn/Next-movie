@@ -8,6 +8,7 @@ import SearchResults from "../../Search";
 import { searCategory } from "@/sevices/categorys";
 import SearchIcon from "@/assets/icons/search.svg";
 import { SEARCH_SUGGEST } from "@/constant";
+import Link from "next/link";
 
 const Header: React.FC = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -40,7 +41,7 @@ const Header: React.FC = () => {
       debouncedSearch.cancel();
     };
   }, [debouncedSearch]);
- 
+
   return (
     <header className="bg-[#1a1a1a] text-white py-4">
       <div className="container mx-auto px-4 flex items-center justify-between  gap-2">
@@ -55,6 +56,44 @@ const Header: React.FC = () => {
               className="w-auto h-10 object-contain"
             />
           </MVLink>
+        </div>
+        <div className="flex">
+          <Link
+            href="/"
+            className="flex items-center text-md text-zinc-300 hover:text-[#d98a5e] xl:px-3 px-2 py-2 font-medium whitespace-nowrap"
+          >
+            Trang chủ
+          </Link>
+          <Link
+            href="/"
+            className="flex items-center text-md text-zinc-300 hover:text-[#d98a5e] xl:px-3 px-2 py-2 font-medium whitespace-nowrap"
+          >
+            Tu Tiên
+          </Link>
+          <Link
+            href="/"
+            className="flex items-center text-md text-zinc-300 hover:text-[#d98a5e] xl:px-3 px-2 py-2 font-medium whitespace-nowrap"
+          >
+            Ova
+          </Link>
+          <Link
+            href="/"
+            className="flex items-center text-md text-zinc-300 hover:text-[#d98a5e] xl:px-3 px-2 py-2 font-medium whitespace-nowrap"
+          >
+            Luyện Cấp
+          </Link>
+          <Link
+            href="/"
+            className="flex items-center text-md text-zinc-300 hover:text-[#d98a5e] xl:px-3 px-2 py-2 font-medium whitespace-nowrap"
+          >
+            Tiên Hiệp
+          </Link>
+          <Link
+            href="/"
+            className="flex items-center text-md text-zinc-300 hover:text-[#d98a5e] xl:px-3 px-2 py-2 font-medium whitespace-nowrap"
+          >
+            Xuyên Không
+          </Link>
         </div>
 
         {/* Mobile Navigation Menu */}
@@ -109,7 +148,7 @@ const Header: React.FC = () => {
             ))}
           </SheetContent>
         </Sheet> */}
-
+      
         {/* Search Bar */}
         <div className="relative w-full max-w-lg lg:max-w-lg ">
           <input
