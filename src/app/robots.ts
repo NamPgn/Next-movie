@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://hoathinhtrungquoc.site/sitemap.xml',
+    sitemap: 'https://hhhihi.site/sitemap.xml',
   }
 }
