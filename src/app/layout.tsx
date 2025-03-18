@@ -40,7 +40,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Head>
       <body className={inter.className + " bg-[#23232a] "}>
         <PagesTopLoader />
-        {/* <StoreProvider> */}
+        <StoreProvider>
         <ReactQueryProvider>
           <Header />
           {children}
@@ -49,7 +49,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Footer />
           <Toaster />
         </ReactQueryProvider>
-        {/* </StoreProvider> */}
+        </StoreProvider>
       </body>
     </html>
   );
