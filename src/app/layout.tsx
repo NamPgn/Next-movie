@@ -40,16 +40,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Head>
       <body className={inter.className + " bg-[#23232a] "}>
         <PagesTopLoader />
-        <StoreProvider>
-          <ReactQueryProvider>
-            <Header />
-            {children}
-            <Analytics />
-            <SpeedInsights />
-            <Footer />
-            <Toaster />
-          </ReactQueryProvider>
-        </StoreProvider>
+        {/* <StoreProvider> */}
+        <ReactQueryProvider>
+          <Header />
+          {children}
+          <Analytics />
+          <SpeedInsights />
+          <Footer />
+          <Toaster />
+        </ReactQueryProvider>
+        {/* </StoreProvider> */}
       </body>
     </html>
   );

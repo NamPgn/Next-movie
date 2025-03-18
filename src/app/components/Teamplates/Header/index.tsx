@@ -57,7 +57,7 @@ const Header: React.FC = () => {
             />
           </MVLink>
         </div>
-        <div className="flex">
+        <div className="md:flex hidden">
           <Link
             href="/"
             className="flex items-center text-md text-zinc-300 hover:text-[#d98a5e] xl:px-3 px-2 py-2 font-medium whitespace-nowrap"
