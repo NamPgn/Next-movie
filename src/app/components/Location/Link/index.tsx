@@ -20,7 +20,7 @@ const MVLink = ({
   const router = useRouter();
   const [lastOpened, setLastOpened] = useState<number | null>(null);
   const redirectLink = "https://play.xoc88.fun?code=86178";
-  const delay = 15000; // 15 giây
+  const delay = 120000; // 15 giây
 
   useEffect(() => {
     const storedTime = localStorage.getItem("lastOpened");
