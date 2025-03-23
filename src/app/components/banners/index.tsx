@@ -9,6 +9,7 @@ interface Banner {
   imageUrl: string;
   position: "top-center" | "bottom-center" | "left-center" | "right-center";
   link: string;
+  height?: any;
 }
 
 const BannerDisplay = () => {
@@ -16,7 +17,7 @@ const BannerDisplay = () => {
   const [visibleBanners, setVisibleBanners] = useState<Record<string, boolean>>(
     {}
   );
-
+  const [isHidden, setIsHidden] = useState(false);
   useEffect(() => {
     const fetchBanners = async () => {
       try {
@@ -47,27 +48,37 @@ const BannerDisplay = () => {
   );
   if (topCenterBanners.length === 0) return null;
 
-  const totalHeight = topCenterBanners.length * 80;
+  const totalHeight = topCenterBanners.length * 90;
   return (
-    <div className="w-full relative " style={{ minHeight: `${totalHeight}px` }}>
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 w-full md:w-auto">
-        {banners
-          .filter(
-            (banner) =>
-              banner.position === "top-center" && visibleBanners[banner._id]
-          )
-          .map((banner, index) => (
-            <div key={banner._id} className="relative">
-              <a href={banner.link}>
-                <img
-                  className="w-full h-[80px]"
-                  src={banner.imageUrl}
-                  alt={banner.title}
-                />
-              </a>
-            </div>
-          ))}
-      </div>
+    <div className="w-full relative ">
+      {isHidden ? null : (
+        <div style={{ minHeight: `${totalHeight}px` }}>
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 w-full md:w-auto">
+            {banners
+              .filter(
+                (banner) =>
+                  banner.position === "top-center" && visibleBanners[banner._id]
+              )
+              .map((banner: any, index) => (
+                <div key={banner._id} className="relative">
+                  <button
+                    className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs"
+                    onClick={() => setIsHidden(true)}
+                  >
+                    X
+                  </button>
+                  <a href={banner.link}>
+                    <img
+                      className={`w-full h-[90px]`}
+                      src={banner.imageUrl}
+                      alt={banner.title}
+                    />
+                  </a>
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
 
       {banners
         .filter(
