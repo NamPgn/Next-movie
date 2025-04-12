@@ -1,4 +1,4 @@
-import { SuggestionItem } from "@/app/components/Search";
+import { SuggestionItem } from "@/components/Search";
 
 export const serverBtns = ["daily", "assby", "drive"];
 

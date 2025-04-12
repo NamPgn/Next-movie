@@ -1,4 +1,4 @@
-import { isGetValue } from "../../hook/isGetValue";
+import { isGetValue } from "../hooks/isGetValue";
 import { Icommented } from "../interfaces/comment";
 import intances from "./intances";
 declare var Promise: any;

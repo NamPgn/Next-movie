@@ -1,7 +1,8 @@
 import instances from "./intances";
 
-export const getBanners = async () => {
-    return await instances.get(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/banners`
-    );
-  };
+export const bannerApi = {
+  getBanners: async () => {
+    const response = await instances.get(`/banners`);
+    return response.data;
+  },
+};

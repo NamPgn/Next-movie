@@ -61,6 +61,7 @@
 
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
   .dark {
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -77,6 +78,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -99,13 +101,17 @@
 }
 
 .scroll-containers-comment::-webkit-scrollbar-thumb {
-  background-color: #4a5568; /* Màu sắc của thanh cuộn */
-  border-radius: 9999px; /* Bo tròn thanh cuộn */
+  background-color: #4a5568;
+  /* Màu sắc của thanh cuộn */
+  border-radius: 9999px;
+  /* Bo tròn thanh cuộn */
 }
 
 .scroll-containers-comment::-webkit-scrollbar-track {
-  background-color: #2d3748; /* Màu nền của thanh cuộn */
+  background-color: #2d3748;
+  /* Màu nền của thanh cuộn */
 }
+
 @layer base {
   :root {
     --sidebar-background: 0 0% 98%;
@@ -132,24 +138,32 @@
 
 .flex-container {
   display: flex;
-  gap: 16px; /* Khoảng cách giữa các cột */
-  align-items: flex-start; /* Căn chỉnh các item ở đầu */
-  padding: 16px; /* Khoảng cách tổng thể */
+  gap: 16px;
+  /* Khoảng cách giữa các cột */
+  align-items: flex-start;
+  /* Căn chỉnh các item ở đầu */
+  padding: 16px;
+  /* Khoảng cách tổng thể */
 }
 
 .flex-container .column {
-  border-radius: 8px; /* Bo góc mềm mại */
-  background-color: #f9f9f9; /* Màu nền sáng nhẹ */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+  border-radius: 8px;
+  /* Bo góc mềm mại */
+  background-color: #f9f9f9;
+  /* Màu nền sáng nhẹ */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Đổ bóng nhẹ */
   padding: 16px;
 }
 
 .flex-container .left-column {
-  width: 25%; /* Cột trái chiếm 1/4 */
+  width: 25%;
+  /* Cột trái chiếm 1/4 */
 }
 
 .flex-container .right-column {
-  width: 75%; /* Cột phải chiếm 3/4 */
+  width: 75%;
+  /* Cột phải chiếm 3/4 */
 }
 
 .scroll-container {
@@ -158,20 +172,25 @@
 }
 
 .scroll-container::-webkit-scrollbar {
-  width: 8px; /* Chiều rộng của thanh scroll */
+  width: 8px;
+  /* Chiều rộng của thanh scroll */
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-  background: #888; /* Màu của phần kéo thanh scroll */
-  border-radius: 4px; /* Bo góc phần kéo */
+  background: #888;
+  /* Màu của phần kéo thanh scroll */
+  border-radius: 4px;
+  /* Bo góc phần kéo */
 }
 
 .scroll-container::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Màu của phần kéo khi hover */
+  background: #555;
+  /* Màu của phần kéo khi hover */
 }
 
 .scroll-container::-webkit-scrollbar-track {
-  background: transparent; /* Màu nền của track thanh scroll */
+  background: transparent;
+  /* Màu nền của track thanh scroll */
 }
 
 
@@ -193,3 +212,35 @@
   border-radius: 2px;
 }
 
+/* Custom Scrollbar */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #FFD875 #2d2d2d;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #FFD875;
+  border-radius: 3px;
+}
+
+.toastProgress {
+  background: #FFD875 !important;
+}
+
+.Toastify__close-button{
+  color: #FFD875 !important;
+}
+
+.Toastify__toast-button{
+  color: #f7cc5f !important;
+}

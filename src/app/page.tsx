@@ -1,11 +1,10 @@
-import CategoryHomePage from "./components/Category/component/home";
-import MainLayout from "./layouts/MainLayout";
+import CategoryHomePage from "../components/Category/component/home";
+import MainLayout from "./MainLayout";
 
 const HomePage = () => {
   return (
     <>
       <MainLayout>
-        {/* <Group /> */}
         <CategoryHomePage />
       </MainLayout>
     </>

@@ -1,4 +1,4 @@
-import { isGetValue } from "../../hook/isGetValue";
+import { isGetValue } from "../hooks/isGetValue";
 import intances from "./intances";
 const dataToken: any = isGetValue();
 export const resgister = async (data: any) => {

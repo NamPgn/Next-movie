@@ -3,6 +3,7 @@ import { IProduct } from "@/interfaces/product";
 import React, { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
 import { serverBtns } from "@/constant";
+import ErrorsMessage from './ErrorsMessage';
 
 const VideoPlayer = ({
   getOneProductDetail,
@@ -12,6 +13,7 @@ const VideoPlayer = ({
   const [videoUrl, setVideoUrl] = useState("");
   const [videoStatus, setVideoStatus] = useState("loading");
   const [currentServer, setCurrentServer] = useState("daily");
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
   const secretKey =
     process.env.NEXT_PUBLIC_SECERT_CRYPTO_KEY_PRODUCTS_DAILYMOTION_SERVER || "";
   const data = CryptoJS.AES.decrypt(
@@ -95,56 +97,85 @@ const VideoPlayer = ({
     getOneProductDetail.link,
   ];
   return (
-    <div>
+    <div className="space-y-4">
       {/* Video Player */}
       <div className="relative aspect-video w-full rounded overflow-hidden bg-black">
         {renderVideo()}
       </div>
 
       {/* Chọn Server */}
-      <div className="flex justify-between items-center bg-[rgba(0,0,0,.7)] px-[25px] py-[25px]">
-        <div className="text-white text-lg font-semibold ">Chọn server</div>
-        <div className="flex justify-end">
-          <button className="bg-black  text-[#408BEA] py-1 px-3 rounded text-xs" style={{ border:" solid 1px rgb(255 255 255 / 14%) " }}>
-            Report Error
+      <div className="bg-[#1a1a1f] rounded-lg overflow-hidden">
+        <div className="bg-[#1f1f24] p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+          <h2 className="text-base sm:text-lg font-semibold text-white">Chọn Server</h2>
+          <button 
+            onClick={() => setIsErrorModalOpen(true)}
+            className="w-full sm:w-auto px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium text-[#FFD875] bg-[#26262c] rounded-full hover:bg-[#2d2d33] transition-colors border border-[#FFD875]/20"
+          >
+            Báo lỗi
           </button>
         </div>
-      </div>
-      <div className="border-b-4 border-[rgba(255,255,255,.08)]"></div>
-      <div className="bg-[rgba(0,0,0,.7)] p-4 border-b-4 border-[rgba(255,255,255,.08)]">
-        <div className="flex flex-col gap-2">
-          {serverBtns
-            .filter((server, index) => arrLink[index])
-            .map((server, index) => (
-              <button
-                key={server}
-                onClick={() => handleChangeServer(server)}
-                className={`flex items-center p-3 w-full text-white transition font-bold ${
-                  currentServer === server
-                    ? "bg-[rgba(255,255,255,.1)] text-white"
-                    : " text-gray-400 hover:bg-[#222] hover:text-white"
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    className={`w-5 h-5 ${
-                      currentServer === server ? "text-white" : "text-gray-500"
-                    }`}
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  Vietsub #{index + 1}
-                </span>
-              </button>
-            ))}
+
+        <div className="p-3 sm:p-4">
+          <div className="flex flex-wrap gap-2">
+            {serverBtns
+              .filter((server, index) => arrLink[index])
+              .map((server, index) => (
+                <button
+                  key={server}
+                  onClick={() => handleChangeServer(server)}
+                  className={`flex items-center px-3 sm:px-6 py-2 sm:py-2.5 rounded-lg transition-colors text-xs sm:text-sm ${
+                    currentServer === server
+                      ? "bg-[#FFD875] text-[#1a1a1f]"
+                      : "bg-[#26262c] text-gray-300 hover:bg-[#2d2d33] hover:text-white"
+                  }`}
+                >
+                  <span className="flex items-center gap-1.5 sm:gap-2 font-medium whitespace-nowrap">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    Server #{index + 1}
+                  </span>
+                </button>
+              ))}
+          </div>
+
+          <p className="text-xs sm:text-sm text-[#FFD875] mt-3 sm:mt-4">
+            *Nếu server hiện tại không xem được, vui lòng chọn server khác hoặc tải lại trang
+          </p>
         </div>
-        <p className="text-[#FDB813] text-sm mt-2">
-          Nếu không xem được vui lòng đổi server #2 hoặc #3 hoặc tải lại trang!
-        </p>
       </div>
+
+      {/* Loading States */}
+      {videoStatus === "loading" && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="text-sm sm:text-base text-white">Đang tải video...</div>
+        </div>
+      )}
+      
+      {videoStatus === "unavailable" && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="text-sm sm:text-base text-white">Video đang trong quá trình cập nhật.</div>
+        </div>
+      )}
+      
+      {videoStatus === "error" && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="text-sm sm:text-base text-white">Có lỗi xảy ra khi tải video.</div>
+        </div>
+      )}
+
+      {/* Error Modal */}
+      <ErrorsMessage 
+        isOpen={isErrorModalOpen}
+        onClose={() => setIsErrorModalOpen(false)}
+        movieName={getOneProductDetail?.category?.name || ""}
+        productId={getOneProductDetail?._id?.toString() || ""}
+      />
     </div>
   );
 };

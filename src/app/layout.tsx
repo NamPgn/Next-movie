@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import { Toaster } from "@/components/ui/toaster";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Roboto({ subsets: ["latin"], weight: "300" });
 
@@ -23,15 +22,15 @@ export const metadata: Metadata = {
     icon: METADATA_LAYOUT.ICON,
   },
 };
-import Header from "./components/Teamplates/Header";
-import Footer from "@/app/components/Teamplates/Footer";
+import Header from "../components/Teamplates/Header";
+import Footer from "@/components/Teamplates/Footer";
 import React from "react";
-import StoreProvider from "./StoreProvider";
+import StoreProvider from "../providers/StoreProvider";
 import Head from "next/head";
-import PagesTopLoader from "./pageLoading";
+import PagesTopLoader from "../components/Loading/pageLoading";
 import { METADATA_LAYOUT } from "@/constant";
-import ReactQueryProvider from "./QueryClientProvider";
-
+import ReactQueryProvider from "../providers/QueryClientProvider";
+import { ToastContainer } from 'react-toastify';
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
@@ -47,7 +46,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Analytics />
             <SpeedInsights />
             <Footer />
-            <Toaster />
+            <ToastContainer />
           </ReactQueryProvider>
         </StoreProvider>
       </body>

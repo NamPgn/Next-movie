@@ -1,5 +1,5 @@
 import axios from "axios";
-import { isGetValue } from "../../hook/isGetValue";
+import { isGetValue } from "../hooks/isGetValue";
 import { isTokenExpired } from "../../common/token";
 import { refreshTokenAuth } from "./user";
 

@@ -20,7 +20,7 @@ const config: Config = {
   		},
   		colors: {
 				spring: {
-          primary: '#FFD700', // Vàng
+          primary: '#FFD875', // Updated to new yellow
           secondary: '#FF69B4', // Hồng phấn
         },
         summer: {
@@ -46,7 +46,7 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: '#FFD875',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
@@ -84,7 +84,16 @@ const config: Config = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+        keyframes: {
+          moveFilm: {
+            '0%': { transform: 'translateX(0)' },
+            '100%': { transform: 'translateX(-100%)' },
+          },
+        },
+        animation: {
+          moveFilm: 'moveFilm 2s linear infinite',
+        },
   		}
   	}
   },

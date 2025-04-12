@@ -1,11 +1,10 @@
-import { fetchCategories } from "@/app/sevices/categorySevices";
 import { Metadata } from "next";
-import MVImage from "@/app/components/MV/IMAGE";
-import SeriNumberMovie from "@/app/components/Seri/SeriCategory";
-import ShowDescriptions from "@/app/components/ShowContent/showDescriptions";
-import Comments from "@/app/components/Comments";
+import MVImage from "@/components/MV/IMAGE";
+import SeriNumberMovie from "@/components/Seri/SeriCategory";
+import ShowDescriptions from "@/components/ShowContent/showDescriptions";
+import Comments from "@/components/Comments";
 import { Badge } from "@/components/ui/badge";
-import MVLink from "@/app/components/Location/Link";
+import MVLink from "@/components/Location/Link";
 import { Icategory } from "@/interfaces/category";
 import {
   FaFacebookF,
@@ -13,8 +12,9 @@ import {
   FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa6";
-import CommentSection from "@/app/components/Comments/CommentSection";
-import NominatedFilm from "@/app/components/Category/component/nominatedFilm";
+import CommentSection from "@/components/Comments/CommentSection";
+import NominatedFilm from "@/components/Category/component/nominatedFilm";
+import { fetchCategories } from "@/sevices/categories/categorySevices";
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -50,18 +50,18 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
   }
   return (
     <>
-      <div className="text-white bg-gradient-to-b from-gray-800 via-gray-900 to-black p-6 rounded-sm ">
+      <div className="text-white bg-gradient-to-b from-[#16161a] to-[#26262c] p-6 rounded-sm">
         <div className="flex flex-col lg:flex-row gap-6 lg:items-start items-center">
           {/* Hình ảnh anime */}
           <div className="w-full md:w-1/2 lg:w-1/4">
-            <div className="relative mx-auto">
+            <div className="relative mx-auto max-w-[200px] sm:max-w-[200px] md:max-w-[200px]">
               <MVImage
                 title={category.name}
                 src={category?.linkImg}
                 alt={category?.name}
                 width={300}
                 height={400}
-                className="rounded-lg object-cover shadow-lg transform hover:scale-105 transition-transform duration-300"
+                className="rounded-lg object-cover shadow-lg transform hover:scale-105 transition-transform duration-300 w-full"
               />
             </div>
             {category.isMovie === "drama" && (
@@ -71,7 +71,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                   category?.products[category.products.length - 1]?.slug
                 }`}
               >
-                <button className="mt-4 bg-yellow-600 hover:bg-yellow-500 text-white w-full font-semibold py-2 px-4 rounded-lg shadow-md transition-all duration-300">
+                <button className="mt-4 bg-[#FFD875] hover:bg-[#ffc107] text-black w-full font-semibold py-2 px-4 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl">
                   ► Xem Ngay
                 </button>
               </MVLink>
@@ -80,16 +80,16 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
 
           {/* Thông tin anime */}
           <div className="w-full lg:w-3/4 space-y-4">
-            <h1 className="text-2xl md:text-3xl font-extrabold text-yellow-400 text-center lg:text-left">
+            <h1 className="text-2xl md:text-3xl font-extrabold text-[#FFD875] text-center lg:text-left">
               {category.name}
             </h1>
             <p className="text-sm text-gray-400 text-center lg:text-left">
               <span>{category?.anotherName}</span>
             </p>
             <p className="text-sm text-gray-400 text-center lg:text-left">
-              <span className="font-semibold text-yellow-500">22.1M</span> Lượt
+              <span className="font-semibold text-[#FFD875]">22.1M</span> Lượt
               xem | Cập nhật lúc{" "}
-              <span className="text-yellow-500">{category.hour || "10h"}</span>{" "}
+              <span className="text-[#FFD875]">{category.hour || "10h"}</span>{" "}
               mỗi {category?.week?.name || "ngày"}
             </p>
 
@@ -99,7 +99,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                   <span className="font-semibold">Tổng:</span>
                   <Badge
                     variant="secondary"
-                    className="ml-2 bg-yellow-500 text-black"
+                    className="ml-2 bg-[#FFD875] text-black"
                   >
                     {category?.sumSeri || "0"} Tập
                   </Badge>
@@ -109,7 +109,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                 <span className="font-semibold">Thời Lượng:</span>
                 <Badge
                   variant="secondary"
-                  className="ml-2 bg-blue-500 text-white"
+                  className="ml-2 bg-[#4c4c4c] text-white"
                 >
                   {category?.time || "N/A"}
                 </Badge>
@@ -118,10 +118,10 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
 
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 items-center">
               <span className="text-sm font-semibold">Thể Loại:</span>
-              <span className="bg-blue-100 text-blue-600 text-xs font-medium px-3 py-1 rounded-md">
+              <span className="bg-[#4c4c4c] text-[#FFD875] text-xs font-medium px-3 py-1 rounded-md">
                 Anime
               </span>
-              <span className="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-md">
+              <span className="bg-[#4c4c4c] text-gray-300 text-xs font-medium px-3 py-1 rounded-md">
                 {category.type || "N/A"}
               </span>
             </div>
@@ -136,7 +136,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                       key={i}
                       xmlns="http://www.w3.org/2000/svg"
                       className={`h-5 w-5 ${
-                        i < 8 ? "text-yellow-400" : "text-gray-600"
+                        i < 8 ? "text-[#FFD875]" : "text-gray-600"
                       }`}
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -158,7 +158,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                   category?.products[category.products.length - 1]?.slug
                 }`}
               >
-                <button className="bg-yellow-600 mt-5 hover:bg-yellow-500 w-full lg:w-auto text-white font-semibold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <button className="bg-gradient-to-r from-[#FFD875] to-[#ffd041] hover:from-[#ffc107] hover:to-[#FFD875] mt-5 w-full lg:w-auto text-black font-semibold py-2 px-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl">
                   ► Xem Ngay
                 </button>
               </MVLink>
@@ -170,10 +170,10 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
 
         {/* Nội dung phim */}
         <div className="mt-6">
-          <h2 className="text-xl font-bold mb-2 text-yellow-400 text-center lg:text-left">
+          <h2 className="text-xl font-bold mb-2 text-[#FFD875] text-center lg:text-left">
             Nội dung phim
           </h2>
-          <div className="bg-gray-800 p-4 rounded-lg shadow-inner">
+          <div className="bg-[#1a1a1f] p-4 rounded-lg shadow-inner">
             <ShowDescriptions content={category.des} />
           </div>
         </div>
@@ -182,23 +182,24 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
           <span className="text-gray-300 text-sm font-bold">Chia sẻ</span>
           <span className="text-white font-semibold ml-1">2</span>
           <div className="flex items-center gap-2 ml-3">
-            <a href="#" className="bg-[#1877F2] p-2 rounded">
-              <FaFacebookF className="text-white w-4 h-4" />
+            <a href="#" className="bg-[#1a1a1f] hover:bg-[#26262c] p-2 rounded transition-colors">
+              <FaFacebookF className="text-[#FFD875] w-4 h-4" />
             </a>
-            <a href="#" className="bg-[#1DA1F2] p-2 rounded">
-              <FaTwitter className="text-white w-4 h-4" />
+            <a href="#" className="bg-[#1a1a1f] hover:bg-[#26262c] p-2 rounded transition-colors">
+              <FaTwitter className="text-[#FFD875] w-4 h-4" />
             </a>
-            <a href="#" className="bg-[#E60023] p-2 rounded">
-              <FaPinterestP className="text-white w-4 h-4" />
+            <a href="#" className="bg-[#1a1a1f] hover:bg-[#26262c] p-2 rounded transition-colors">
+              <FaPinterestP className="text-[#FFD875] w-4 h-4" />
             </a>
-            <a href="#" className="bg-[#25D366] p-2 rounded">
-              <FaWhatsapp className="text-white w-4 h-4" />
+            <a href="#" className="bg-[#1a1a1f] hover:bg-[#26262c] p-2 rounded transition-colors">
+              <FaWhatsapp className="text-[#FFD875] w-4 h-4" />
             </a>
           </div>
         </div>
-      </div>
       <CommentSection />
-      <NominatedFilm slug={category?.slug} />
+
+      </div>
+      <NominatedFilm seriesId={category?.relatedSeasons} categoryId={category?._id} />
     </>
   );
 };

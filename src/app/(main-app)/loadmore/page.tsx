@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Icategory } from "@/interfaces/category";
 import { useAppDispatch, useAppSelector } from "@/lib/hook";
 import { getAllcate } from "@/lib/features/categorys/thunkActions";
-import LoadingUsagyuuun from "@/app/components/Loading";
-import RecentlyUpdated from "@/app/components/RecentlyUpdated";
+import LoadingUsagyuuun from "@/components/Loading";
+import RecentlyUpdated from "@/components/RecentlyUpdated";
 export type CategoryLoadmore = {
   data: Icategory[];
   totalCount: number;
@@ -35,9 +35,9 @@ const LoadMorePage = () => {
     return <LoadingUsagyuuun />;
   }
   return (
-    <div>
+    <div className="p-2">
       <RecentlyUpdated title="ALL" data={categorys.data} loadmore="" />
-      <div className="flex items-center gap-4 bg-[#999]">
+      <div className="flex items-center gap-4 bg-[#999] ">
         <button
           onClick={() => handlePreviosPage()}
           disabled={page == 1 ? true : false}
