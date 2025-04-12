@@ -55,7 +55,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           <div className="relative h-[500px]">
             <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-10 rounded-l-lg" />
             <img
-              src="https://i.pinimg.com/736x/df/33/3a/df333a5512113bbb276f27676b75eb23.jpg"
+               src="/images/df333a5512113bbb276f27676b75eb23.jpg"
               alt="Movie Background"
               className="w-full h-full object-cover rounded-l-lg"
             />
