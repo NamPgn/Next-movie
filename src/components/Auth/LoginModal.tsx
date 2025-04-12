@@ -7,6 +7,7 @@ import { loginSchema } from "@/components/schema";
 import useToast from "@/hooks/use-toast";
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
+import MVImage from "../MV/IMAGE";
 
 type FormData = {
   email: string;
@@ -54,8 +55,10 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           {/* Image Section */}
           <div className="relative h-[500px]">
             <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-10 rounded-l-lg" />
-            <img
-               src="/images/df333a5512113bbb276f27676b75eb23.jpg"
+            <MVImage
+              width={300}
+              height={300}
+              src="/images/df333a5512113bbb276f27676b75eb23.jpg"
               alt="Movie Background"
               className="w-full h-full object-cover rounded-l-lg"
             />

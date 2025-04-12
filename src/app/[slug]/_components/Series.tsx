@@ -12,6 +12,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import MVImage from "@/components/MV/IMAGE";
 
 interface Category {
   des: string;
@@ -91,11 +92,12 @@ const Series = ({ params }: { params: { slug: string } }) => {
               <div className="relative h-full w-full">
                 {/* Background Image with Blur */}
                 <div className="absolute inset-0">
-                  <img
+                  <MVImage
+                    width={200}
+                    height={200}
                     src={category.linkImg}
                     alt={category.name}
                     className="w-full h-full object-cover opacity-60 blur-sm"
-                    loading="eager"
                   />
                   {/* Gradient overlays */}
                   <div className="absolute inset-0 bg-gradient-to-b from-[#0f0f0f]/80 via-transparent to-[#1a1a1f]" />
@@ -125,11 +127,12 @@ const Series = ({ params }: { params: { slug: string } }) => {
                     </div>
 
                     <div className="hidden md:block w-[300px] h-[450px] relative group">
-                      <img
+                      <MVImage
+                        width={300}
+                        height={450}
                         src={category.linkImg}
                         alt={category.name}
                         className="w-full h-full object-cover rounded-lg shadow-2xl transform transition-transform duration-500"
-                        loading="eager"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1f] via-transparent to-transparent rounded-lg" />
                     </div>
@@ -220,7 +223,9 @@ const Series = ({ params }: { params: { slug: string } }) => {
               >
                 {/* Thumbnail */}
                 <div className="relative aspect-[2/3]">
-                  <img
+                  <MVImage
+                    width={300}
+                    height={300}
                     src={category.linkImg}
                     alt={category.name}
                     className="w-full h-full object-cover"

@@ -180,7 +180,9 @@ const Header: React.FC = () => {
                         className="flex items-center px-4 py-2 hover:bg-gray-800 transition-colors duration-200 group"
                         onClick={() => setShowFavorites(false)}
                       >
-                        <img
+                        <MVImage
+                          width={100}
+                          height={100}
                           src={movie.thumbnail}
                           alt={movie.name}
                           className="w-10 h-14 object-cover rounded"

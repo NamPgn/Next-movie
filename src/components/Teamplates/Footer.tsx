@@ -2,6 +2,7 @@
 
 import React from "react";
 import { FaFacebookF, FaYoutube, FaArrowUp, FaTiktok, FaTelegram } from "react-icons/fa";
+import MVImage from "../MV/IMAGE";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -17,7 +18,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <img src="/images/logo.png" alt="Hoạt Hình Trung Quốc" className="h-10 w-auto object-contain" />
+              <MVImage
+                width={100}
+                height={100}
+                src="/images/logo.png"
+                alt="Hoạt Hình Trung Quốc"
+                className="h-10 w-auto object-contain"
+              />
             </div>
             <p className="text-sm text-gray-400">
               Website xem phim online với giao diện mới được bố trí và thiết kế thân thiện với người dùng. Nguồn phim được tổng hợp từ các website lớn với đa dạng các đầu phim và thể loại vô cùng phong phú.

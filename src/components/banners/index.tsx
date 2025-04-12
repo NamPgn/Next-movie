@@ -2,6 +2,7 @@
 
 import { useBanners } from "@/hooks/app/banner";
 import { useEffect, useState } from "react";
+import MVImage from "../MV/IMAGE";
 
 interface Banner {
   _id: string;
@@ -71,7 +72,9 @@ const BannerDisplay = () => {
                     X
                   </button>
                   <a href={banner.link}>
-                    <img
+                    <MVImage
+                      width={200}
+                      height={200}
                       className="w-full h-[90px]"
                       src={banner.imageUrl}
                       alt={banner.title}
