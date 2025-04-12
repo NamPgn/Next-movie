@@ -65,7 +65,6 @@ const Header: React.FC = () => {
     };
   }, [debouncedSearch]);
 
-  if (seriesLoading) return <div>Loading...</div>
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
@@ -95,7 +94,7 @@ const Header: React.FC = () => {
             >
               Trang chủ
             </Link>
-            {series.map((item: any) => (
+            { seriesLoading ? 'Loading...' : series.map((item: any) => (
               <Link
                 key={item.id}
                 href={`/${item.slug}`}
