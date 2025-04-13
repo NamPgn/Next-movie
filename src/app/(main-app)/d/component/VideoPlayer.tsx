@@ -175,6 +175,7 @@ const VideoPlayer = ({
         onClose={() => setIsErrorModalOpen(false)}
         movieName={getOneProductDetail?.category?.name || ""}
         productId={getOneProductDetail?._id?.toString() || ""}
+        setIsErrorModalOpen={setIsErrorModalOpen}
       />
     </div>
   );

@@ -9,13 +9,15 @@ interface ErrorsMessageProps {
 	onClose: () => void;
 	movieName: string;
 	productId: string;
+	setIsErrorModalOpen: (value: boolean) => void;
 }
 
 const ErrorsMessage: React.FC<ErrorsMessageProps> = ({
 	isOpen,
 	onClose,
 	movieName,
-	productId
+	productId,
+	setIsErrorModalOpen
 }) => {
 	const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
 	const [comment, setComment] = useState('');
@@ -55,6 +57,8 @@ const ErrorsMessage: React.FC<ErrorsMessageProps> = ({
 			reaction: selectedEmoji,
 			comment: comment.trim()
 		});
+
+		setIsErrorModalOpen(false)
 	};
 
 	if (!isOpen) return null;
@@ -84,9 +88,8 @@ const ErrorsMessage: React.FC<ErrorsMessageProps> = ({
 									key={reaction.label}
 									onClick={() => setSelectedEmoji(reaction.emoji)}
 									disabled={isLoading}
-									className={`flex flex-col items-center gap-1 transition-transform ${
-										selectedEmoji === reaction.emoji ? 'transform scale-110' : ''
-									} ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}`}
+									className={`flex flex-col items-center gap-1 transition-transform ${selectedEmoji === reaction.emoji ? 'transform scale-110' : ''
+										} ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}`}
 								>
 									<span className="text-2xl">{reaction.emoji}</span>
 									<span className="text-xs text-gray-300">{reaction.label}</span>
@@ -112,11 +115,10 @@ const ErrorsMessage: React.FC<ErrorsMessageProps> = ({
 					<button
 						onClick={handleSubmit}
 						disabled={isLoading}
-						className={`flex-1 bg-[#FFD875] text-black py-2 px-4 rounded-full font-medium transition-colors ${
-							isLoading 
-								? 'opacity-50 cursor-not-allowed' 
+						className={`flex-1 bg-[#FFD875] text-black py-2 px-4 rounded-full font-medium transition-colors ${isLoading
+								? 'opacity-50 cursor-not-allowed'
 								: 'hover:bg-[#ffc107]'
-						}`}
+							}`}
 					>
 						{isLoading ? 'Đang gửi...' : 'Gửi đánh giá'}
 					</button>

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import "./style.css"; // Nhúng tệp CSS
 import ShowDescriptions from "@/components/ShowContent/showDescriptions";
 import { Metadata, ResolvingMetadata } from "next";
-import SeriDetailProducts from "@/components/Seri/SeriDetail";
+import SeriDetailProducts from "@/components/Episode/SeriDetail";
 import VideoPlayer from "../component/VideoPlayer";
 import Save from "../component/Save";
 import { fetchProduct } from "@/sevices/products/productsSevices";
