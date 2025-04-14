@@ -108,7 +108,7 @@ const VideoPlayer = ({
         <div className="bg-[#1f1f24] p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
           <h2 className="text-base sm:text-lg font-semibold text-white">Chọn Server</h2>
           <button 
-            // onClick={() => setIsErrorModalOpen(true)}
+            onClick={() => setIsErrorModalOpen(true)}
             className="w-full sm:w-auto px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium text-[#FFD875] bg-[#26262c] rounded-full hover:bg-[#2d2d33] transition-colors border border-[#FFD875]/20"
           >
             Báo lỗi

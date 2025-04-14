@@ -58,7 +58,6 @@ const ErrorsMessage: React.FC<ErrorsMessageProps> = ({
 			comment: comment.trim()
 		});
 
-		setIsErrorModalOpen(false)
 	};
 
 	if (!isOpen) return null;

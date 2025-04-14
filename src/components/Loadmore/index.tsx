@@ -1,41 +1,59 @@
-// "use client";
-// import React, { useContext, useEffect } from "react";
-// import { Spiner } from "../Message/Notification";
-// import PaginationCustoms from "../MV/Pagination";
-// import MVGridCategory from "../Grid/component";
-// import { ApiContext } from "@/context/api";
-// import { useAppDispatch, useAppSelector } from "@/hook";
-// import { getAllcate } from "@/redux/slice/category/thunk/category";
-// import MVTypeDisplay from "@/app/pages/Type/component";
-// export default function Loadmore() {
-//   const { setPage, page }: any = useContext(ApiContext);
-//   const category: any = useAppSelector((state) => state.category.category);
-//   const dispatch = useAppDispatch();
-//   useEffect(() => {
-//     dispatch(getAllcate(page));
-//   }, [page]);
-//   const isLoading = useAppSelector((state) => state.category.isLoading);
-//   if (isLoading) return <Spiner />;
-//   const data = {
-//     name: "Danh mục",
-//   };
-//   return (
-//     <>
-//       <MVTypeDisplay data={data}>
-//         <MVGridCategory
-//           type="category"
-//           gutter={[16, 16]}
-//           child={category && category.data}
-//         />
-//         <PaginationCustoms
-//           className="text-center"
-//           currentPage={page}
-//           defaultCurrent={1}
-//           totalItems={category.length}
-//           pageSize={20}
-//           onChange={(value: any) => setPage(value)}
-//         />
-//       </MVTypeDisplay>
-//     </>
-//   );
-// }
+"use client";
+
+import { Icategory } from "@/interfaces/category";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/lib/hook";
+import { getAllcate } from "@/lib/features/categorys/thunkActions";
+import LoadingUsagyuuun from "../Loading";
+import RecentlyUpdated from "../RecentlyUpdated";
+import LoadmorePagination from "@/sections/pagination/loadmore-pagination";
+export type CategoryLoadmore = {
+	data: Icategory[];
+	totalCount: number;
+	totalPages: number;
+};
+
+const LoadmoreComponent = () => {
+	const dispatch = useAppDispatch();
+	const total = Math.round(44 / 24);
+	const [page, setPage] = useState(1);
+	const pages = Array(total)
+		.fill(null)
+		.map((_, index) => index + 1);
+	const handleChangePage = (page: number) => {
+		setPage(page);
+	};
+	const handleNextPage = () => {
+		setPage((page) => page + 1);
+	};
+	const handlePreviosPage = () => {
+		setPage((page) => page - 1);
+	};
+	
+	const categorys = useAppSelector((state) => state.category.category);
+	const isLoading = useAppSelector((state) => state.category.isLoading);
+
+	useEffect(() => {
+		dispatch(getAllcate(page));
+	}, [page]);
+
+	if (isLoading) {
+		return <LoadingUsagyuuun />;
+	}
+
+	return (
+		<>
+			<RecentlyUpdated title="ALL" data={categorys.data} loadmore="" />
+			<LoadmorePagination
+				page={page}
+				handleChangePage={handleChangePage}
+				handlePreviosPage={handlePreviosPage}
+				handleNextPage={handleNextPage}
+				total={total}
+				pages={pages}
+			/>
+		</>
+	);
+};
+
+export default LoadmoreComponent;
