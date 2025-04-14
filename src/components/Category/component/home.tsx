@@ -18,33 +18,33 @@ const CategoryHomePage = () => {
 
   const { data: val, isLoading, error: isError, refetch } = useCategories();
 
-  useEffect(() => {
-    const socket = getSocket();
+  // useEffect(() => {
+  //   const socket = getSocket();
 
-    socket.on("connect", () => {
-      console.log("✅ Socket connected:", socket.id);
-    });
+  //   socket.on("connect", () => {
+  //     console.log("✅ Socket connected:", socket.id);
+  //   });
 
-    socket.on("test", (data) => {
-      console.log("📡 Test event from server:", data);
-    });
+  //   socket.on("test", (data) => {
+  //     console.log("📡 Test event from server:", data);
+  //   });
 
-    socket.on("product:update", (data) => {
-      console.log("🛠 Product updated:", data);
-      if (data) {
-        refetch();
-      }
-    });
+  //   socket.on("product:update", (data) => {
+  //     console.log("🛠 Product updated:", data);
+  //     if (data) {
+  //       refetch();
+  //     }
+  //   });
 
 
-    socket.on("product:add", (data) => {
-      console.log("🛠 Product add:", data);
-      // ✅ Gọi lại API hoặc mutate SWR/react-query tại đây
-    });
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+  //   socket.on("product:add", (data) => {
+  //     console.log("🛠 Product add:", data);
+  //     // ✅ Gọi lại API hoặc mutate SWR/react-query tại đây
+  //   });
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, []);
 
   if (isLoading) {
     return <LoadingUsagyuuun />;
