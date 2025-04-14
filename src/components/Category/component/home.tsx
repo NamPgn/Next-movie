@@ -4,6 +4,9 @@ import WeekComponent from "../../Week";
 import { useQuery } from "@tanstack/react-query";
 import LoadingUsagyuuun from "../../Loading";
 import { getCategoryLatest } from "@/sevices/categorys";
+import { useEffect } from "react";
+import { getSocket } from "../../../../config/socket";
+import { useCategories } from "@/hooks/app/categories";
 
 const RecentlyUpdated = dynamic(() => import("../../RecentlyUpdated"));
 
@@ -12,17 +15,37 @@ const CategoryHomePage = () => {
   //   categorys: state.categorys,
   //   setCategory: state.setCategory,
   // }));
-  const {
-    data: val,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["categorys"],
-    queryFn: async () => {
-      const res = await getCategoryLatest();
-      return res.data;
-    },
-  });
+
+  const { data: val, isLoading, error: isError, refetch } = useCategories();
+
+  useEffect(() => {
+    const socket = getSocket();
+
+    socket.on("connect", () => {
+      console.log("✅ Socket connected:", socket.id);
+    });
+
+    socket.on("test", (data) => {
+      console.log("📡 Test event from server:", data);
+    });
+
+    socket.on("product:update", (data) => {
+      console.log("🛠 Product updated:", data);
+      if (data) {
+        refetch();
+      }
+    });
+
+
+    socket.on("product:add", (data) => {
+      console.log("🛠 Product add:", data);
+      // ✅ Gọi lại API hoặc mutate SWR/react-query tại đây
+    });
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   if (isLoading) {
     return <LoadingUsagyuuun />;
   }

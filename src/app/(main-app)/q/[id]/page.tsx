@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import MVImage from "@/components/MV/IMAGE";
 import SeriNumberMovie from "@/components/Episode/SeriCategory";
 import ShowDescriptions from "@/components/ShowContent/showDescriptions";
-import Comments from "@/components/Comments";
 import { Badge } from "@/components/ui/badge";
 import MVLink from "@/components/Location/Link";
 import { Icategory } from "@/interfaces/category";

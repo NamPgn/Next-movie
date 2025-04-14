@@ -29,7 +29,6 @@ const LoadmoreComponent = () => {
 	const handlePreviosPage = () => {
 		setPage((page) => page - 1);
 	};
-	
 	const categorys = useAppSelector((state) => state.category.category);
 	const isLoading = useAppSelector((state) => state.category.isLoading);
 

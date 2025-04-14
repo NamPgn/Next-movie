@@ -2,6 +2,16 @@ import { Icategory } from "../interfaces/category";
 import intances from "./intances";
 declare var Promise: any;
 // const dataToken = isAuthentication();
+
+export const categoriesApi = {
+  getCategory(id: string | number) {
+    return intances.get(`/category/${id}`);
+  },
+  getCategoryLatest: async () => {
+    return await intances.get(`/category/latest/next`);
+  }
+};
+
 export const getAllcategory = async (
   page: number | String
 ): Promise<Icategory[]> => {
