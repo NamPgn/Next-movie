@@ -19,7 +19,7 @@ const MVLink = ({
 }: LinkType & AnchorHTMLAttributes<HTMLAnchorElement>) => {
   const router = useRouter();
   const [lastOpened, setLastOpened] = useState<number | null>(null);
-  const redirectLink = "https://play.xoc88.fun?code=86178";
+  const redirectLink = process.env.NEXT_PUBLIC_REDIRECT_LINK;
   const delay = 120000; // 15 giây
 
   useEffect(() => {

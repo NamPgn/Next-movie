@@ -119,7 +119,7 @@ const ErrorsMessage: React.FC<ErrorsMessageProps> = ({
 								: 'hover:bg-[#ffc107]'
 							}`}
 					>
-						{isLoading ? 'Đang gửi...' : 'Gửi đánh giá'}
+						{isLoading ? 'Đang gửi...' : 'Báo lỗi'}
 					</button>
 					<button
 						onClick={onClose}

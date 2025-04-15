@@ -7,7 +7,7 @@ const SeriNumberMovie = ({ data, isLoading }: any) => {
     <>
       {data.isMovie == "drama" ? (
         <div className="scroll-container h-[174px]">
-          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-4 pr-1">
+          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-4 pr-1">
             {data?.products?.map((item: any) => (
               <MVLink
                 prefetch={false}

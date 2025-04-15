@@ -75,16 +75,39 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <MVLink prefetch={false} to="/" aria-label="Trang chủ">
-              <MVImage
-                src="/images/logo.png"
-                width={160}
-                height={60}
-                alt="Hoạt Hình Trung Quốc"
-                className="h-10 w-auto object-contain"
-              />
+            <MVLink prefetch={false} to="/" aria-label="Trang chủ" className="relative">
+              <div className="relative flex items-center gap-2">
+                {/* Lá cờ Việt Nam */}
+                {/* <div className="relative w-8 h-6 overflow-hidden rounded shadow-lg animate-wave">
+                  <div className="absolute inset-0 bg-red-600"></div>
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <svg className="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/>
+                    </svg>
+                  </div>
+                </div> */}
+                <MVImage
+                  src="/images/logo.png"
+                  width={160}
+                  height={60}
+                  alt="Hoạt Hình Trung Quốc"
+                  className="h-10 w-auto object-contain"
+                />
+              </div>
             </MVLink>
           </div>
+
+          <style jsx>{`
+            @keyframes wave {
+              0% { transform: rotate(-5deg); }
+              50% { transform: rotate(5deg); }
+              100% { transform: rotate(-5deg); }
+            }
+            .animate-wave {
+              animation: wave 3s ease-in-out infinite;
+              transform-origin: bottom center;
+            }
+          `}</style>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-1">

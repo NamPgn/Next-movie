@@ -1,7 +1,7 @@
 'use client';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "@/components/schema";
+import { loginSchema } from "@/schema";
 // import { loginForm } from "@/lib/features/auth/thunkActions";
 // import { useAppDispatch } from "@/lib/hook";
 import useToast from "@/hooks/use-toast";

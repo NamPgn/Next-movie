@@ -42,7 +42,7 @@ const LoadmoreComponent = () => {
 
 	return (
 		<>
-			<RecentlyUpdated title="ALL" data={categorys.data} loadmore="" />
+			<RecentlyUpdated title="Phim" data={categorys.data} loadmore="" />
 			<LoadmorePagination
 				page={page}
 				handleChangePage={handleChangePage}
