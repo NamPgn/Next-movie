@@ -2,6 +2,9 @@ import { SuggestionItem } from "@/components/Search";
 
 export const serverBtns = ["daily", "assby", "drive"];
 
+
+
+
 export const WEEKDAY = [
   "Chủ nhật",
   "Thứ 2",
