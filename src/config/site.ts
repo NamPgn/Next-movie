@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   name: 'Hoạt Hình Hi Hi',
-  url: process.env.NEXT_PUBLIC_URL || 'https://hhhihi.site',
+  url: process.env.NEXT_PUBLIC_URL_SEO || 'https://hhhihi.site',
   description: 'HH3D tuyển chọn phim bộ, phim lẻ hoạt hình trung quốc 3D viêt sub mới nhất với đồ họa đẹp mắt, nội dung lôi cuốn, hấp dẫn, phim xem nhanh và chất lượng HD.',
   keywords: [
     'hoạt hình trung quốc',
