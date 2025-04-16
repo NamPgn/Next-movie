@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       images: category.linkImg,
       type: "video.movie",
-      url: `https://hoathinhtrungquoc.site/q/${category.slug}`,
+      url: `https://hhhihi.site/q/${category.slug}`,
     },
   };
 }
