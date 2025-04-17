@@ -33,8 +33,14 @@ const MVLink = ({
     const now = Date.now();
     const lastOpenTime = lastOpened || 0;
 
-    if (now - lastOpenTime >= delay) {
-      window.open(redirectLink, "_blank"); // Mở cửa sổ mới
+    if (now - lastOpenTime >= delay && redirectLink) {
+      // Tạo thẻ <a> với rel="nofollow" cho redirectLink
+      const a = document.createElement("a");
+      a.href = redirectLink;
+      a.target = "_blank";
+      a.rel = "nofollow";
+      a.click();
+
       setLastOpened(now);
       localStorage.setItem("lastOpened", now.toString());
     }
@@ -44,7 +50,7 @@ const MVLink = ({
   };
 
   return (
-    <Link href={to} prefetch={prefetch} {...rest} onClick={handleClick}>
+    <Link href={to} prefetch={prefetch} {...rest} onClick={handleClick} >
       {children}
     </Link>
   );
