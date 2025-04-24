@@ -87,7 +87,7 @@ const Header: React.FC = () => {
                   </div>
                 </div> */}
                 <MVImage
-                  src="/images/d4ff6991-55e8-4672-b160-d3986913ccec-Photoroom (1)-min.png"
+                  src="/images/logo.png"
                   width={100}
                   height={60}
                   alt="Hoạt Hình Trung Quốc"

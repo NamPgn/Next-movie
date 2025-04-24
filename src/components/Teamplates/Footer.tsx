@@ -21,7 +21,7 @@ const Footer = () => {
               <MVImage
                 width={150}
                 height={150}
-                src="/images/d4ff6991-55e8-4672-b160-d3986913ccec-Photoroom (1)-min.png"
+                src="/images/logo.png"
                 alt="Hoạt Hình Trung Quốc"
                 className="h-20 w-auto object-contain"
               />
