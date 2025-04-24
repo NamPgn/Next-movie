@@ -1,4 +1,3 @@
-import { Icategory } from "@/interfaces/category";
 import MVLink from "../Location/Link";
 import dynamic from "next/dynamic";
 import Title from "../MV/Title";
@@ -7,12 +6,12 @@ const CategoryContents = dynamic(() => import("../Category/Content/Category"));
 type CategoryContentType = {
   loadmore?: string;
   title: string;
-  data: Icategory[];
+  data: any[];
 };
 export default function RecentlyUpdated({
-  loadmore,
   title,
   data,
+  loadmore,
 }: CategoryContentType) {
   return (
     <div>
@@ -26,9 +25,9 @@ export default function RecentlyUpdated({
             title="Xem thêm"
             className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 rounded-full text-gray-400 hover:text-white transition-all duration-300"
           >
-            <span className="text-sm font-medium">Xem thêm</span>
+            <span className="text-sm font-medium">{loadmore}</span>
             <svg
-              viewBox="0 0 24 24" 
+              viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               className="w-4 h-4"

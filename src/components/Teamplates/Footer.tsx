@@ -19,11 +19,11 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-4">
               <MVImage
-                width={100}
-                height={100}
-                src="/images/logo.png"
+                width={150}
+                height={150}
+                src="/images/d4ff6991-55e8-4672-b160-d3986913ccec-Photoroom (1).png"
                 alt="Hoạt Hình Trung Quốc"
-                className="h-10 w-auto object-contain"
+                className="h-20 w-auto object-contain"
               />
             </div>
             <p className="text-sm text-gray-400">
