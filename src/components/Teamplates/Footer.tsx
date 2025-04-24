@@ -23,7 +23,7 @@ const Footer = () => {
                 height={150}
                 src="/images/logo.png"
                 alt="Hoạt Hình Trung Quốc"
-                className="h-20 w-auto object-contain"
+                className="h-10 w-auto object-contain"
               />
             </div>
             <p className="text-sm text-gray-400">

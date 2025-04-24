@@ -91,7 +91,7 @@ const Header: React.FC = () => {
                   width={100}
                   height={60}
                   alt="Hoạt Hình Trung Quốc"
-                  className="h-20 w-auto object-contain"
+                  className="h-10 w-auto object-contain"
                 />
               </div>
             </MVLink>
