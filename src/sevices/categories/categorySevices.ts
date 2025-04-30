@@ -43,7 +43,7 @@ export async function fetchCategorys(page: number) {
 
 export async function fetchCategorySitemap() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys/sitemap`,
     {
       method: "GET",
       cache: "no-cache",
@@ -55,7 +55,7 @@ export async function fetchCategorySitemap() {
   }
   if (!response) {
     notFound();
-  }
+  } 
 
   return data;
 }
