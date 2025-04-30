@@ -55,7 +55,7 @@ export async function fetchCategorySitemap() {
   }
   if (!response) {
     notFound();
-  } 
+  }
 
   return data;
 }
