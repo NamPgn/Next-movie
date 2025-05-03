@@ -2,7 +2,9 @@
 
 import React from "react";
 import { FaFacebookF, FaYoutube, FaArrowUp, FaTiktok, FaTelegram } from "react-icons/fa";
+import { SiZalo } from "react-icons/si";
 import MVImage from "../MV/IMAGE";
+import { socialLinks } from "@/config/socialLinks";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -53,14 +55,17 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 text-[#FFD875]">Theo dõi</h3>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/phanhhh3d" className="text-gray-400 hover:text-[#FFD875]">
+              <a href={socialLinks.facebook} className="text-gray-400 hover:text-[#FFD875]">
                 <FaFacebookF size={20} />
               </a>
-              <a href="https://www.tiktok.com/@tieu_loli" className="text-gray-400 hover:text-[#FFD875]">
+              <a href={socialLinks.tiktok} className="text-gray-400 hover:text-[#FFD875]">
                 <FaTiktok size={20} />
               </a>
-              <a href="https://t.me/myang_03" className="text-gray-400 hover:text-[#FFD875]">
+              <a href={socialLinks.telegram} className="text-gray-400 hover:text-[#FFD875]">
                 <FaTelegram size={20} />
+              </a>
+              <a href={socialLinks.zalo} className="text-gray-400 hover:text-[#FFD875]">
+                <SiZalo size={20} />
               </a>
             </div>
           </div>

@@ -1,10 +1,11 @@
-import { Metadata } from "next";
+'use client'
+
+import { useQuery } from '@tanstack/react-query';
 import MVImage from "@/components/MV/IMAGE";
 import SeriNumberMovie from "@/components/Episode/SeriCategory";
 import ShowDescriptions from "@/components/ShowContent/showDescriptions";
 import { Badge } from "@/components/ui/badge";
 import MVLink from "@/components/Location/Link";
-import { Icategory } from "@/interfaces/category";
 import {
   FaFacebookF,
   FaPinterestP,
@@ -14,41 +15,41 @@ import {
 import CommentSection from "@/components/Comments/CommentSection";
 import NominatedFilm from "@/components/Category/component/nominatedFilm";
 import { fetchCategories } from "@/sevices/categories/categorySevices";
-import { socialLinks } from "@/config/socialLinks";
-import { SiZalo } from "react-icons/si";
+import { Skeleton } from "@/components/ui/skeleton";
 
-type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const id = params.id;
-  const category: Icategory = await fetchCategories(id);
-  const lastCategory: any = category?.products[0];
-  return {
-    title:
-      category?.isMovie == "drama"
-        ? category.name +
-        ` | Tập ${lastCategory.seri} - Tập ${Number(lastCategory.seri) + 1
-        } - Tập ${Number(lastCategory.seri) + 2}`
-        : category?.name,
-
-    description: category.des,
-    openGraph: {
-      images: category.linkImg,
-      type: "video.movie",
-      url: `https://hhhihi.site/q/${category.slug}`,
-    },
-  };
+interface CategoryClientProps {
+  id: string;
 }
 
-const CategoryPage = async ({ params }: { params: { id: string } }) => {
-  const id = params.id;
-  const category: any = await fetchCategories(id);
-  if (!id) {
-    return <div className="error">Invalid category ID</div>; // Xử lý trường hợp không có ID
+export default function CategoryClient({ id }: CategoryClientProps) {
+  const { data: category, isLoading, error } = useQuery({
+    queryKey: ['category', id],
+    queryFn: () => fetchCategories(id),
+    staleTime: 1000 * 20, // 20 seconds
+    refetchOnWindowFocus: false,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="text-white bg-gradient-to-b from-[#16161a] to-[#26262c] p-6 rounded-sm">
+        <div className="flex flex-col lg:flex-row gap-6 lg:items-start items-center">
+          <div className="w-full md:w-1/2 lg:w-1/4">
+            <Skeleton className="w-[200px] h-[300px] rounded-lg" />
+          </div>
+          <div className="w-full lg:w-3/4 space-y-4">
+            <Skeleton className="h-8 w-3/4" />
+            <Skeleton className="h-4 w-1/2" />
+            <Skeleton className="h-4 w-2/3" />
+          </div>
+        </div>
+      </div>
+    );
   }
+
+  if (error || !category) {
+    return <div className="text-red-500 p-4">Error loading category</div>;
+  }
+
   return (
     <>
       <div className="text-white bg-gradient-to-b from-[#16161a] to-[#26262c] p-6 rounded-sm">
@@ -68,8 +69,9 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
             {category.isMovie === "drama" && (
               <MVLink
                 prefetch={false}
-                to={`/d/${category?.products[category.products.length - 1]?.slug
-                  }`}
+                to={`/d/${
+                  category?.products[category.products.length - 1]?.slug
+                }`}
               >
                 <button className="mt-4 bg-[#FFD875] hover:bg-[#ffc107] text-black w-full font-semibold py-2 px-4 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl">
                   ► Xem Ngay
@@ -92,22 +94,6 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
               <span className="text-[#FFD875]">{category.hour || "10h"}</span>{" "}
               mỗi {category?.week?.name || "ngày"}
             </p>
-            <div className="mb-4 sm:mb-6">
-              <div className="bg-[#1a1a1f] p-3 rounded-lg border border-[#FFD875]/20 hover:border-[#FFD875]/40 transition-all duration-300 mb-4">
-                <p className="text-sm text-center lg:text-left flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2">
-                  <span className="text-gray-400 text-center sm:text-left">Tham gia nhóm Zalo để nhận thông báo phim mới nào: </span>
-                  <a
-                    href={socialLinks.zalo}
-                    className="text-[#FFD875] hover:text-[#ffc107] font-semibold hover:underline inline-flex items-center gap-1 whitespace-nowrap bg-[#26262c] hover:bg-[#2d2d35] px-3 py-1 rounded-md transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <SiZalo className="w-4 h-4" />
-                    Nhóm Zalo
-                  </a>
-                </p>
-              </div>
-            </div>
 
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm text-gray-300">
               {category.isMovie === "drama" && (
@@ -151,8 +137,9 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                     <svg
                       key={i}
                       xmlns="http://www.w3.org/2000/svg"
-                      className={`h-5 w-5 ${i < 8 ? "text-[#FFD875]" : "text-gray-600"
-                        }`}
+                      className={`h-5 w-5 ${
+                        i < 8 ? "text-[#FFD875]" : "text-gray-600"
+                      }`}
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -169,8 +156,9 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
             {category.isMovie !== "drama" && (
               <MVLink
                 prefetch={false}
-                to={`/d/${category?.products[category.products.length - 1]?.slug
-                  }`}
+                to={`/d/${
+                  category?.products[category.products.length - 1]?.slug
+                }`}
               >
                 <button className="bg-gradient-to-r from-[#FFD875] to-[#ffd041] hover:from-[#ffc107] hover:to-[#FFD875] mt-5 w-full lg:w-auto text-black font-semibold py-2 px-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl">
                   ► Xem Ngay
@@ -211,11 +199,8 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </div>
         <CommentSection />
-
       </div>
       <NominatedFilm seriesId={category?.relatedSeasons} categoryId={category?._id} />
     </>
   );
-};
-
-export default CategoryPage;
+} 

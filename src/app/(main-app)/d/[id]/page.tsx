@@ -6,6 +6,8 @@ import SeriDetailProducts from "@/components/Episode/SeriDetail";
 import VideoPlayer from "../component/VideoPlayer";
 import Save from "../component/Save";
 import { fetchProduct } from "@/sevices/products/productsSevices";
+import { socialLinks } from "@/config/socialLinks";
+import { SiZalo } from "react-icons/si";
 
 type Props = {
   params: { id: string };
@@ -48,6 +50,20 @@ const DetailWatched = async ({
       <div className="container mx-auto pl-3 sm:pl-3 lg:pl-3 my-2">
         {/* Video Player Section */}
         <div className="mb-4 sm:mb-6">
+          <div className="bg-[#1a1a1f] p-3 rounded-lg border border-[#FFD875]/20 hover:border-[#FFD875]/40 transition-all duration-300 mb-4">
+            <p className="text-sm text-center lg:text-left flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2">
+              <span className="text-gray-400 text-center sm:text-left">Tham gia nhóm Zalo để nhận thông báo phim mới nào: </span>
+              <a 
+                href={socialLinks.zalo} 
+                className="text-[#FFD875] hover:text-[#ffc107] font-semibold hover:underline inline-flex items-center gap-1 whitespace-nowrap bg-[#26262c] hover:bg-[#2d2d35] px-3 py-1.5 rounded-md transition-colors" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <SiZalo className="w-4 h-4" />
+                Nhóm Zalo
+              </a>
+            </p>
+          </div>
           <VideoPlayer getOneProductDetail={getOneProductDetail} />
         </div>
 
