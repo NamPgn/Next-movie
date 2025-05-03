@@ -3,22 +3,25 @@ interface FetchProductsResult {
   data: [];
   error?: string;
 }
+
 export async function fetchProduct(id: string) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/product/` + id,
-    {
-      method: "GET",
-      cache: "no-cache",
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/product/` + id,
+      {
+        method: "GET",
+        cache: "no-cache",
+      }
+    );
+    if (!response.ok) {
+      notFound();
     }
-  );
-  const data = await response.json();
-  if (!response) {
-    return undefined;
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    return { data: null, error: "Failed to fetch product" };
   }
-  if (!response) {
-    notFound();
-  }
-  return data;
 }
 
 export async function fetchProductsCategory(): Promise<FetchProductsResult> {
@@ -29,13 +32,14 @@ export async function fetchProductsCategory(): Promise<FetchProductsResult> {
         method: "GET",
       }
     );
-    if (!response) {
+    if (!response.ok) {
       notFound();
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    return { data: [], error: "Failed to fetch" };
+    console.error('Error fetching products category:', error);
+    return { data: [], error: "Failed to fetch products category" };
   }
 }
 
@@ -56,7 +60,8 @@ export async function useFetchCategoryNominated(seriesId: any, categoryId: any) 
     const data = await response.json();
     return data;
   } catch (error) {
-    return { data: [], error: "Failed to fetch" };
+    console.error('Error fetching category nominated:', error);
+    return { data: [], error: "Failed to fetch category nominated" };
   }
 }
 
@@ -70,12 +75,13 @@ export async function fetchProducts(
         method: "GET",
       }
     );
-    if (!response) {
+    if (!response.ok) {
       notFound();
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    return { data: [], error: "Failed to fetch" };
+    console.error('Error fetching products:', error);
+    return { data: [], error: "Failed to fetch products" };
   }
 }

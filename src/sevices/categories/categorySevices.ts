@@ -6,56 +6,60 @@ interface FetchCategoriesResult {
 }
 
 export async function fetchCategories(id: string) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` + id,
-    {
-      method: "GET",
-      cache: "no-cache",
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` + id,
+      {
+        method: "GET",
+        cache: "no-cache",
+      }
+    );
+    if (!response.ok) {
+      notFound();
     }
-  );
-  const data = await response.json();
-  if (!response) {
-    return undefined;
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching category:', error);
+    return { data: null, error: "Failed to fetch category" };
   }
-  if (!response) {
-    notFound();
-  }
-  return data;
 }
 
 export async function fetchCategorys(page: number) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys?page=` + page,
-    {
-      method: "GET",
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys?page=` + page,
+      {
+        method: "GET",
+      }
+    );
+    if (!response.ok) {
+      notFound();
     }
-  );
-  const data = await response.json();
-  if (!response) {
-    return undefined;
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return { data: [], error: "Failed to fetch categories" };
   }
-  if (!response) {
-    notFound();
-  }
-
-  return data;
 }
 
 export async function fetchCategorySitemap() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys`,
-    {
-      method: "GET",
-      cache: "no-cache",
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/categorys`,
+      {
+        method: "GET",
+        cache: "no-cache",
+      }
+    );
+    if (!response.ok) {
+      notFound();
     }
-  );
-  const data = await response.json();
-  if (!response) {
-    return undefined;
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching category sitemap:', error);
+    return { data: [], error: "Failed to fetch category sitemap" };
   }
-  if (!response) {
-    notFound();
-  }
-
-  return data;
 }
