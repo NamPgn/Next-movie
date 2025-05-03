@@ -11,7 +11,9 @@ export async function fetchCategories(id: string) {
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` + id,
       {
         method: "GET",
-        cache: "no-cache",
+        next: {
+          revalidate: 10 
+        }
       }
     );
     if (!response.ok) {
