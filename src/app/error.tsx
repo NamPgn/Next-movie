@@ -13,7 +13,7 @@ export default function GlobalError({ error, reset }: { error: Error, reset: () 
 
 					<div className="text-center space-y-2">
 						<h2 className="text-2xl font-bold">Đã xảy ra lỗi!</h2>
-						<p className="text-gray-400">Phim không tông tại, vui lòng thử lại sau</p>
+						<p className="text-gray-400">Phim không tồn tại, vui lòng thử lại sau!</p>
 					</div>
 
 					<button
