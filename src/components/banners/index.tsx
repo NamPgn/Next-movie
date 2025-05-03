@@ -75,7 +75,7 @@ const BannerDisplay = () => {
                     <MVImage
                       width={200}
                       height={200}
-                      className="w-full h-[90px]"
+                      className="w-full h-[80px]"
                       src={banner.imageUrl}
                       alt={banner.title}
                     />

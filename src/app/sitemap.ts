@@ -8,7 +8,7 @@ const generateSitemapXML = async () => {
 
   categorys?.data?.map((item: any) => {
     sitemap.push({
-      url: `${process.env.NEXT_PUBLIC_URL}/q/${item.slug}`,
+      url: `${process.env.NEXT_PUBLIC_URL_SEO}/q/${item.slug}`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
@@ -16,7 +16,7 @@ const generateSitemapXML = async () => {
 
     item.products.map((product: any) => {
       sitemap.push({
-        url: `${process.env.NEXT_PUBLIC_URL}/d/${product?.slug}`,
+        url: `${process.env.NEXT_PUBLIC_URL_SEO}/d/${product?.slug}`,
         lastModified: new Date(),
         changeFrequency: "daily",
         priority: 0.8,
