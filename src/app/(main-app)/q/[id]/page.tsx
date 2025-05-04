@@ -10,12 +10,12 @@ import {
   FaPinterestP,
   FaTwitter,
   FaWhatsapp,
+  FaFacebookMessenger
 } from "react-icons/fa6";
 import CommentSection from "@/components/Comments/CommentSection";
 import NominatedFilm from "@/components/Category/component/nominatedFilm";
 import { fetchCategories } from "@/sevices/categories/categorySevices";
 import { socialLinks } from "@/config/socialLinks";
-import { SiZalo } from "react-icons/si";
 
 type Props = {
   params: { id: string };
@@ -102,8 +102,8 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <SiZalo className="w-4 h-4" />
-                    Nhóm Zalo
+                    <FaFacebookMessenger className="w-4 h-4" />
+                    Nhóm FaceBook
                   </a>
                 </p>
               </div>
