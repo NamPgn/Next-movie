@@ -93,7 +93,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
               <span className="text-[#FFD875]">{category.hour || "10h"}</span>{" "}
               mỗi {category?.week?.name || "ngày"}
             </p>
-            {/* <div className="mb-4 sm:mb-6">
+            <div className="mb-4 sm:mb-6">
               <div className="bg-[#1a1a1f] p-3 rounded-lg border border-[#FFD875]/20 hover:border-[#FFD875]/40 transition-all duration-300 mb-4">
                 <p className="text-sm text-center lg:text-left flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2">
                   <span className="text-gray-400 text-center sm:text-left">Tham gia nhóm Zalo để nhận thông báo phim mới nào: </span>
@@ -108,7 +108,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                   </a>
                 </p>
               </div>
-            </div> */}
+            </div>
 
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm text-gray-300">
               {category.isMovie === "drama" && (

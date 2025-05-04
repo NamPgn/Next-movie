@@ -50,7 +50,7 @@ const DetailWatched = async ({
       <div className="container mx-auto pl-3 sm:pl-3 lg:pl-3 my-2">
         {/* Video Player Section */}
         <div className="mb-4 sm:mb-6">
-          {/* <div className="bg-[#1a1a1f] p-3 rounded-lg border border-[#FFD875]/20 hover:border-[#FFD875]/40 transition-all duration-300 mb-4">
+          <div className="bg-[#1a1a1f] p-3 rounded-lg border border-[#FFD875]/20 hover:border-[#FFD875]/40 transition-all duration-300 mb-4">
             <p className="text-sm text-center lg:text-left flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2">
               <span className="text-gray-400 text-center sm:text-left">Tham gia nhóm Zalo để nhận thông báo phim mới nào: </span>
               <a 
@@ -63,7 +63,7 @@ const DetailWatched = async ({
                 Nhóm Zalo
               </a>
             </p>
-          </div> */}
+          </div>
           <VideoPlayer getOneProductDetail={getOneProductDetail} />
         </div>
 
