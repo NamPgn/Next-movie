@@ -16,6 +16,7 @@ import CommentSection from "@/components/Comments/CommentSection";
 import NominatedFilm from "@/components/Category/component/nominatedFilm";
 import { fetchCategories } from "@/sevices/categories/categorySevices";
 import { socialLinks } from "@/config/socialLinks";
+import { SiZalo } from "react-icons/si";
 
 type Props = {
   params: { id: string };
@@ -98,12 +99,12 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
                   <span className="text-gray-400 text-center sm:text-left">Tham gia nhóm Zalo để nhận thông báo phim mới nào: </span>
                   <a
                     href={socialLinks.zalo}
-                    className="text-[#FFD875] hover:text-[#ffc107] font-semibold hover:underline inline-flex items-center gap-1 whitespace-nowrap bg-[#26262c] hover:bg-[#2d2d35] px-3 py-1 rounded-md transition-colors"
+                    className="text-[#FFD875] hover:text-[#ffc107] font-semibold hover:underline inline-flex items-center gap-1 whitespace-nowrap bg-[#26262c] hover:bg-[#2d2d35] px-3 py-1.5 rounded-md transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaFacebookMessenger className="w-4 h-4" />
-                    Nhóm FaceBook
+                    <SiZalo className="w-4 h-4" />
+                    Nhóm Zalo
                   </a>
                 </p>
               </div>

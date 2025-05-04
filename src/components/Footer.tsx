@@ -3,7 +3,7 @@
 import React from "react";
 import { FaFacebookF, FaYoutube, FaArrowUp, FaTiktok, FaTelegram } from "react-icons/fa";
 import { SiZalo } from "react-icons/si";
-import MVImage from "../MV/IMAGE";
+import MVImage from "./MV/IMAGE";
 import { socialLinks } from "@/config/socialLinks";
 
 const Footer = () => {
@@ -68,6 +68,17 @@ const Footer = () => {
                 <SiZalo size={20} />
               </a>
             </div>
+            {/* QR Zalo */}
+            {/* <div className="mt-4 flex flex-col items-center">
+              <img
+                src="/images/zalo-qr.png"
+                alt="QR Zalo"
+                className="w-28 h-28 object-contain border border-gray-700 rounded-lg"
+              />
+              <span className="text-xs text-gray-400 mt-2 text-center">
+                Mở Zalo, bấm quét QR để quét và xem trên điện thoại
+              </span>
+            </div> */}
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">

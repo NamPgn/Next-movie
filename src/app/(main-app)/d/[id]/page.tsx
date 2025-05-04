@@ -7,7 +7,7 @@ import VideoPlayer from "../component/VideoPlayer";
 import Save from "../component/Save";
 import { fetchProduct } from "@/sevices/products/productsSevices";
 import { socialLinks } from "@/config/socialLinks";
-import { FaFacebookMessenger } from "react-icons/fa";
+import { SiZalo } from "react-icons/si";
 
 type Props = {
   params: { id: string };
@@ -59,8 +59,8 @@ const DetailWatched = async ({
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                <FaFacebookMessenger className="w-4 h-4" />
-                Nhóm FaceBook
+                <SiZalo className="w-4 h-4" />
+                Nhóm Zalo
               </a>
             </p>
           </div>

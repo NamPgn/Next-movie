@@ -4,7 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "../components/Teamplates/Header";
-import Footer from "@/components/Teamplates/Footer";
+import Footer from "@/components/Footer";
 import React from "react";
 import StoreProvider from "../providers/StoreProvider";
 import PagesTopLoader from "../components/Loading/pageLoading";
