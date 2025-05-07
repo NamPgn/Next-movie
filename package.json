@@ -46,6 +46,7 @@
     "next-movie": "file:",
     "next-transpile-modules": "^10.0.1",
     "nextjs-toploader": "^3.7.15",
+    "qrcode.react": "^4.2.0",
     "query-string": "^9.0.0",
     "react": "^18",
     "react-dom": "^18",
