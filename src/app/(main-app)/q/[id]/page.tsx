@@ -10,7 +10,6 @@ import {
   FaPinterestP,
   FaTwitter,
   FaWhatsapp,
-  FaFacebookMessenger
 } from "react-icons/fa6";
 import CommentSection from "@/components/Comments/CommentSection";
 import NominatedFilm from "@/components/Category/component/nominatedFilm";
@@ -19,9 +18,6 @@ import { socialLinks } from "@/config/socialLinks";
 import { SiZalo } from "react-icons/si";
 import dynamic from 'next/dynamic';
 
-const QRCode = dynamic(() => import('qrcode.react').then(mod => mod.QRCodeSVG), {
-  ssr: false
-});
 
 type Props = {
   params: { id: string };
@@ -102,18 +98,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
               <h1 className="text-2xl md:text-3xl font-extrabold text-[#FFD875] text-center lg:text-left">
                 {category.name}
               </h1>
-              {/* <div className="absolute top-0 right-0">
-                <div className="bg-[#1a1a1f] p-2 rounded-lg shadow-lg flex flex-col items-center">
-                  <QRCode
-                    value={socialLinks.zalo}
-                    size={100}
-                    level="H"
-                    includeMargin={true}
-                    className="rounded-lg"
-                  />
-                  <p className="text-white text-center mt-1 text-xs font-medium">Quét để tham gia nhóm Zalo</p>
-                </div>
-              </div> */}
+            
             </div>
             <p className="text-sm text-gray-400 text-center lg:text-left">
               <span>{category?.anotherName}</span>

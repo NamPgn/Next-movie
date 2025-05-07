@@ -8,6 +8,12 @@ import Save from "../component/Save";
 import { fetchProduct } from "@/sevices/products/productsSevices";
 import { socialLinks } from "@/config/socialLinks";
 import { SiZalo } from "react-icons/si";
+import dynamic from "next/dynamic";
+
+const QRCode = dynamic(() => import('qrcode.react').then(mod => mod.QRCodeSVG), {
+  ssr: false
+});
+
 
 type Props = {
   params: { id: string };
@@ -50,23 +56,23 @@ const DetailWatched = async ({
       <div className="container mx-auto pl-3 sm:pl-3 lg:pl-3 my-2">
         {/* Video Player Section */}
         <div className="mb-4 sm:mb-6">
-          <div className="bg-[#1a1a1f] p-3 rounded-lg border border-[#FFD875]/20 hover:border-[#FFD875]/40 transition-all duration-300 mb-4">
-            <p className="text-sm text-center lg:text-left flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2">
-              <span className="text-gray-400 text-center sm:text-left">Tham gia nhóm Zalo để nhận thông báo phim mới nào: </span>
-              <a 
-                href={socialLinks.zalo} 
-                className="text-[#FFD875] hover:text-[#ffc107] font-semibold hover:underline inline-flex items-center gap-1 whitespace-nowrap bg-[#26262c] hover:bg-[#2d2d35] px-3 py-1.5 rounded-md transition-colors" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <SiZalo className="w-4 h-4" />
-                Nhóm Zalo
-              </a>
-            </p>
-          </div>
+
           <VideoPlayer getOneProductDetail={getOneProductDetail} />
         </div>
-
+        <div className="bg-[#1a1a1f] p-3 rounded-lg border border-[#FFD875]/20 hover:border-[#FFD875]/40 transition-all duration-300 mb-4">
+          <p className="text-sm text-center lg:text-left flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2">
+            <span className="text-gray-400 text-center sm:text-left">Tham gia nhóm Zalo để nhận thông báo phim mới nào: </span>
+            <a
+              href={socialLinks.zalo}
+              className="text-[#FFD875] hover:text-[#ffc107] font-semibold hover:underline inline-flex items-center gap-1 whitespace-nowrap bg-[#26262c] hover:bg-[#2d2d35] px-3 py-1.5 rounded-md transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SiZalo className="w-4 h-4" />
+              Nhóm Zalo
+            </a>
+          </p>
+        </div>
         {/* Movie Info Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Left Column - Movie Details */}
@@ -82,7 +88,7 @@ const DetailWatched = async ({
                     </span>
                   )}
                 </h1>
-                <Save 
+                <Save
                   movieId={params.id}
                   movieData={{
                     id: params.id,
@@ -115,31 +121,42 @@ const DetailWatched = async ({
           </div>
 
           {/* Right Column - Additional Info */}
-          <div className="lg:col-span-1">
-            <div className="bg-[#1a1a1f] rounded-lg p-3 sm:p-4">
-              <h2 className="text-base sm:text-lg font-bold mb-3 sm:mb-4">Thông tin phim</h2>
-              <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Trạng thái:</span>
-                  <span className="text-[#FFD875]">
-                    {getOneProductDetail?.category?.isMovie === "drama"
-                      ? `Tập ${getOneProductDetail?.seri}`
-                      : "Full HD"}
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Thời lượng:</span>
-                  <span>{getOneProductDetail?.category?.time || "N/A"}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Năm phát hành:</span>
-                  <span>{getOneProductDetail?.category?.year || "N/A"}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Chất lượng:</span>
-                  <span className="text-[#FFD875]">HD Vietsub</span>
+          <div className="flex flex-col gap-4">
+            <div className="lg:col-span-1">
+              <div className="bg-[#1a1a1f] rounded-lg p-3 sm:p-4">
+                <h2 className="text-base sm:text-lg font-bold mb-3 sm:mb-4">Thông tin phim</h2>
+                <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">Trạng thái:</span>
+                    <span className="text-[#FFD875]">
+                      {getOneProductDetail?.category?.isMovie === "drama"
+                        ? `Tập ${getOneProductDetail?.seri}`
+                        : "Full HD"}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">Thời lượng:</span>
+                    <span>{getOneProductDetail?.category?.time || "N/A"}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">Năm phát hành:</span>
+                    <span>{getOneProductDetail?.category?.year || "N/A"}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">Chất lượng:</span>
+                    <span className="text-[#FFD875]">HD Vietsub</span>
+                  </div>
                 </div>
               </div>
+            </div>
+            <div className="bg-[#1a1a1f] p-2 rounded-lg shadow-lg flex flex-col items-center">
+              <QRCode
+                value={socialLinks.zalo}
+                level="H"
+                includeMargin={true}
+                className="rounded-lg"
+              />
+              <p className="text-white text-center mt-1 text-xs font-medium">Quét để tham gia nhóm Zalo</p>
             </div>
           </div>
         </div>
