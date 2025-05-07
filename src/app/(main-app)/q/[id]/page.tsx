@@ -52,8 +52,26 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
   }
   return (
     <>
+    
       <div className="text-white bg-gradient-to-b from-[#16161a] to-[#26262c] p-6 rounded-sm">
+      <div className="mb-4 sm:mb-6">
+              <div className="bg-[#1a1a1f] p-3 rounded-lg border border-[#FFD875]/20 hover:border-[#FFD875]/40 transition-all duration-300 mb-4">
+                <p className="text-sm text-center lg:text-left flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2">
+                  <span className="text-gray-400 text-center sm:text-left">Tham gia nhóm Zalo để nhận thông báo phim mới nào: </span>
+                  <a
+                    href={socialLinks.zalo}
+                    className="text-[#FFD875] hover:text-[#ffc107] font-semibold hover:underline inline-flex items-center gap-1 whitespace-nowrap bg-[#26262c] hover:bg-[#2d2d35] px-3 py-1.5 rounded-md transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <SiZalo className="w-4 h-4" />
+                    Nhóm Zalo
+                  </a>
+                </p>
+              </div>
+            </div>
         <div className="flex flex-col lg:flex-row gap-6 lg:items-start items-center">
+          
           {/* Hình ảnh anime */}
           <div className="w-full md:w-1/2 lg:w-1/4">
             <div className="relative mx-auto max-w-[200px] sm:max-w-[200px] md:max-w-[200px]">
@@ -93,22 +111,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }) => {
               <span className="text-[#FFD875]">{category.hour || "10h"}</span>{" "}
               mỗi {category?.week?.name || "ngày"}
             </p>
-            <div className="mb-4 sm:mb-6">
-              <div className="bg-[#1a1a1f] p-3 rounded-lg border border-[#FFD875]/20 hover:border-[#FFD875]/40 transition-all duration-300 mb-4">
-                <p className="text-sm text-center lg:text-left flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2">
-                  <span className="text-gray-400 text-center sm:text-left">Tham gia nhóm Zalo để nhận thông báo phim mới nào: </span>
-                  <a
-                    href={socialLinks.zalo}
-                    className="text-[#FFD875] hover:text-[#ffc107] font-semibold hover:underline inline-flex items-center gap-1 whitespace-nowrap bg-[#26262c] hover:bg-[#2d2d35] px-3 py-1.5 rounded-md transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <SiZalo className="w-4 h-4" />
-                    Nhóm Zalo
-                  </a>
-                </p>
-              </div>
-            </div>
+           
 
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm text-gray-300">
               {category.isMovie === "drama" && (
