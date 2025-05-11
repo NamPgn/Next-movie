@@ -1,13 +1,13 @@
 import React from "react";
 
 type ImageInterface = {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  className?: string;
-  objectFit?: string;
-  title?: string;
+  src: any;
+  alt: any;
+  width?: any;
+  height?: any;
+  className?: any;
+  objectFit?: any;
+  title?: any;
 };
 
 export default function MVImage({
