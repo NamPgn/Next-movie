@@ -1,28 +1,48 @@
-import React from "react";
+'use client'; // nếu dùng trong app router
 
+import { useState } from 'react';
+import Image from 'next/image';
 
-export default function MVImage({
+type Props = {
+  src: string;
+  fallbackSrc?: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+};
+
+const MVImage = ({
   src,
+  fallbackSrc,
   alt,
   width,
   height,
   className,
-  objectFit = "cover",
-  title,
-  ...rest
-}: any) {
-  return (
+  rest
+}: any) => {
+  const [hasError, setHasError] = useState(false);
+
+  return hasError ? (
     <img
-      loading="lazy"
+      src={fallbackSrc || src}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+      {...rest}
+    />
+  ) : (
+    <Image
       src={src}
       alt={alt}
       width={width}
       height={height}
-      title={title}
       className={className}
-      style={{ objectFit:'cover' }}
+      onError={() => setHasError(true)}
       {...rest}
-      
     />
   );
-}
+};
+
+export default MVImage;
