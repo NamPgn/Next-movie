@@ -1,38 +1,35 @@
-import Image from "next/image";
 import React from "react";
-type ImageInterFace = {
-  src: string | any;
+
+type ImageInterface = {
+  src: string;
   alt: string;
   width?: number;
   height?: number;
-  className?: any;
+  className?: string;
   objectFit?: string;
-  placeholder?: "blur" | "empty";
-  blurDataURL?: string;
   title?: string;
 };
+
 export default function MVImage({
-  alt,
   src,
+  alt,
   width,
   height,
   className,
-  objectFit,
-  placeholder,
-  blurDataURL,
+  objectFit = "cover",
+  title,
   ...rest
-}: ImageInterFace) {
+}: ImageInterface) {
   return (
-    <Image
+    <img
       loading="lazy"
       src={src}
-      className={className}
       alt={alt}
       width={width}
       height={height}
-      objectFit={objectFit}
-      placeholder={placeholder}
-      blurDataURL={blurDataURL}
+      title={title}
+      className={className}
+      style={{ objectFit:'cover' }}
       {...rest}
     />
   );
