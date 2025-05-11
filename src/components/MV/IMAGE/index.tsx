@@ -1,14 +1,5 @@
 import React from "react";
 
-type ImageInterface = {
-  src: any;
-  alt: any;
-  width?: any;
-  height?: any;
-  className?: any;
-  objectFit?: any;
-  title?: any;
-};
 
 export default function MVImage({
   src,
@@ -19,7 +10,7 @@ export default function MVImage({
   objectFit = "cover",
   title,
   ...rest
-}: ImageInterface) {
+}: any) {
   return (
     <img
       loading="lazy"
@@ -31,6 +22,7 @@ export default function MVImage({
       className={className}
       style={{ objectFit:'cover' }}
       {...rest}
+      
     />
   );
 }
