@@ -34,7 +34,7 @@ export const defaultMetadata: Metadata = {
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
-
+  
   // SEO Optimization
   robots: {
     index: true,
@@ -47,7 +47,7 @@ export const defaultMetadata: Metadata = {
       'max-snippet': -1,
     },
   },
-
+  
   // Social Media
   openGraph: {
     title: SITE_CONFIG.name,
@@ -71,16 +71,12 @@ export const defaultMetadata: Metadata = {
     description: SITE_CONFIG.description,
     images: ['/og-image.jpg'],
   },
-
+  
   // Site Verification
   verification: {
-    google: [
-      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION1 || '',
-      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION2 || ''
-      // Add more Google verification codes here if needed
-    ],
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION1,
   },
-
+  
   // Icons and PWA
   icons: {
     icon: [{ url: '/favicon.ico' }],
@@ -97,7 +93,7 @@ export const defaultMetadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
-
+  
   // Viewport and Theme
   viewport: {
     width: 'device-width',

@@ -49,9 +49,14 @@ export const seoConfig: Metadata = {
     description: SITE_CONFIG.description,
     images: ['https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1732691384/hoa-giang-ho-chi-bat-luong-nhan-phan-6-2-1_qkxcfi.jpg'],
   },
-  
-  // Site Verification
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    google: [
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION1 || '',
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION2 || ''
+      // Add more Google verification codes here if needed
+    ],
   },
+  // Site Verification
+  
+
 }; 
