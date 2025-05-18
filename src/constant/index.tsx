@@ -29,7 +29,7 @@ export const METADATA_LAYOUT = {
   },
   SITE_NAME:
     "Hoạt Hình Trung Quốc - Xem Hoạt Hình 3D Anime Vietsub Online | HH3D | Hoạt Hình Trung Quốc",
-  VERIFICATION: ["aNoVo34Nv7bVSvnx3iM0WWJHePdMclD4h1_YNqtb-jU", 'klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE'],
+  VERIFICATION: "aNoVo34Nv7bVSvnx3iM0WWJHePdMclD4h1_YNqtb-jU",
   ICON: "/icon.ico",
 }
 
