@@ -16,7 +16,6 @@ import NominatedFilm from "@/components/Category/component/nominatedFilm";
 import { fetchCategories } from "@/sevices/categories/categorySevices";
 import { socialLinks } from "@/config/socialLinks";
 import { SiZalo } from "react-icons/si";
-import dynamic from 'next/dynamic';
 
 
 type Props = {

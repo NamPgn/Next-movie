@@ -15,6 +15,9 @@ import LoginModal from "../../Auth/LoginModal";
 import { useSeries } from "@/hooks/app/series";
 import MenuMobile from "@/sections/header/menu-mobile";
 import EmployeeBtnLogin from "@/sections/emloyee-btn-login";
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 const Header: React.FC = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -22,10 +25,12 @@ const Header: React.FC = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showFavorites, setShowFavorites] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
   const { data: series, isLoading: seriesLoading } = useSeries();
   const { favorites, initializeFromStorage, handleRemoveFavorite } = useSavedStore();
   const { isLoginModalOpen, openLoginModal, closeLoginModal } = useAuthStore();
   const [showMenu, setShowMenu] = useState(false);
+
   useEffect(() => {
     initializeFromStorage();
   }, [initializeFromStorage]);
@@ -33,15 +38,29 @@ const Header: React.FC = () => {
   const debouncedSearch = useMemo(
     () =>
       debounce(async (val: string) => {
-        const data = await searCategory(val);
-        if (data) setResults(data.data);
-      }, 900),
+        if (!val.trim()) {
+          setResults([]);
+          setIsSearching(false);
+          return;
+        }
+        try {
+          setIsSearching(true);
+          const data = await searCategory(val);
+          if (data) setResults(data.data);
+        } catch (error) {
+          console.error('Search error:', error);
+          setResults([]);
+        } finally {
+          setIsSearching(false);
+        }
+      }, 500),
     []
   );
 
   const handleChange = useCallback(
     (val: string) => {
       setSearchValue(val);
+      setIsSearching(true);
       debouncedSearch(val);
     },
     [debouncedSearch]
@@ -49,6 +68,7 @@ const Header: React.FC = () => {
 
   const handleClick = useCallback(() => {
     setSearchValue("");
+    setResults([]);
   }, []);
 
   useEffect(() => {
@@ -65,12 +85,11 @@ const Header: React.FC = () => {
     };
   }, [debouncedSearch]);
 
-
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-      ? "bg-black/30 backdrop-blur-md shadow-lg"
-      : "bg-gradient-to-b from-black/30 to-transparent"
-      }`}>
+    <header className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+      isScrolled ? "bg-black/30 backdrop-blur-md shadow-lg" : "bg-gradient-to-b from-black/30 to-transparent"
+    )}>
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -117,7 +136,7 @@ const Header: React.FC = () => {
             >
               Trang chủ
             </Link>
-            { seriesLoading ? 'Loading...' : series.map((item: any) => (
+            {seriesLoading ? 'Loading...' : series.map((item: any) => (
               <Link
                 key={item.id}
                 href={`/${item.slug}`}
@@ -131,12 +150,12 @@ const Header: React.FC = () => {
           {/* Search Bar */}
           <div className="flex-1 max-w-md mx-4 md:relative">
             <div className="relative">
-              <input
+              <Input
                 value={searchValue}
                 onChange={(e) => handleChange(e.target.value)}
                 type="text"
                 placeholder="Tìm kiếm phim..."
-                className="w-full bg-black/50 text-white px-4 py-2 pl-10 rounded-full border border-gray-700 focus:outline-none focus:border-[#FFD875] focus:ring-1 focus:ring-[#FFD875] transition-all duration-200"
+                className="w-full bg-black/50 text-white pl-10 rounded-full border-gray-700 focus:border-[#FFD875] focus:ring-1 focus:ring-[#FFD875]"
                 aria-label="Tìm kiếm phim"
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
@@ -151,11 +170,15 @@ const Header: React.FC = () => {
               popularSearches={SEARCH_SUGGEST}
               searchValue={searchValue}
               isFocused={isFocused}
+              isLoading={isSearching}
             />
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors duration-200" onClick={() => setShowMenu(!showMenu)}>
+          <button 
+            className="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors duration-200" 
+            onClick={() => setShowMenu(!showMenu)}
+          >
             <svg
               className="w-6 h-6 text-gray-300"
               fill="none"
@@ -191,7 +214,7 @@ const Header: React.FC = () => {
 
               {/* Favorites Dropdown */}
               {showFavorites && favorites.length > 0 && (
-                <div className="absolute right-0 mt-2 w-72 bg-[#1a1a1f] rounded-lg shadow-lg py-2 z-50">
+                <Card className="absolute right-0 mt-2 w-72 bg-[#1a1a1f] border-gray-700 shadow-lg py-2 z-50">
                   <h3 className="px-4 py-2 text-sm font-semibold text-gray-300 border-b border-gray-700">
                     Phim yêu thích ({favorites.length})
                   </h3>
@@ -238,15 +261,13 @@ const Header: React.FC = () => {
                       </Link>
                     ))}
                   </div>
-                </div>
+                </Card>
               )}
             </div>
 
             {/* Member Button */}
             <div className="hidden md:block">
-              <EmployeeBtnLogin
-                onClick={openLoginModal}
-              />
+              <EmployeeBtnLogin onClick={openLoginModal} />
             </div>
           </div>
         </div>
@@ -256,9 +277,7 @@ const Header: React.FC = () => {
       {showFavorites && (
         <div
           className="fixed inset-0 z-40"
-          onClick={() => {
-            setShowFavorites(false);
-          }}
+          onClick={() => setShowFavorites(false)}
         />
       )}
 
@@ -268,8 +287,6 @@ const Header: React.FC = () => {
       {showMenu && (
         <MenuMobile isOpen={showMenu} onClose={() => setShowMenu(false)} menuItems={series} />
       )}
-
-
     </header>
   );
 };

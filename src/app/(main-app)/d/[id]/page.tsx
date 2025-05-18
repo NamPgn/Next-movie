@@ -9,6 +9,7 @@ import { fetchProduct } from "@/sevices/products/productsSevices";
 import { socialLinks } from "@/config/socialLinks";
 import { SiZalo } from "react-icons/si";
 import dynamic from "next/dynamic";
+import { FaCalendarAlt, FaClock, FaFilm, FaHighlighter, FaPlay } from "react-icons/fa";
 
 const QRCode = dynamic(() => import('qrcode.react').then(mod => mod.QRCodeSVG), {
   ssr: false
@@ -121,34 +122,48 @@ const DetailWatched = async ({
           </div>
 
           {/* Right Column - Additional Info */}
-          <div className="flex flex-col gap-4">
-            <div className="lg:col-span-1">
-              <div className="bg-[#1a1a1f] rounded-lg p-3 sm:p-4">
-                <h2 className="text-base sm:text-lg font-bold mb-3 sm:mb-4">Thông tin phim</h2>
-                <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Trạng thái:</span>
-                    <span className="text-[#FFD875]">
-                      {getOneProductDetail?.category?.isMovie === "drama"
-                        ? `Tập ${getOneProductDetail?.seri}`
-                        : "Full HD"}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Thời lượng:</span>
-                    <span>{getOneProductDetail?.category?.time || "N/A"}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Năm phát hành:</span>
-                    <span>{getOneProductDetail?.category?.year || "N/A"}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Chất lượng:</span>
-                    <span className="text-[#FFD875]">HD Vietsub</span>
-                  </div>
+          <div className="movie-sidebar">
+            <div className="movie-details-card">
+              <h2 className="sidebar-title">
+                <FaFilm className="sidebar-title-icon" />
+                Thông tin phim
+              </h2>
+              <div className="movie-details-list">
+                <div className="movie-detail-item">
+                  <span className="detail-label">
+                    <FaPlay className="detail-icon" />
+                    Trạng thái:
+                  </span>
+                  <span className="detail-value highlight">
+                    {getOneProductDetail?.category?.isMovie === "drama"
+                      ? `Tập ${getOneProductDetail?.seri}`
+                      : "Full HD"}
+                  </span>
+                </div>
+                <div className="movie-detail-item">
+                  <span className="detail-label">
+                    <FaClock className="detail-icon" />
+                    Thời lượng:
+                  </span>
+                  <span className="detail-value">{getOneProductDetail?.category?.time || "N/A"}</span>
+                </div>
+                <div className="movie-detail-item">
+                  <span className="detail-label">
+                    <FaCalendarAlt className="detail-icon" />
+                    Năm phát hành:
+                  </span>
+                  <span className="detail-value">{getOneProductDetail?.category?.year || "N/A"}</span>
+                </div>
+                <div className="movie-detail-item">
+                  <span className="detail-label">
+                    <FaHighlighter className="detail-icon" />
+                    Chất lượng:
+                  </span>
+                  <span className="detail-value highlight">HD Vietsub</span>
                 </div>
               </div>
             </div>
+
             <div className="bg-[#1a1a1f] p-2 rounded-lg shadow-lg flex flex-col items-center">
               <QRCode
                 value={socialLinks.zalo}
