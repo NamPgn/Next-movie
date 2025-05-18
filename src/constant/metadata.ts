@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 
 // Site Configuration
 const SITE_CONFIG = {
-  name: 'Hoạt Hình Hi Hi',
-  url: process.env.NEXT_PUBLIC_URL || 'https://hhhihi.site',
+  name: 'Hoạt Hình Trung Quốc',
+  url: process.env.NEXT_PUBLIC_URL || 'https://hh3dtq.site',
   description: 'HH3D tuyển chọn phim bộ, phim lẻ hoạt hình trung quốc 3D viêt sub mới nhất với đồ họa đẹp mắt, nội dung lôi cuốn, hấp dẫn, phim xem nhanh và chất lượng HD.',
   keywords: [
     'hoạt hình trung quốc',
@@ -14,7 +14,7 @@ const SITE_CONFIG = {
     'anime vietsub',
     'phim hoạt hình online',
     'HH3D',
-    'HHHIHI'
+    'HH3DTQ'
   ],
   social: {
     facebook: 'https://facebook.com/phanhhh3d',
@@ -34,7 +34,7 @@ export const defaultMetadata: Metadata = {
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
-  
+
   // SEO Optimization
   robots: {
     index: true,
@@ -47,7 +47,7 @@ export const defaultMetadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  
+
   // Social Media
   openGraph: {
     title: SITE_CONFIG.name,
@@ -71,12 +71,16 @@ export const defaultMetadata: Metadata = {
     description: SITE_CONFIG.description,
     images: ['/og-image.jpg'],
   },
-  
+
   // Site Verification
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    google: [
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION1 || '',
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION2 || ''
+      // Add more Google verification codes here if needed
+    ],
   },
-  
+
   // Icons and PWA
   icons: {
     icon: [{ url: '/favicon.ico' }],
@@ -93,7 +97,7 @@ export const defaultMetadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
-  
+
   // Viewport and Theme
   viewport: {
     width: 'device-width',
