@@ -2,9 +2,6 @@ import { SuggestionItem } from "@/components/Search";
 
 export const serverBtns = ["daily", "assby", "drive"];
 
-
-
-
 export const WEEKDAY = [
   "Chủ nhật",
   "Thứ 2",
@@ -17,26 +14,26 @@ export const WEEKDAY = [
 
 export const METADATA_LAYOUT = {
   TITLE:
-    "Hoạt Hình Hi Hi - Xem Hoạt Hình 3D Anime Vietsub Online | HHHIHI | Hoạt Hình Trung Quốc",
+    "Hoạt Hình Trung Quốc - Xem Hoạt Hình 3D Anime Vietsub Online | HH3D | Hoạt Hình Trung Quốc",
   DESCRIPTIONS:
     "HH3D tuyển chọn phim bộ, phim lẻ hoạt hình trung quốc 3D viêt sub mới nhất với đồ họa đẹp mắt, nội dung lôi cuốn, hấp dẫn, phim xem nhanh và chất lượng HD.",
   OPNEGRAPH: {
-    TITLE: "Hoạt Hình Hi Hi",
+    TITLE: "Hoạt Hình Trung Quốc",
     IMAGE: {
       url: "https://res.cloudinary.com/daz3lejjo/image/upload/f_webp/v1732691384/hoa-giang-ho-chi-bat-luong-nhan-phan-6-2-1_qkxcfi.jpg",
       width: 800,
       height: 600,
-      alt: "Hoạt Hình Hi Hi",
+      alt: "Hoạt Hình Trung Quốc",
     },
     TYPE: "website",
   },
   SITE_NAME:
-    "Hoạt Hình Hi Hi - Xem Hoạt Hình 3D Anime Vietsub Online | HHHIHI | Hoạt Hình Trung Quốc",
-  VERIFICATION: "klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE",
+    "Hoạt Hình Trung Quốc - Xem Hoạt Hình 3D Anime Vietsub Online | HH3D | Hoạt Hình Trung Quốc",
+  VERIFICATION: ["klYZi2fv--WqS45ghm2RIfoGCV41LxvwkDnkpuno8LE", 'aNoVo34Nv7bVSvnx3iM0WWJHePdMclD4h1_YNqtb-jU'],
   ICON: "/icon.ico",
-};
+}
 
-export const SEARCH_SUGGEST:SuggestionItem[] = [
+export const SEARCH_SUGGEST: SuggestionItem[] = [
   {
     NAME: "Tiên Nghịch",
     URL: "/q/tien-nghich",
