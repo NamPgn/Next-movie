@@ -1,7 +1,7 @@
 import MVLink from "../Location/Link";
 import dynamic from "next/dynamic";
-import Title from "../MV/Title";
 import { IoFilmOutline } from "react-icons/io5";
+import { Title } from "../MV/Title";
 const CategoryContents = dynamic(() => import("../Category/Content/Category"));
 type CategoryContentType = {
   loadmore?: string;

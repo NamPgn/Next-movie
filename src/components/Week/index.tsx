@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import { WEEKDAY } from "@/constant";
 import CategoryContents from "../Category/Content/Category";
-import Title from "../MV/Title";
 import LazyLoadOtherComponents from "../LazyOtherComponents";
 import { IoCalendarOutline } from "react-icons/io5";
 import { useWeeks, useWeeksByCategory } from "@/hooks/app/week";
+import { Title } from "../MV/Title";
 
 interface WeekComponentProps {
   title: string;

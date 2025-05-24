@@ -50,7 +50,7 @@ const MVLink = ({
   };
 
   return (
-    <Link href={to} prefetch={prefetch} {...rest} onClick={handleClick} >
+    <Link href={to} prefetch={prefetch} {...rest}>
       {children}
     </Link>
   );

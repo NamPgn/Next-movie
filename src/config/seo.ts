@@ -56,7 +56,4 @@ export const seoConfig: Metadata = {
       // Add more Google verification codes here if needed
     ],
   },
-  // Site Verification
-  
-
 }; 

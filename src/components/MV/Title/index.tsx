@@ -1,12 +1,17 @@
-import React, { ReactNode } from "react";
+import type React from "react"
+import { cn } from "@/lib/utils"
 
-const Title = ({ children, icon }: { children: ReactNode; icon?: ReactNode }) => {
+interface TitleProps {
+  children: React.ReactNode
+  icon?: React.ReactNode
+  className?: string
+}
+
+export function Title({ children, icon, className }: TitleProps) {
   return (
-    <h3 className="text-white text-lg  pl-2 mb-2  my-3 font-sans font-semibold dark:text-gray-200 flex items-center gap-2">
-      {icon && icon}
-      {children}
-    </h3>
-  );
-};
-
-export default Title;
+    <div className={cn("flex items-center gap-2 mb-4", className)}>
+      {icon && <div className="text-yellow-500">{icon}</div>}
+      <h2 className="text-lg md:text-xl font-bold text-white tracking-wide">{children}</h2>
+    </div>
+  )
+}
