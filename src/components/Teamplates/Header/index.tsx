@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import MVLink from "../../Location/Link";
 import MVImage from "../../MV/IMAGE";
 import { debounce } from "lodash";
@@ -30,10 +30,26 @@ const Header: React.FC = () => {
   const { favorites, initializeFromStorage, handleRemoveFavorite } = useSavedStore();
   const { isLoginModalOpen, openLoginModal, closeLoginModal } = useAuthStore();
   const [showMenu, setShowMenu] = useState(false);
+  const [isMouseOverResults, setIsMouseOverResults] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     initializeFromStorage();
   }, [initializeFromStorage]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsFocused(false);
+        setIsMouseOverResults(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const debouncedSearch = useMemo(
     () =>
@@ -70,6 +86,14 @@ const Header: React.FC = () => {
     setSearchValue("");
     setResults([]);
   }, []);
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      if (!isMouseOverResults) {
+        setIsFocused(false);
+      }
+    }, 200);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -148,7 +172,7 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Search Bar */}
-          <div className="flex-1 max-w-md mx-4 md:relative">
+          <div className="flex-1 max-w-md mx-4 md:relative" ref={searchRef}>
             <div className="relative">
               <Input
                 value={searchValue}
@@ -158,20 +182,25 @@ const Header: React.FC = () => {
                 className="w-full bg-black/50 text-white pl-10 rounded-full border-gray-700 focus:border-[#FFD875] focus:ring-1 focus:ring-[#FFD875]"
                 aria-label="Tìm kiếm phim"
                 onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                onBlur={handleBlur}
               />
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
                 <SearchIcon className="w-4 h-4 text-gray-400" />
               </div>
             </div>
-            <SearchResults
-              data={results}
-              handleClick={handleClick}
-              popularSearches={SEARCH_SUGGEST}
-              searchValue={searchValue}
-              isFocused={isFocused}
-              isLoading={isSearching}
-            />
+            <div 
+              onMouseEnter={() => setIsMouseOverResults(true)}
+              onMouseLeave={() => setIsMouseOverResults(false)}
+            >
+              <SearchResults
+                data={results}
+                handleClick={handleClick}
+                popularSearches={SEARCH_SUGGEST}
+                searchValue={searchValue}
+                isFocused={isFocused}
+                isLoading={isSearching}
+              />
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
